@@ -9,11 +9,12 @@ redirect_from:
 
 {% include base_path %}
 
+Data Scientist with 3+ years of experience in analytics, machine learning, and AI, specializing in chatbot solutions. Backed by 6 years in geophysics at a petroleum institute, focusing on seismic data analysis. Proficient in python, SQL, and graph databases, with a passion for applying data science to drive innovation and efficiency in the energy and other industries.
+
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* M.S. in Data Science, University of Colorado Boulder, 2026 (expected)
+* B.S. in Geophysical Engineer, Hanoi University of Mining and Geology, 2015
 
 Work experience
 ======

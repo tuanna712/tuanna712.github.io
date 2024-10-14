@@ -14,8 +14,8 @@ main:
   #   url: /teaching/    
   - title: "Resume"
     url: /cv/
-  - title: "Portfolio"
-    url: /portfolio/
+  # - title: "Portfolio"
+  #   url: /portfolio/
 
   - title: "Publications"
     url: /publications/

@@ -18,7 +18,7 @@ Education
 
 Work experience
 ======
-* 08/2022 – 07/2024, Data Scientist, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam
+* <b>08/2022 – 07/2024, Data Scientist, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam</b>
   * Developed a chatbot-operated map-based website that executed user commands for navigation, leveraging a graph database to link map functions with domain knowledge and provide real-time visual results besides chat responses.
   * Developed an internal document-sharing web-based application integrated with a retrieval-augmented generation (RAG) chatbot system, significantly enhancing document sharing capabilities by enabling chatbot interaction with local domain data and optimizing for Vietnamese language.
   * Developed an automated oil field daily reporting system, saving one employee’s daily workload by streamlining data transfer to SQL database, summarization, and reporting (via LLM), while enabling multi-level management supervision.
@@ -27,11 +27,11 @@ Work experience
   * Developed the “vpitools” Python PyPi package for petrophysics data processing, offering quick statistics, 2D/3D visualizations, and customized plotting using matplotlib, seaborn, and interactive charts with plotly and vega-altair.
   * Processed well-log data: detected and removed outliers, duplicated values, normalizing data, feature engineering, optimized size of training and testing dataset, logged and visualized model performance.
 
-* 07/2021 – 07/2022, Data Analyst, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam
+* <b>07/2021 – 07/2022, Data Analyst, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam</b>
   * Utilized Microsoft Power Virtual Agents and Power Pages to create domain question-answering system via web application and Microsoft Team agents.
   * Constructed borehole relational database, queried, and visualized logs data in Power BI Dashboard.
 
-* 09/2015 – 06/2021, Geophysicist, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam
+* <b>09/2015 – 06/2021, Geophysicist, Vietnam Petroleum Institue (VPI), Hanoi, Vietnam</b>
   * Automatically and semi-automatically interpreted seismic data and built the environmental models to predict the location of potential unstructured oil and gas traps, supporting drilling decisions.
   * Built a velocity model, generated seismic attributes and applied specialized techniques such as Amplitude versus Offset and Inversion, to identify potential field locations and calculate oil reserves.
   * Interpreted seismic data and mapped objects to generate detailed subsurface maps, including structural and attribute maps, with a focus on reservoir characterization.
@@ -54,7 +54,7 @@ Publications
   
 Research & Projects
 ======
-* 09/2015 – 08/2024, Vietnam Petroleum Institute (VPI), Hanoi, Vietnam
+* <b>09/2015 – 08/2024, Vietnam Petroleum Institute (VPI), Hanoi, Vietnam</b>
   * (2024) Data Scientist: Chatbot-driven map navigation with integrated graph database.
   * (2024) Data Scientist: E&P knowledge sharing with RAG chatbot and knowledge graph integration.
   * (2023) Data Scientist: Petroleum Journal chatbot system enhanced by LLM models.

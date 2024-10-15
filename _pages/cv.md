@@ -58,9 +58,9 @@ Research & Projects
   * (2024) Data Scientist: Chatbot-driven map navigation with integrated graph database.
   * (2024) Data Scientist: E&P knowledge sharing with RAG chatbot and knowledge graph integration.
   * (2023) Data Scientist: Petroleum Journal chatbot system enhanced by LLM models.
-  * (2024) Data Scientist: VPI-Mlogs: Web-based application for petrophysical data analysis.
   * (2023) Data Scientist: Daily Bach Ho oil field operations dashboard and reporting system using LLM.
   * (2023) Data Scientist: Hydrocarbon composition analysis and oil product allocation.
+  * (2022) Data Scientist: VPI-Mlogs: Web-based application for petrophysical data analysis.
   * (2022) Data collector, Data Analyst: Well-log database for the Cuu Long basin area.
   * (2022) Data Analyst: Fracture zones forecasting in the reservoir rock based on petrophysical logs.
   * (2022) Seismic modeler: Provision service of Pre-stack inversion for DH01&02 Area - Block 05-1a.

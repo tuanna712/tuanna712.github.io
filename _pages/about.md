@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Tuan Nguyen's Profile Page"
+title: "Resume"
 author_profile: true
 redirect_from: 
   - /about/

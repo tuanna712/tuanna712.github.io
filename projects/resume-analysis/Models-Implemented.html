@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+    <!-- Title -->
+    <title>Models Implemented</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/icon.png" rel="icon">
+    <link href="assets/img/icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/models.css" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+    <!-- Import Library for Math -->
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/models.js"></script>
+
+    <script>
+        // JavaScript to toggle visibility of content and active button styles
+        function toggleContent(contentId, button) {
+          const content = document.getElementById(contentId);
+      
+          // Hide other open sections
+          document.querySelectorAll('.expandable-content').forEach(section => {
+            if (section.id !== contentId) section.style.display = 'none';
+          });
+      
+          // Remove active state from all buttons
+          document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+      
+          // Toggle current section and button state
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+          } else {
+            content.style.display = 'block';
+            button.classList.add('active');
+          }
+        }
+
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- Header: navbar -->
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/icon.png" alt="">
+            <h1 class="sitename">Models Implemented</h1>
+            </a>
+    
+            <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data-exploration.html">Data Exploration</a></li>
+                <li><a href="Models-Implemented.html">Models Implemented</a></li>
+                <li><a href="conclusion-results.html">Conclusion & Results</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <!-- Page Title -->
+        <div class="page-title light-background">
+          <div class="container">
+            <h1 style="text-align: left;">Models Implemented</h1>
+            <nav class="breadcrumbs">
+              <ol>
+                <li><a href="index.html">Home</a></li>
+                <li class="current">Models Implemented</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <!-- End Page Title -->
+        <section id="services-2" class="services-2 section">
+          <div class="container">
+            <div  data-aos="fade-up">
+                <span class="content-subtitle"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Opening -->
+        <div class="container">
+            <p style="text-align: center;">
+                This project aims to utilize data to build models for classification, focusing on predicting the resume category.
+                By analyzing resume data, the goal is to create a solution that helps employers to more effectively classify candidates resumes.
+              </p>
+              <p style="text-align: center; color: green;">
+                <b>Main steps in the modeling process</b>
+              </p>
+              <img src="assets/img/modeling/main_process.png" style="width: 80%; height: auto; display: block; margin: 0 auto; margin-bottom: 30px;">
+          
+              <p style="color:green;">
+                Click on each section below to view more information.
+              </p>
+        </div>
+
+        <!-- Button 1 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content1', this)">Data Overview: Raw Text & Cleaned Text</button>
+          <div class="textbox expandable-content" id="content1" style="text-align: center;">
+              <p style="text-align: left;">
+                  <b>Initially,</b> we standardized the text by converting all characters to lowercase to ensure uniformity. <br>
+                  <b>Next,</b> we removed unnecessary elements such as punctuation, special characters, URLs, and numerical values, depending on the task's requirements.
+                  <b>Tokenization</b> was applied to split text into individual words or phrases, and stop words, which are common but non-informative terms, were filtered out 
+                  to enhance focus on meaningful content. <b>Stemming or lemmatization</b> was performed to reduce words to their root or base form, thereby normalizing 
+                  variations. We also eliminated duplicate text entries and handled missing or corrupted data to maintain dataset integrity. <br>
+                  <b>Finally,</b> we applied techniques like spell correction and text normalization to refine textual quality, ensuring it is well-suited for subsequent NLP modeling.
+              </p>
+              <h4 style="color:red; text-align: center;">
+              Raw Text Before cleaning 
+              </h4>
+              <img src="assets/img/modeling/Data_bfr.png" alt="Data before Preprocessing" style="width: 75%; margin-bottom:40px;">
+      
+              <h4 style="color:red;">
+              Resume content after cleaning process
+              </h4>
+              <img src="assets/img/modeling/Data_aft.png" alt="Data after Preprocessing" style="width: 75%;margin-bottom: 40px;">
+      
+              <h5 style="text-align: center;" >Histogram of resume length by words before and after cleaning process</h5>
+              <img src="assets/img/modeling/image016.png" style="margin-bottom: 80px;">
+              <img src="assets/img/modeling/image017.png" style="margin-bottom: 80px;">
+              <p>
+                  <br>Resume dataset can be found here: 
+                  <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Datasets/Milestone3/Processed%20Data/CVs/skill_extracted_resume.parquet" 
+                  target="_blank">Resume Data</a>
+              </p>
+          </div>
+        </div>
+
+        <!-- Button 2 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content2', this)">Data Processing 1: Skill Extraction and Analysis from Resume Text</button>
+          <div class="textbox expandable-content" id="content2">
+              <p>
+                  After completing the initial text cleaning process, we observed that the resumes were still excessively lengthy, making them unsuitable for direct input into NLP or machine learning models. To address this, we opted to extract all the skills listed in the resumes and use these skills as the primary input for the modeling process. 
+                  This approach offers several advantages: 
+                  <ul>
+                  <li>Significantly reduces the input size, ensuring compatibility with computational resources and model limitations;</li>
+                  <li>Focuses on the most relevant information for job matching tasks, thereby improving the model's efficiency and interpretability;</li>
+                  <li>Aligns closely with the primary objectives of resume evaluation, which often prioritize skills as key indicators of candidate suitability.</li>
+                  </ul>
+              </p>
+              <h4>Skill Extraction</h4>
+              <p>
+                  Using a Named Entity Recognition (NER) model, resumes can be processed to extract various entities. 
+                  The figure below illustrates the types of entities that can be detected from raw resume text. 
+                  From these extracted entities, we identified and collected the skills corresponding to the resume content.
+              </p>
+              <h6 style="color: orange">Entities Extraction using Named Entity Recognition (NER) model</h6>
+              <img src="assets/img/modeling/image020.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto; margin-bottom: 30px;">
+              
+              <h6 style="color: orange">Example of skills extracted from the resume text</h6>
+              <img src="assets/img/modeling/extracted_skills.png" style="max-width: 100%; display: block; margin: 0 auto; margin-bottom: 30px;">
+
+              <h4>Tokenization</h4>
+              <p>
+                  To prepare the data for modeling, the textual data must be converted into numerical form using a method called tokenization. Tokenization involves breaking down the text into smaller units, such as words or subwords, which are then mapped to numerical representations.  
+                  This mapping can be achieved through techniques like one-hot encoding, where each token is represented as a binary vector, 
+                  or more advanced methods such as word embeddings.
+              </p>
+
+              <h7 style="color: orange; text-align: center">
+                  Skills data after transforming process, which are numerical representations and ready for modeling as input data.
+              </h7>
+              <img src="assets/img/modeling/image024.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+          
+              <p>
+                  <br>All feature processing code can be found here: <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Preprocessing/01_features_processing.ipynb" target="_blank">Feature Processing Code</a>
+              </p>
+          </div>
+        </div>
+
+        <!-- Button 3 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content3', this)">Data Processing 2: Title Grouping and Labeling Process</button>
+          <div class="expandable-content" id="content3">
+              <h4>Label distribution Visualization</h4>
+              <p>
+                  After scraping data using specific keywords, we collected over 12,000 resumes. Each resume includes a title, which is set 
+                  by the candidates based on their experience and desired job roles. While these titles are not strictly uniform or 
+                  standardized labels, they do partially reflect the nature and focus of the resumes. Therefore, we utilized this column 
+                  as the label for the resume classification task. 
+              </p>
+              <img src="assets/img/modeling/image032.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;margin-bottom: 20px;">
+              <p>
+                  However, these titles contain typos, misspellings, and duplicate entries. 
+                  Additionally, some titles refer to the same job but are expressed differently. Examples of these variations are illustrated in the figure below.
+              </p>
+              <img src="assets/img/modeling/duplicated_titles.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;margin-bottom: 20px;">
+
+              <h4>Labels Processing</h4>
+              <p>
+                  To address this issue, we developed a code to scan and identify all possible relevant titles, grouping them together and standardizing them into final, uniform titles. This method worked effectively for the majority of the data. 
+                  However, some titles could not be categorized due to their ambiguity or lack of relevance. As a result, we decided to exclude these titles from the dataset.
+              </p>
+              <img src="assets/img/modeling/grouped_titles.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+              
+              <p>
+                  Finally, we selected 6 main categories based on the grouped titles, which are used as labels for the classification task. 
+                  And to summary the <b>before and after processing</b> of the labels, we visualized the label processing steps in the below figure.
+              </p>
+              <img src="assets/img/modeling/image036.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+
+              <p>
+                  <br>All label processing code can be found here: 
+                  <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Preprocessing/02_labels_processing.ipynb" 
+                  target="_blank">Label Processing Code</a><br>
+                  More details in labeling process can be found in the final report: 
+                  <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Reports/Milestone3/Milestone%203%20-%20Group%2020%20-%20FinalReport.pdf" 
+                  target="_blank">Milestone 3 Report</a>
+              </p>
+          </div>
+        </div>
+
+        <!-- Button 4 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content4', this)">Models Implementation</button>
+          <div class="expandable-content" id="content4" style="text-align: center;">
+              <p style="text-align: left;">
+                  In this project, we focus on Resume Classification task, which aims to predict the job category based on the resume content. 
+                  This task is trained with both machine learning and deep learning methods.<br>
+                  This task receives input data from the previous steps, which are the skills data and labels are job categories.
+                  All features and labels are processed and transformed into numerical representations by tokenization and label encoding methods.<br>
+                  All the applied methods are listed below:
+              </p>
+
+              <div class="branch-container">
+                  <div class="branch">
+                      <p class="branch-title" style="color:black;">Machine Learning</p>
+
+                      <span class="toggle-btn" onclick="toggleDetails('details1')">Logistic Regression</span>
+                      <p class="details" id="details1"> <b>Logistic Regression: </b> a linear statistical model that is used for binary or multi-class classification tasks. It predicts probabilities for each class using the sigmoid function to map values to a range between 0 and 1</p>
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details2')">Random Forest</span>
+                      <p class="details" id="details2"> <b>Random Forest: </b> a collection of decision trees where each tree is trained on a random subset of the data and features. The final prediction is made by averaging or classification across all trees</p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details3')">Support Vector Machine</span>
+                      <p class="details" id="details3"> <b>Support Vector Machine (SVM): </b> aims to find the hyperplane that best separates data points of different classes with the maximum margin</p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details4')">K-Nearest Neighbors</span>
+                      <p class="details" id="details4"> <b>KNN:</b> predicts outcomes based on the majority class (classification) or average value (regression) of the 'k' nearest data points. It uses distance metrics like Euclidean to identify neighbors. </p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details5')">Decision Tree</span>
+                      <p class="details" id="details5"> <b>Decision Tree:</b> splits data hierarchically based on feature thresholds to create rules that classify or predict outcomes. It is easy to interpret but prone to overfitting without pruning</p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details6')">Gradient Boosting</span>
+                      <p class="details" id="details6"> <b>Gradient Boosting: </b> combines weak learners (typically decision trees) sequentially, correcting errors from prior models. It minimizes a loss function and performs well on complex datasets</p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details7')">AdaBoost</span>
+                      <p class="details" id="details7"> <b>AdaBoost: </b> combines multiple weak classifiers iteratively, focusing on misclassified instances by adjusting their weights. It improves performance but can be sensitive to noise</p>  
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details8')">XGBoost</span>
+                      <p class="details" id="details8"> <b>XGBoost: </b> an optimized gradient boosting framework that uses regularization, parallel processing, and efficient algorithms. It is widely used for high-performance machine learning tasks</p>  
+                  </div>
+
+                  <div class="branch">
+                      <p class="branch-title" style="color: black;">Deep Learning</p>
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details9')">Convolutional Neural Networks</span>
+                      <p class="details" id="details9">
+                          <b>Convolutional Neuron Network (CNN):</b> It is a specialized deep learning model that utilize convolutional layers to capture local features like phrases or context windows. 
+                          The features are then combined through pooling layers to reduce dimensionality and highlight the most significant patterns.
+                      </p>
+                      
+                      <span class="toggle-btn" onclick="toggleDetails('details10')">LSTM</span>
+                      <p class="details" id="details10"> 
+                          <b>LSTM:</b> It is an advanced types of Recurrent Neural Networks (RNNs) designed to handle sequential data by learning long-term dependencies. 
+                          Unlike traditional RNNs, LSTMs use memory cells and gating mechanisms (input, forget, and output gates) to selectively store, update, and output information across time steps.
+                      </p>
+                  </div>
+              </div>
+
+              <p style="text-align: left;">
+                  <br>All model codes can be found here: 
+                  <ul style="text-align: left;">
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/03_LogisticRegression.ipynb" 
+                          target="_blank">Logistic Regression</a>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/04_KNN.ipynb" 
+                          target="_blank">K-Nearest Neighbors</a><br>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/05_DecisionTree.ipynb" 
+                          target="_blank">Decision Tree</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/06_RandomForest.ipynb" 
+                          target="_blank">Random Forest</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/07_SVC.ipynb" 
+                          target="_blank">Support Vector Machine</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/08_GradientBoosting.ipynb" 
+                          target="_blank">Gradient Boosting</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/09_Ada Boost.ipynb" 
+                          target="_blank">Ada Boost</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/10_XGBoost.ipynb" 
+                          target="_blank">XGBoost</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/11_LSTM_Tuning.ipynb" 
+                          target="_blank">Long Short-Term Memory</a><br>
+                      </li>
+                      <li>
+                          <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Code/Milestone3/Modelling/ResumeClassification/12_CNN_Tuning.ipynb" 
+                          target="_blank">Convolutional Neural Network</a>
+                      </li>
+                  </ul>
+              </p>
+          </div>
+        </div>
+
+        <!-- Button 5 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content5', this)">Model Hyperparameter Tuning Process</button>
+          <div class="expandable-content" id="content5">
+              <p>
+                  Hyperparameter tuning is the process of finding the best settings (hyperparameters) for a model to improve its performance. 
+                  These settings, such as the learning rate or maximum depth, are predefined and cannot be learned directly from the data, but they have a big impact on how well the model works.<br>
+                  In our solution, we used 
+                  <a href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.RandomizedSearchCV.html" target="_blank">RandomizedSearchCV</a>
+                  and 
+                  <a href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html" target="_blank">GridSearchCV</a>
+                  methods from the sklearn library. Both methods allow us to test different combinations of hyperparameters for the model. 
+                  Based on a specific performance metric (like 
+                  <a href="https://scikit-learn.org/dev/modules/generated/sklearn.metrics.accuracy_score.html" target="_blank">accuracy</a>
+                  or 
+                  <a href="https://scikit-learn.org/1.5/modules/generated/sklearn.metrics.f1_score.html" target="_blank">F1-score</a>
+                  ), it identifies the best combination of settings.<br><br>
+                  Once we find the best parameters, we use them to finalize the model, ensuring it achieves the highest possible performance.
+                  GridSearchCV and RandomizedSearchCV also include techniques to reduce overfitting, such as cross-validation. By setting the `cv` parameter, the model is trained and validated on multiple random data splits (folds).<br><br> 
+                  This ensures the model learns from all the data while avoiding overfitting or focusing too much on any single subset.<br>
+                  Example of tuining process for KNN model is shown below:
+              </p>
+              <img src="assets/img/modeling/tuning_knn.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+              <p>
+                  <br>After tuning the hyperparameters, the model is retrained on the entire dataset using the best settings.
+                  <img src="assets/img/modeling/rerun_knn.png" style="max-width: 75%; height: 500px; display: block; margin: 0 auto;">
+
+                  <br>With the example of KNN hypertuning, the model's performance improved significantly after tuning, with an increase in accuracy from 0.74 to 0.78.
+              
+                  <br>Details of Fituning progress and the improvement for each model can be seen in the final report: 
+                  <a href="https://github.com/jayanagarwal/Resume-Analysis/blob/main/Reports/Milestone3/Milestone%203%20-%20Group%2020%20-%20FinalReport.pdf" 
+                  target="_blank">Milestone 3 Report</a>
+              </p>
+          </div>
+        </div>
+
+        <!-- Button 6 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content6', this)">Models Performance & Metrics</button>
+          <div class="expandable-content" id="content6">
+              <div class="metrics-container" >
+                  <h4 style="text-align: center; ">Common Performance Metrics</h4>
+                  <p>
+                      Metrics are quantitative measures used to evaluate the performance of a model, algorithm, or process. In machine learning and data analysis, 
+                      metrics assess how well a model performs in predicting or classifying data based on specific criteria.
+                  </p>
+
+                  <ul>
+                      <li><b>Accuracy:</b> Measures the proportion of correct predictions (both true positives and true negatives) out of all predictions made by the model. 
+                          <span>$$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{Total Instances}}$$</span>
+                      </li>
+                      <li><b>Precision:</b> Evaluates the proportion of correctly predicted positive cases out of all cases predicted as positive. It measures the model's ability to avoid false positives. 
+                          <span>$$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$</span>
+                      </li>
+                      <li><b>Recall:</b> Measures the proportion of actual positive cases that are correctly identified by the model. It focuses on minimizing false negatives. 
+                          <span>$$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$</span>
+                      </li>
+                      <li><b>F1 Score:</b> The harmonic mean of precision and recall, providing a balance between the two metrics. 
+                          <span>$$F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$</span>
+                      </li>
+                      <li><b>G-Mean:</b> Geometric Mean measures the balance between correctly identifying positive cases and correctly rejecting negative cases. 
+                          <span>$$\text{G-Mean} = \sqrt{\text{Sensitivity} \cdot \text{Specificity}}$$</span>
+                      </li>
+                      <li><b>Matthews Correlation Coefficient (MCC):</b> Measures the correlation between actual and predicted classifications, providing a balanced metric even for imbalanced datasets. 
+                          <span>$$\text{MCC} = \frac{(\text{TP} \cdot \text{TN}) - (\text{FP} \cdot \text{FN})}{\sqrt{(\text{TP} + \text{FP}) \cdot (\text{TP} + \text{FN}) \cdot (\text{TN} + \text{FP}) \cdot (\text{TN} + \text{FN})}}$$</span>
+                      </li>
+                  </ul>
+              </div>
+
+              <div style="text-align: center; ">
+                  <h4 style="padding-bottom: 20px;"><br>Model Performance Metrics</h4>
+                  <div class="table-container">
+                      <table>
+                          <thead>
+                              <tr>
+                              <th>Model</th>
+                              <th>Accuracy</th>
+                              <th>Precision</th>
+                              <th>Recall</th>
+                              <th>F1-Score</th>
+                              <th>G-Mean</th>
+                              <th>MCC</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                              <td>Logistic Regression</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.89</td>
+                              <td>0.75</td>
+                              </tr>
+                              <tr>
+                              <td>KNeighborsClassifier</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.87</td>
+                              <td>0.70</td>
+                              </tr>
+                              <tr>
+                              <td>DecisionTreeClassifier</td>
+                              <td>0.72</td>
+                              <td>0.72</td>
+                              <td>0.72</td>
+                              <td>0.72</td>
+                              <td>0.83</td>
+                              <td>0.61</td>
+                              </tr>
+                              <tr>
+                              <td>RandomForestClassifier</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.78</td>
+                              <td>0.86</td>
+                              <td>0.70</td>
+                              </tr>
+                              <tr>
+                              <td>SVC</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.88</td>
+                              <td>0.73</td>
+                              </tr>
+                              <tr>
+                              <td>GradientBoostingClassifier</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.88</td>
+                              <td>0.72</td>
+                              </tr>
+                              <tr>
+                              <td>AdaBoostClassifier</td>
+                              <td>0.74</td>
+                              <td>0.74</td>
+                              <td>0.74</td>
+                              <td>0.74</td>
+                              <td>0.84</td>
+                              <td>0.64</td>
+                              </tr>
+                              <tr>
+                              <td>XGBClassifier</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.82</td>
+                              <td>0.89</td>
+                              <td>0.76</td>
+                              </tr>
+
+                              <tr>
+                              <td>LSTM</td>
+                              <td>0.76</td>
+                              <td>0.76</td>
+                              <td>0.76</td>
+                              <td>0.76</td>
+                              <td>0.85</td>
+                              <td>0.72</td>
+                              </tr>
+
+                              <tr>
+                              <td>CNN</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.80</td>
+                              <td>0.88</td>
+                              <td>0.73</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+                  <h4><br>Performance Summary</h4>
+                  <p style="text-align: left; ">
+                      <br>In conclusion, The modeling results demonstrate that Logistic Regression and XGBClassifier are the top-performing models, with accuracies of 0.82 and 0.80, respectively. 
+                      Both models show balanced performance across key metrics such as F1-Score, G-Mean, and MCC, which indicates they are well-suited for handling both positive and negative classes. <br><br>
+
+                      Logistic Regression leads slightly with the highest G-Mean (0.89) and MCC (0.75), making it the most reliable and balanced model for this dataset.
+                      SVC also delivers competitive results, achieving an accuracy of 0.80 and strong scores across other metrics, making it a viable alternative to the top models. <br><br>
+
+                      Similarly, GradientBoostingClassifier and RandomForestClassifier perform reasonably well with accuracies of 0.79, though they slightly lag in F1-Score and MCC, suggesting room for improvement. 
+                      These models could benefit from further optimization, such as hyperparameter tuning or additional feature engineering.<br><br>
+
+                      In contrast, KNeighborsClassifier, DecisionTreeClassifier, and AdaBoostClassifier exhibit weaker performance, with accuracies around 0.73–0.74 and lower scores on key metrics like F1-Score and MCC. 
+                      This suggests these models might be overfitting or are sensitive to noise in the dataset. Their lower G-Mean indicates poorer handling of class imbalances, which could make them less suitable for deployment without refinement.<br><br>
+                      
+                      A notable observation is the consistently high specificity (~0.95-0.96) across all models, showing that they are adept at identifying negative cases. 
+                      However, the variability in sensitivity (0.73–0.82) indicates differing abilities to detect positive cases, a critical factor in applications like fraud detection or medical diagnosis. <br><br>
+
+                      Overall, Logistic Regression and XGBClassifier are recommended as the primary models for deployment due to their robust and balanced performance.
+                      For further improvements, exploring hyperparameter tuning or ensemble strategies for GradientBoostingClassifier and RandomForestClassifier could be beneficial. 
+                      Models like KNeighborsClassifier and DecisionTreeClassifier should only be considered after addressing their current limitations.
+                  </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Button 7 -->
+        <div class="container">
+          <button class="nav-button" onclick="toggleContent('content7', this)">Application</button>
+          <div class="expandable-content" id="content7">
+            <p>
+                In this section, we use resumes as input and apply the TF-IDF algorithm to identify the best-matching job descriptions. Based on the results, a list of job recommendations is generated. 
+                Similarly, if a job description is provided as input, the system outputs a list of potential candidate resumes. The steps implemented in this notebook include:
+                <ul>
+                    <li><b>Understanding the TF-IDF Algorithm:</b> A brief explanation of how TF-IDF works.</li>
+                    <li><b>Jobs Loading:</b> Load the text content for both resumes and job descriptions.</li>
+                    <li><b>TF-IDF Calculation:</b> Compute the TF-IDF values for the input data.</li>
+                    <li><b>Search by Cosine Algorithm:</b> Using Cosine distance to compare and match resumes and job descriptions.</li>
+                    <li><b>Combine and work with new resume:</b> Make recommendation for new resume content.</li>
+                </ul>
+                <img src="assets/img/modeling/cosine.png" style="max-width: 50%; height: auto; display: block; margin: 0 auto;">
+            </p>
+            <h5 style="text-align: center;"><b>Recommendation system</b></h5>
+            <p>
+                We designed a system that accepts new resume skills or full resume content as input. 
+                The algorithm processes this data, transforming it into the required format before making recommendations. 
+                The system outputs a ranked list of job descriptions that are most relevant to the input resume, enabling efficient and accurate job matching for candidates.
+                <img src="assets/img/modeling/job_recommendation.png" style="max-width: 150%; height: auto; display: block; margin: 0 auto;">
+                <br> Top relevant job descriptions for the input resume are displayed in the output, providing valuable insights for job seekers and employers.
+            </p>
+          </div>
+        </div>
+    </main>
+</body>
+</html>

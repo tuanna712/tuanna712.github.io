@@ -6,47 +6,124 @@
     <title>T Nguyen's Projects</title>
     <!-- Link to external CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/projects.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Link to external JS -->
     <script src="assets/js/loadNav.js"></script>
-
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 
 <body>
     <!-- Menu Bar -->
     <div id="nav"></div>
+    
+    <div class="container">
 
-    <div class="error-container">
-        <h2>Page Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="/" class="back-home">Go Back to Home</a>
+        <div class="year-section">
+            <h2>Course Projects</h2>
+            <div class="projects">
+                <!-- Project: Resume Analysis -->
+                <a href="projects/resume-analysis/index.html" class="project-card">
+                    <img src="assets/img/projects/resume.png" alt="ResumeAnalysis" class="project-image">
+                    <div class="project-content">
+                    <h5 class="project-title">Resume Analysis (2024)</h5>
+                    <p class="project-description">
+                        CSCI 5502 - Data Mining, CU Boulder.<br> 
+                        Scraped and analyzed 12.000+ resumes to predict the job title of the resume owner
+                        using Machine Learning and Deep Learning approaches.
+                    </p>
+                    </div>
+                </a>
+
+                <!-- Project: Semantic Kernel -->
+                <a href="underconstruction.html" class="project-card">
+                    <img src="assets/img/projects/semantic-kernel.png" alt="SemanticKernel" class="project-image">
+                    <div class="project-content">
+                        <h5 class="project-title">
+                            Semantic Kernel (2023)
+                        </h5>
+                        <p class="project-description">
+                            A training presentation in Vietnamese for VPI developers to explore and discuss 
+                            chatbot reasoning systems using private data, leveraging the Semantic Kernel framework.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Project: Invisible for Arrangement -->
+                <a> </a>
+
+            </div>
+        </div>
+
+        <div class="year-section">
+            <h2>LLM Applications - Energy Sector</h2>
+            <div class="projects">
+                <!-- Project: Chatbot Driven Map -->
+                <a href="underconstruction.html" class="project-card">
+                    <img src="assets/img/projects/vpi-insight.png" alt="VPI-Insight" class="project-image">
+                    <div class="project-content">
+                        <h5 class="project-title">
+                            Chatbot Driven Map navigation with integrated graph database (2024)
+                        </h5>
+                        <p class="project-description">
+                            Developed a chatbot-operated map-based website that executed user commands for navigation, 
+                            leveraging a graph database to link map functions with domain knowledge and provide 
+                            real-time visual results besides chat responses. 
+                        </p>
+                    </div>
+                </a>
         
-        <a href="projects/resume-analysis/index.html">Resume Analysis</a>
+                
+                <!-- Project: E&P knowledge sharing -->
+                <a href="underconstruction.html" class="project-card">
+                    <img src="assets/img/projects/ep-chatbot.png" alt="EP-Chatbot" class="project-image">
+                    <div class="project-content">
+                        <h5 class="project-title">
+                            E&P knowledge sharing with RAG chatbot and knowledge
+                            graph integration (2023)
+                        </h5>
+                        <p class="project-description">
+                            Developed an internal document-sharing web-based application integrated with 
+                            a retrieval-augmented generation (RAG) chatbot system, significantly enhancing 
+                            document sharing capabilities by enabling chatbot interaction with local domain 
+                            data and optimizing for Vietnamese language.
+                        </p>
+                    </div>
+                </a>
 
+                <!-- Project: VPI-Mlogs -->
+                <a href="underconstruction.html" class="project-card">
+                    <img src="assets/img/projects/vpi-mlogs.png" alt="VPI-Mlogs" class="project-image">
+                    <div class="project-content">
+                        <h5 class="project-title">
+                            VPI-Mlogs: Web-based application for petrophysical data analysis (2022)
+                        </h5>
+                        <p class="project-description">
+                            Developed web application for applying data tools and machine learning algorithms to petrophysical 
+                            borehole data including data loading, anomalies detection, data cleaning, data visualization, missing log prediction.
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="year-section">
+            <h2>Seismic Interpretation</h2>
+            <div class="projects">
+                <!-- Project: Seismic Stratigraphy Analysis -->
+                <a href="underconstruction.html" class="project-card">
+                    <img src="assets/img/projects/paleos.png" alt="Stratigraphy-Analysis" class="project-image">
+                    <div class="project-content">
+                        <h5 class="project-title">Seismic Stratigraphy Analysis for unstructured trap determining 
+                            at Block 09-1,Cuu Long Basin (2021)</h5>
+                        <p class="project-description">
+                            Automatically and semi-automatically interpreted seismic data and built the environmental 
+                            models to predict the location of potential unstructured oil and gas traps, supporting drilling decisions.   
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 
 </body>

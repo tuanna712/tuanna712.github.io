@@ -10,9 +10,13 @@
     <!-- Link to external CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/project.css">
+    <link rel="stylesheet" href="../assets/css/imgCollection.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Link to external JS -->
     <script src="loadPrjNav.js"></script>
+    <script src="../assets/js/loadCollectionActions.js"></script>
+
     <style>
         .container {
             max-width: 1000px;
@@ -139,9 +143,42 @@
             </div>
         </div>
 
-        <!-- <div class="media">
+        <div class="media">
             <p>Screenshots collection</p>
-        </div> -->
+        </div>
+        <div class="image-grid">
+            <img src="../assets/img/projects/semantic-kernel/page_2.png" alt="Screenshot 1" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_12.png" alt="Screenshot 2" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_15.png" alt="Screenshot 3" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_19.png" alt="Screenshot 4" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_20.png" alt="Screenshot 5" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_21.png" alt="Screenshot 6" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_22.png" alt="Screenshot 7" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_24.png" alt="Screenshot 8" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_30.png" alt="Screenshot 9" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_34.png" alt="Screenshot 10" class="grid-image" data-description="">
+            <img src="../assets/img/projects/semantic-kernel/page_35.png" alt="Screenshot 11" class="grid-image" data-description="">
+        </div>
+    
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+             <div class="img-disp" id="imgDisp">
+                 <img id="expandedImage" src="" alt="Expanded Image">
+             </div>
+
+             <div class="img-desc" id="imgDesc">
+                 <p id="imageDescription"></p>
+             </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
 
 
     </div>

@@ -8,24 +8,27 @@
     <link href="assets/img/ava-rounded.png" rel="icon">
     <link href="assets/img/ava-rounded.png" rel="apple-touch-icon">
     <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/nav.css">
     <!-- Link to external JS -->
     <script src="assets/js/loadNav.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <style>
-    #pdfViewer {
-        width: 100%;
-        height: 100vh;
-        overflow: auto;
-        border: 1px solid #ccc;
-    }
-    canvas {
-        display: block;
-        margin: 0 auto;
-    }
+        #pdfViewer {
+            width: 100%;
+            height: auto;
+            overflow: auto;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
     </style>
-
 </head>
 
 <body>
@@ -37,26 +40,54 @@
         const url = 'assets/pdf/AcademicCV.pdf';
         const pdfViewer = document.getElementById('pdfViewer');
 
-        // Load the PDF
-        pdfjsLib.getDocument(url).promise.then(pdf => {
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-            pdf.getPage(pageNum).then(page => {
+        // Function to render a single page of the PDF
+        function renderPage(page, scale) {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
-            const viewport = page.getViewport({ scale: 1.5 });
+            const viewport = page.getViewport({ scale });
 
+            // Adjust canvas size
             canvas.width = viewport.width;
             canvas.height = viewport.height;
+
             pdfViewer.appendChild(canvas);
 
+            // Render the page
             page.render({
                 canvasContext: context,
                 viewport: viewport,
             });
+        }
+
+        // Function to load and render the PDF
+        function loadPDF() {
+            pdfjsLib.getDocument(url).promise.then(pdf => {
+                const scale = calculateScale(); // Calculate the scale dynamically based on the screen size
+
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    pdf.getPage(pageNum).then(page => {
+                        renderPage(page, scale);
+                    });
+                }
             });
         }
+
+        // Function to calculate the scale dynamically
+        function calculateScale() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 600) return 0.7; // Smaller scale for small devices
+            if (screenWidth < 900) return 1.0; // Medium scale for tablets
+            return 1.5; // Full scale for larger devices
+        }
+
+        // Load the PDF on page load
+        loadPDF();
+
+        // Reload the PDF on window resize for responsiveness
+        window.addEventListener('resize', () => {
+            pdfViewer.innerHTML = ''; // Clear the existing canvas elements
+            loadPDF();
         });
     </script>
 </body>
-
 </html>

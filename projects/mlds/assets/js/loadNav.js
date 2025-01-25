@@ -1,6 +1,6 @@
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Load the navbar from nav.html
-    fetch('components/nav.html')
+    fetch('assets/html/nav.html')
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return response.text();

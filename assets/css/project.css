@@ -9,3 +9,44 @@ body {
   margin-top: 200px;
   margin-bottom: 30px;
 }
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0;
+}
+.title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.title p {
+  padding-top: 10px;
+  font-style: italic;
+}
+.topic {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  align-items: center;
+  /* background-color: #c5f084; */
+}
+.topic-name {
+  width: 120px;
+  /* background-color: #a0b4f2; */
+}
+.topic-content {
+  flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.media {
+  display: flex;
+}
+

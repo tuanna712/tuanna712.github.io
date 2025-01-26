@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/nav.css">
     <link rel="stylesheet" href="../assets/css/project.css">
+    <link rel="stylesheet" href="../assets/css/imgCollection.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Link to external JS -->
     <script src="loadPrjNav.js"></script>
+    <script src="../assets/js/loadCollectionActions.js"></script>
 </head>
 
 <body>
@@ -80,15 +83,46 @@
             </div>
             <div class="topic-content">
                 <ul style="padding-left: 20px;">
-                    <li><a href="#" target="_blank">Project's Github</a></li>
+                    <li><a href="#">Project's Github</a></li>
                     <li><a href="http://arxiv.org/pdf/2410.05332" target="_blank">Publication</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- <div class="media">
+        <div class="media">
             <p>Screenshots collection</p>
-        </div> -->
+        </div>
+        <div class="image-grid">
+            <img src="../assets/img/projects/vpimlogs/Figure-01.png" alt="Screenshot 1" class="grid-image" data-description="Streamlit github star trend">
+            <img src="../assets/img/projects/vpimlogs/Figure-02.png" alt="Screenshot 3" class="grid-image" data-description="Loading LAS file">
+            <img src="../assets/img/projects/vpimlogs/Figure-03.png" alt="Screenshot 4" class="grid-image" data-description="Interactive Scatter plot and Bar chart by user selection">
+            <img src="../assets/img/projects/vpimlogs/Figure-04.png" alt="Screenshot 5" class="grid-image" data-description="Data extraction from user selection via chart">
+            <img src="../assets/img/projects/vpimlogs/Figure-06.png" alt="Screenshot 6" class="grid-image" data-description="Combining multiple charts">
+            <img src="../assets/img/projects/vpimlogs/Figure-07.png" alt="Screenshot 8" class="grid-image" data-description="Outliers visualization via boxplot and missing values count">
+            <img src="../assets/img/projects/vpimlogs/Figure-05.png" alt="Screenshot 7" class="grid-image" data-description="Outliers highlighted in curve view and Outliers removing">
+            <img src="../assets/img/projects/vpimlogs/Figure-09.png" alt="Screenshot 9" class="grid-image" data-description="Curves view">
+            <img src="../assets/img/projects/vpimlogs/Figure-08.png" alt="Screenshot 9" class="grid-image" data-description="Pair plot for correlation analysis">
+        </div>
+    
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+             <div class="img-disp" id="imgDisp">
+                 <img id="expandedImage" src="" alt="Expanded Image">
+             </div>
+
+             <div class="img-desc" id="imgDesc">
+                 <p id="imageDescription"></p>
+             </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
 
 
     </div>

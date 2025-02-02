@@ -6,7 +6,9 @@ body {
 }
 
 .footer-container{
-    margin-left: 150px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0;
     margin-top: 200px;
     margin-bottom: 30px;
 }
@@ -84,6 +86,24 @@ ul {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     /* padding: 20px; */
+}
+
+/* Grid layout for images */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.grid-image {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.5s;
+}
+
+.grid-image:hover {
+    transform: scale(1.05);
 }
 
 /* img-disp container to center the image */

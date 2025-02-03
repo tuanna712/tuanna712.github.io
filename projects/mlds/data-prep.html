@@ -39,102 +39,128 @@
             available in raw datasets and necessitates expert involvement for annotation.
         </p>
 
-        <p style="text-align: center;"><b>Why</b></p>
+        <!-- <p style="text-align: center;"><b>Why</b></p> -->
 
         <p class="h3-content">
-            Therefore, in this project, two main data sources are utilized: publicly accessible reference data and labeled datasets for model training. 
-            Specifically:
+            In this project, data is collected through two main methods: retrieving data via the USGS API and downloading data 
+            from the FORCE ML Competition. While USGS provides raw data (without labels) accessible via API, FORCE offers labeled data, which 
+            is crucial for supervised machine learning algorithms. 
         </p>
         <ul class="h3-content">
             <li>USGS Data: Provides free access to well-log data from selected oil fields across the United States.</li>
             <li>FORCE Data: A labeled dataset specifically designed for lithology classification tasks.</li>
         </ul>
 
-        <p style="text-align: center;"><b>Where</b></p>
+        <!-- <p style="text-align: center;"><b>Where</b></p> -->
 
         <section>
             <h3>Data Collection</h3>
-            <div class="subdiv">
-                <p class="h3-content">
-                <b>USGS API: </b>
-                    Drilling, construction, geophysical data, and lithologic log for borehole USGS 145 | USGS Science Data Catalog. 
-                    This dataset contains well logs in raw format of Well 145 and is collected using the USGS API. 
-                    Details in API code and data can be found in the link below.
-                </p>
-                <div class="external-links">
-                    <p>External Links: </p>
-                    <a href="https://data.usgs.gov/datacatalog/data/USGS:64d15b1dd34ef477cf3c0228" target="_blank" class="item">
-                        <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
-                        USGS Data
-                    </a>
-                    <a href="https://github.com/tuanna712/MLDSSpring25/tree/main/notebooks/data/64d15b1dd34ef477cf3c0228/LAS_Files" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                        Datasets
-                    </a>
-                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/01-usgs-api.ipynb" target="_blank" class="item">
-                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
-                        Code
-                    </a>
-                </div>
+            <p class="h3-content">
+            <b>USGS API: </b>
+                Drilling, construction, geophysical data, and lithologic log for borehole USGS 145 | USGS Science Data Catalog. 
+                This dataset contains well logs in raw format of Well 145 and is collected using the USGS API. 
+                Details in API code and data can be found in the link below.
+            </p>
+            <div class="external-links">
+                <p>External Links: </p>
+                <a href="https://data.usgs.gov/datacatalog/data/USGS:64d15b1dd34ef477cf3c0228" target="_blank" class="item">
+                    <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
+                    USGS Data
+                </a>
+                <a href="https://github.com/tuanna712/MLDSSpring25/tree/main/notebooks/data/64d15b1dd34ef477cf3c0228/LAS_Files" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                    Datasets
+                </a>
+                <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/01-usgs-api.ipynb" target="_blank" class="item">
+                    <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                    API Code
+                </a>
             </div>
 
-            <div class="subdiv">
-                <p class="h3-content">
-                    <b>FORCE ML 2020: </b>FORCE is a machine learning competition focused on solving real-world problems in 
-                    the oil and gas industry. Participants are provided with logs and labeled lithofacies data from over 
-                    90 wells for model training.
+            <p class="h3-content">
+                <b>FORCE ML 2020: </b>FORCE is a machine learning competition focused on solving real-world problems in 
+                the oil and gas industry. Participants are provided with logs and labeled lithofacies data from over 
+                90 wells for model training.
+            </p>
+            <div class="external-links">
+                <p>External Links:</p>
+                <a href="https://thinkonward.com/app/c/challenges/force-well-logs" target="_blank" class="item">
+                    <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
+                    Competition Announcement
+                </a>
+                <a href="https://terranubis.com/datainfo/FORCE-ML-Competition-2020-Synthetic-Models-and-Wells" target="_blank" class="item">
+                    <img src="assets/icons/globe-solid.svg" alt="data" data-description="">
+                    Data Source
+                </a>
+                <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                    Datasets
+                </a>
+                <a href="https://drive.google.com/drive/folders/1IvGW4lP8AE7RJ47Mzf6_QYCc30kB9AZt?usp=sharing" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                    LAS (Raw) Files
+                </a>
+            </div>
+        </section>
+
+        <section>
+                <h3>Data Understanding</h3>
+                <p class="h3-content">Well-log data is tabular data, originally stored in <strong>LAS format</strong>. 
+                    The raw data is organized into files, with each file containing information for an individual well. 
+                    An <strong>LAS file</strong> consists of a <strong>header</strong> and a <strong>tabular data section</strong>.
                 </p>
-                <div class="external-links">
-                    <p>External Links:</p>
-                    <a href="https://thinkonward.com/app/c/challenges/force-well-logs" target="_blank" class="item">
-                        <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
-                        Competition Announcement
-                    </a>
-                    <a href="https://terranubis.com/datainfo/FORCE-ML-Competition-2020-Synthetic-Models-and-Wells" target="_blank" class="item">
-                        <img src="assets/icons/globe-solid.svg" alt="data" data-description="">
-                        Data Source
-                    </a>
-                    <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                        Datasets
-                    </a>
-                </div>
-                <p class="h3-content">
-                    The well logs include the well name (WELL), the measured depth, X, Y, Z location for the wireline measurement as well as the well logs. Details in the table below.
-                </p>
-                <table border="1">
-                    <tr><th>Log Name</th><th>Log Description</th></tr>
-                    <tr><td>FORCE_2020_LITHOFACIES_CONFIDENCE</td><td>Qualitative measure of interpretation confidence</td></tr>
-                    <tr><td>FORCE_2020_LITHOFACIES_LITHOLOGY</td><td>Interpreted Lithofacies</td></tr>
-                    <tr><td>RDEP</td><td>Deep Reading Resistivity measurement</td></tr>
-                    <tr><td>RSHA</td><td>Shallow Reading Resistivity measurement</td></tr>
-                    <tr><td>RMED</td><td>Medium Deep Reading Resistivity measurement</td></tr>
-                    <tr><td>RXO</td><td>Flushed Zone Resistivity measurement</td></tr>
-                    <tr><td>RMIC</td><td>Micro Resistivity measurement</td></tr>
-                    <tr><td>SP</td><td>Self Potential Log</td></tr>
-                    <tr><td>DTS</td><td>Shear wave sonic log (us/ft)</td></tr>
-                    <tr><td>DTC</td><td>Compressional waves sonic log (us/ft)</td></tr>
-                    <tr><td>NPHI</td><td>Neutron Porosity log</td></tr>
-                    <tr><td>PEF</td><td>Photo Electric Factor log</td></tr>
-                    <tr><td>GR</td><td>Gamma Ray Log</td></tr>
-                    <tr><td>RHOB</td><td>Bulk Density Log</td></tr>
-                    <tr><td>DRHO</td><td>Density Correction log</td></tr>
-                    <tr><td>CALI</td><td>Caliper log</td></tr>
-                    <tr><td>BS</td><td>Borehole Size</td></tr>
-                    <tr><td>DCAL</td><td>Differential Caliper log</td></tr>
-                    <tr><td>ROPA</td><td>Average Rate of Penetration</td></tr>
-                    <tr><td>SGR</td><td>Spectra Gamma Ray log</td></tr>
-                    <tr><td>MUDWEIGHT</td><td>Weight of Drilling Mud</td></tr>
-                    <tr><td>ROP</td><td>Rate of Penetration</td></tr>
-                    <tr><td>DEPTH_MD</td><td>Measured Depth</td></tr>
-                    <tr><td>x_loc</td><td>X location of sample</td></tr>
-                    <tr><td>y_loc</td><td>Y location of sample</td></tr>
-                    <tr><td>z_loc</td><td>Z (TVDSS) Depth of sample</td></tr>
-                </table>
-                <p class="image-caption">
-                    Table: Data columns in the FORCE ML 2020 dataset.
-                </p>
-            </div> 
+                <ul>
+                    <li><b>Header:</b> Contains general well information such as name, location, depth, target formation, drilling date, 
+                        recorded logs, and measurement units.</li>
+                    <li><b>Tabular Data Section:</b> Includes multiple numerical columns, with each column representing measurements from 
+                        a specific geophysical logging method.</li>
+                </ul>
+
+                <p class="h3-content">In this dataset, <strong>depth</strong> is a crucial parameter for visualizing and correlating 
+                    different log measurements. The LAS format can be easily converted into a DataFrame in Python.</p>
+
+                <p class="h3-content">For this project, only the tabular data is used for training machine learning models. The corresponding 
+                    columns and their respective geophysical logging methods are described in the table below.</p>
+
+            <table border="1">
+                <tr><th>Log Name</th><th>Log Description</th></tr>
+                <tr><td>FORCE_2020_LITHOFACIES_CONFIDENCE</td><td>Qualitative measure of interpretation confidence</td></tr>
+                <tr><td>FORCE_2020_LITHOFACIES_LITHOLOGY</td><td>Interpreted Lithofacies</td></tr>
+                <tr><td>RDEP</td><td>Deep Reading Resistivity measurement</td></tr>
+                <tr><td>RSHA</td><td>Shallow Reading Resistivity measurement</td></tr>
+                <tr><td>RMED</td><td>Medium Deep Reading Resistivity measurement</td></tr>
+                <tr><td>RXO</td><td>Flushed Zone Resistivity measurement</td></tr>
+                <tr><td>RMIC</td><td>Micro Resistivity measurement</td></tr>
+                <tr><td>SP</td><td>Self Potential Log</td></tr>
+                <tr><td>DTS</td><td>Shear wave sonic log (us/ft)</td></tr>
+                <tr><td>DTC</td><td>Compressional waves sonic log (us/ft)</td></tr>
+                <tr><td>NPHI</td><td>Neutron Porosity log</td></tr>
+                <tr><td>PEF</td><td>Photo Electric Factor log</td></tr>
+                <tr><td>GR</td><td>Gamma Ray Log</td></tr>
+                <tr><td>RHOB</td><td>Bulk Density Log</td></tr>
+                <tr><td>DRHO</td><td>Density Correction log</td></tr>
+                <tr><td>CALI</td><td>Caliper log</td></tr>
+                <tr><td>BS</td><td>Borehole Size</td></tr>
+                <tr><td>DCAL</td><td>Differential Caliper log</td></tr>
+                <tr><td>ROPA</td><td>Average Rate of Penetration</td></tr>
+                <tr><td>SGR</td><td>Spectra Gamma Ray log</td></tr>
+                <tr><td>MUDWEIGHT</td><td>Weight of Drilling Mud</td></tr>
+                <tr><td>ROP</td><td>Rate of Penetration</td></tr>
+                <tr><td>DEPTH_MD</td><td>Measured Depth</td></tr>
+                <tr><td>x_loc</td><td>X location of sample</td></tr>
+                <tr><td>y_loc</td><td>Y location of sample</td></tr>
+                <tr><td>z_loc</td><td>Z (TVDSS) Depth of sample</td></tr>
+            </table>
+            <p class="image-caption">
+                Table: Data columns in the FORCE ML 2020 dataset.
+            </p>
+            <p class="h3-content">
+                "FORCE_2020_LITHOFACIES_LITHOLOGY" is the column containing labeled data. 
+                The labeling process requires the contribution of experts in the fields of geology and geophysics. Labeled column contains codes 
+                corresponding to various lithologies such as Sandstone, Sandstone/Shale, Shale, Marl, Dolomite, Limestone, Chalk, 
+                Halite, Anhydrite, Tuff, Coal, and Basement. The distribution proportions of these lithologies are not the same, and 
+                their spatial and depth distributions also vary.    
+            </p>
         </section>
 
         <section>
@@ -157,7 +183,7 @@
                 It aslo includes null values and outliers that need to be addressed for the lithology prediction task.
             </p>
             <div class="image">
-                <img style="height: 300px;" src="assets/img/prep/nulls-cleaned.png" alt="nulls-vs-cleaned" class="grid-image" data-description="
+                <img style="height: 350px;" src="assets/img/prep/nulls-cleaned.png" alt="nulls-vs-cleaned" class="grid-image" data-description="
                 The bar chart shows the number of missing values in each column before and after the cleaning process.
                 Some columns with a small number of samples, dropping whole column is a better choice, such as DCAL, MUDWEIGHT, SGR, RMIC or DTS.">
             </div>
@@ -194,7 +220,7 @@
             </p>
             <div class="external-links">
                 <p>External Links: </p>
-                <a href="#" target="_blank" class="item">
+                <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/02_data_prep.ipynb" target="_blank" class="item">
                     <img src="assets/icons/github-brands-solid.svg" alt="globe" data-description="">
                     Cleaning Code
                 </a>
@@ -207,44 +233,97 @@
                     Cleaned Datasets
                 </a>
             </div>
-
         </section>
 
         <section>
-            <h3>Data Preprocessing</h3>
+            <h3>Data Transformation</h3>
+            <p class="h3-content">
+                Updating...
+            </p>
 
         </section>
 
         <section>
             <h3>Data Visualization</h3>
             <p class="h3-content">
-                After the processing, the data is ready for the next steps. The images/graphs below describe the nature of the data. <br>
-                Click on the image to enlarge and see more descriptions.
+                The images/graphs below describe the nature of the data.
+                <em>Click on the image to enlarge and see more descriptions.</em>
             </p>
+
+            <div class="external-links">
+                <p>External Links: </p>
+                <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/02_data_prep.ipynb" target="_blank" class="item">
+                    <img src="assets/icons/github-brands-solid.svg" alt="globe" data-description="">
+                    Visualization Code
+                </a>
+            </div>
+
             <div class="image-grid">
-                <img src="assets/img/prep/visualizations/02-curves-plot.png" alt="Screenshot 2" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/02-curves-plot.png" alt="Curves-Plot" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/01-box-plot.png" alt="Screenshot 1" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/01-box-plot.png" alt="Boxplot-Outliers" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/03-litho-distribution.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/03-litho-distribution.png" alt="Litho-Distribution" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/07-dendrogram-clustering.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/07-dendrogram-clustering.png" alt="Dendrogram" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/04-histogram-plots.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/04-histogram-plots.png" alt="Histogram" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/05-pairplot-corr.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/05-pairplot-corr.png" alt="PairplotCorr" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/06-heatmap-corr.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/06-heatmap-corr.png" alt="HeatmapCorr" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/08-2d-scatter-relations.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/08-2d-scatter-relations.png" alt="2DScatter" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/09-2d-scatter-margin.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/09-2d-scatter-margin.png" alt="2DScatterMarginal" class="grid-image" data-description="
                 ">
-                <img src="assets/img/prep/visualizations/10-3d-scatter.png" alt="Screenshot 3" class="grid-image" data-description="
+                <img src="assets/img/prep/visualizations/10-3d-scatter.png" alt="3DScatter" class="grid-image" data-description="
                 ">
             </div>
         </section>
 
+        <section>
+            <h3>Key Insights and Next Steps</h3>
+            <ul>
+                <li>
+                    <p class="h3-content">
+                        <b>Data Summary:</b> The dataset contains more than 90 wells with over 2 million rows and 28 columns. 
+                                However, it also includes null values, and only 1.4 million rows have labels. Additionally, some important 
+                                curves, such as DTS, DCAL, and MUD, are represented by a small amount of data. Outliers are also present in 
+                                some logs, resulting from human or machine errors. After removing null values, unnecessary columns, and processing 
+                                outliers, the cleaned dataset consists of more than 300K rows and 18 columns, including labels.
+                    </p>
+                </li>
+                <li>
+                    <p class="h3-content">
+                        <p class="h3-content">
+                            <b>Insights:</b>
+                            The label data is imbalanced, with the majority of samples belonging to the Shale class. It requires a specific 
+                            strategy to handle this imbalance, such as resampling techniques (oversampling the minority class or undersampling the majority class) 
+                            or using algorithms that are robust to imbalanced data.
+                        </p>
+                        <p class="h3-content">
+                            The features contain some data from some similar geophysical logging methods, such as RDEP, RSHA, RMED, RXO, and RMIC.
+                            These features are highly correlated, and it is necessary to perform feature selection or dimensionality reduction.
+                        </p>
+                    </p>    
+                </li>
+                <li>
+                    <p class="h3-content">
+                        <b>Next Steps:</b>
+                        To understand deeply the relationship and preparing for training data, next steps involve exploring the dataset using advanced 
+                        techniques such as: 
+                        <ul>
+                            <li><b>Principal Component Analysis (PCA)</b> to reduce dimensionality and identify key features.</li>
+                            <li><b>Association Rule Mining (ARM)</b> to discover relationships between features.</li>
+                            <li><b>Unsupervised clustering methods</b> like K-Means or DBSCAN to uncover natural groupings in the data.</li>
+                            <li><b>Feature selection:</b> Recursive Feature Elimination (RFE) or Lasso regression to retain the most relevant features 
+                                and remove unnecessary ones, improving model performance and interpretability.</li>
+                        </ul>
+                    </p>
+                </li>
+            </ul>
+        </section>
 
         
     </div>

@@ -55,7 +55,7 @@ ol {
 }
 
 ul {
-    margin-left: 80px;
+    margin-left: 50px;
 }
 
 .image {
@@ -90,6 +90,7 @@ ul {
 
 /* Grid layout for images */
 .image-grid {
+    margin-top: 15px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;

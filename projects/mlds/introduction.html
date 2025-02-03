@@ -27,91 +27,155 @@
         </h1>
         <p class="subtitle">CSCI-5612 Machine Learning for Data Science - CU Boulder</p>
 
-        <h3>Introduction</h3>
-        <p class="h3-content">Starting his second term, President Donald Trump declared a national energy emergency, 
-            citing an “inadequate and intermittent energy supply” that fails to meet the country's growing demands, as stated in 
-            <strong><a href="https://www.whitehouse.gov/presidential-actions/2025/01/declaring-a-national-energy-emergency/" target="_blank"> SECTION 1 - DECLARING A NATIONAL ENERGY EMERGENCY</strong>. </a>
-        </p>
-        
-        <p class="h3-content">One of the key activities in the energy industry is oil and gas exploration drilling, a process that is time-consuming, costly, and requires highly skilled personnel. According to reports from the U.S. Energy Information Administration (EIA), the cost of drilling a well can exceed $4 million.</p>
-        <div class="image">
-            <img style="height: 390px;" src="assets/img/intro/eia-well-drilling-price.png" alt="EIA-drilling-cost" class="grid-image" data-description="">
-        </div>
-        <p class="image-caption">
-            Costs of Crude Oil and Natural Gas Wells Drilled  (Source: <a href="https://www.eia.gov/dnav/pet/pet_crd_wellcost_s1_a.htm" target="_blank">U.S. Energy Information Administration)</a>
-            <br>
-            A survey of drilling costs for new wells in the United States from 2002 to 2007 showed that by 2007, a production well cost approximately $4 million, while a dry hole could cost as much as $6 million.
-        </p>
+        <!-- Topic -->
+        <section>
+            <h3>Topic</h3>
+            <p class="h3-content">
+                With the development of machine learning algorithms, increasingly complex problems are being solved. 
+                In the field of oil and gas exploration, how do these algorithms support and contribute to traditional workflows, 
+                specifically in the interpretation of well-log geophysical data?
+            </p>
+        </section>
 
-        <h3>Well Log Data</h3>
-        <p class="h3-content">A significant portion of the operations and costs is dedicated to acquiring and interpreting well-log data, which provides crucial information on lithologies, physical indicators, and oil and gas behavior. This data plays a key role in guiding exploration and drilling decisions.</p>
-        <p class="h3-content">However, due to cost and time constraints, many well-log data points are omitted or not collected, resulting in missing indicators that experts rely on for analysis. Well-log interpretation often takes weeks or even months to process, depending on the number of wells and the quality of the data.</p>
-        <div class="image">
-            <img style="height: 550px;" src="assets/img/intro/chalkbeecher-gas-zone.gif" alt="gas-zone-log" class="grid-image" data-description="">
-        </div>
-        <p class="image-caption">
-            Well Log Data (Source: <a href="https://www.kgs.ku.edu/Publications/Bulletins/LA/01_logging.html" target="_blank">Kansas Geological Survey</a>).<br>
-            Well logs are printed records where each curve represents a different physical property of the rock, such as gamma ray, resistivity, and density. 
-            They also include indicators of gas behavior.
-        </p>
+        <!-- Introduction -->
+        <section>
+            <h3>Introduction</h3>
+            <p class="h3-content">Starting his second term, President Donald Trump declared a national energy emergency, 
+                citing an “inadequate and intermittent energy supply” that fails to meet the country's growing demands, as stated in 
+                <strong><a href="https://www.whitehouse.gov/presidential-actions/2025/01/declaring-a-national-energy-emergency/" target="_blank"> SECTION 1 - DECLARING A NATIONAL ENERGY EMERGENCY</strong>. </a>
+            </p>
+            
+            <p class="h3-content">One of the key activities in the energy industry is oil and gas exploration, a process that is time-consuming, costly, and requires highly skilled personnel. According to reports from the U.S. Energy Information Administration (EIA), the cost of drilling a well can exceed $4 million.</p>
+            <div class="image">
+                <img style="height: 390px;" src="assets/img/intro/eia-well-drilling-price.png" alt="EIA-drilling-cost" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">
+                Costs of Crude Oil and Natural Gas Wells Drilled  (Source: <a href="https://www.eia.gov/dnav/pet/pet_crd_wellcost_s1_a.htm" target="_blank">U.S. Energy Information Administration)</a>
+                <br>
+                A survey of drilling costs for new wells in the United States from 2002 to 2007 showed that by 2007, a production well cost approximately $4 million, while a dry hole could cost as much as $6 million.
+            </p>
+        </section>
 
-        <h3>Missing Well-Log</h3>
-        <p class="h3-content">These interpretation tasks require experienced experts with many years of specialization. 
-            However, the processes are repetitive across wells and can be learned from data. With the rapid advancement 
-            of machine learning and deep learning algorithms, well-log interpretation can be significantly accelerated 
-            through automated analysis with high accuracy. These solutions reduce both time and costs while enabling 
-            faster and more precise drilling decisions.</p>
-        <p class="h3-content">
-            This project aims to develop machine learning models that can predict missing well-log data and classify lithologies based on the available well-log data. 
-            By automating these tasks, the accuracy of well-log interpretation could be improved, enabling faster decision-making in oil and gas exploration and drilling.
-        </p>
+        <section>
+            <p class="h3-content">A significant portion of the operations and costs is dedicated to acquiring and interpreting well-log data, which provides crucial information on lithologies, physical indicators, and oil and gas behavior. This data plays a key role in guiding exploration and drilling decisions.</p>
+            <p class="h3-content">However, due to cost and time constraints, many well-log data points are omitted or not collected, resulting in missing indicators that experts rely on for analysis. 
+                In addition, well-log interpretation often takes weeks or even months to process, depending on the number of wells and the quality of the data.</p>
+            <div class="image">
+                <img style="height: 550px;" src="assets/img/intro/chalkbeecher-gas-zone.gif" alt="gas-zone-log" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">
+                Well Log Data (Source: <a href="https://www.kgs.ku.edu/Publications/Bulletins/LA/01_logging.html" target="_blank">Kansas Geological Survey</a>).<br>
+                Well logs are printed records where each curve represents a different physical property of the rock, such as gamma ray, resistivity, and density. 
+                They also include indicators of gas behavior.
+            </p>
+            <p class="h3-content">These interpretation tasks require experienced experts with many years of specialization. 
+                However, the processes are repetitive across wells and can be learned from data.
+            </p>
+            <p class="h3-content">
+                With the rapid advancement of machine learning and deep learning algorithms, well-log interpretation can be significantly accelerated 
+                through automated analysis with high accuracy. These solutions reduce both time and costs while enabling 
+                faster and more precise drilling decisions.
+            </p>
+        </section>
 
-        <h3>Lithology Classification</h3>
-        <p class="h3-content">Lithology classification refers to the process of identifying and categorizing rock types based on well-log data. It is essential for understanding subsurface geology, optimizing drilling strategies, and improving reservoir characterization.</p>
-        <div class="image">
-            <img style="height: 450px;" src="assets/img/intro/kansas-lithos.png" alt="kansas-lithos" class="grid-image" data-description="">
-        </div>
-        <p class="image-caption">
-            Visualization of Lithology Data (Source: <a href="https://www.kgs.ku.edu/Publications/Bulletins/LA/index.html" target="_blank">Kansas Geological Survey</a>).<br>
-            A regional lithology stacked column chart showing the distribution of different rock types in the subsurface. In labeled data, lithos are classified based on expert interpretations.
-        </p>
+        <section>
+            <h3>Objectives</h3>
+            <p class="h3-content">
+                This project aims to develop machine learning models that can predict missing well-log data and classify lithologies based on the available well-log data. 
+                By automating these tasks, the accuracy of well-log interpretation could be improved, enabling faster decision-making in oil and gas exploration and drilling.
+            </p>
+        </section>
 
-        <h3>Summary</h3>
-        <p class="h3-content summary">
-            <b>Topic:</b> Automatically Predict Missing Log and Classify Lithologies for Petrophysics Well-Log Data<br>
-            <b>Data sources:</b> Will be collected from two main sources
-        </p>
+        <section>
+            <p class="h3-content">Lithology classification refers to the process of identifying and categorizing rock types based on well-log data. It is essential for understanding subsurface geology, optimizing drilling strategies, and improving reservoir characterization.</p>
+            <div class="image">
+                <img style="height: 450px;" src="assets/img/intro/kansas-lithos.png" alt="kansas-lithos" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">
+                Visualization of Lithology Data (Source: <a href="https://www.kgs.ku.edu/Publications/Bulletins/LA/index.html" target="_blank">Kansas Geological Survey</a>).<br>
+                A regional lithology stacked column chart showing the distribution of different rock types in the subsurface. In labeled data, lithos are classified based on expert interpretations.
+            </p>
+        </section>
+
+        <!-- Summary -->
+        <section>
+            <h3>Summary</h3>
+            <p class="h3-content summary">
+                <b>Topic:</b> Automatically Predict Missing Log and Classify Lithologies for Petrophysics Well-Log Data
+            </p>
+            <p class="h3-content summary">
+                <b>Motivation:</b> Well-log data is often expensive and requires significant effort for interpretation, 
+                    impacting both costs and drilling decisions. With the advancement of machine learning algorithms, 
+                    new solutions leveraging these techniques are expected to accelerate and optimize well-log data workflows, 
+                    achieving high efficiency with minimal expert intervention.
+            </p>
+            <p class="h3-content summary">
+                <b>Related work:</b> Research on the application of machine learning in working with well-log data began around 2016. 
+                However, the continuous evolution of new algorithms and the development of optimized frameworks for this workflow are still ongoing.
+            </p>
+            <p class="h3-content summary">
+                <b>Data sources:</b> Will be collected from two main sources
+            </p>
             <ul>
                 <li><strong>USGS API:</strong> Collecting raw data using APIs</li>
                 <li><strong>FORCE ML 2020:</strong> Downloading for labeled data</li>
             </ul>
 
-        <p class="h3-content summary">
-            <b>Objectives: </b>This project focuses on developing a process that applies machine learning algorithms to work effectively with well-log data, addressing two main tasks:
-        </p>
+            <p class="h3-content summary">
+                <b>Objectives: </b>This project focuses on developing a process that applies machine learning algorithms to work effectively with well-log data, addressing two main tasks:
+            </p>
             <ul>
                 <li><strong>Regression:</strong> Forecasting missing well log data.</li>
                 <li><strong>Classification:</strong> Automating lithology classification.</li>
             </ul>
+        </section>
 
-        <h3>Key Research Questions</h3>
-        <ol>
-            <li>How accurately can machine learning models predict missing well-log data compared to traditional interpolation methods?</li>
-            <li>What are the most effective machine learning algorithms for lithology classification based on well-log data?</li>
-            <li>How does the quality and completeness of input data impact the performance of the predictive models?</li>
-            <li>What preprocessing techniques are necessary to handle noisy or incomplete well-log data?</li>
-            <li>Which well-log features contribute the most to accurate lithology classification?</li>
-            <li>How well do automated classification models compare to expert interpretations in terms of accuracy and reliability?</li>
-            <li>What are the computational costs and time efficiency of machine learning-based approaches compared to manual interpretation?</li>
-            <li>Can the developed models generalize well across different geological formations and well locations?</li>
-            <li>How can uncertainty in predictions be quantified and reduced in both missing log imputation and lithology classification?</li>
-            <li>What are the practical implications of integrating these automated solutions into the oil and gas industry’s decision-making processes?</li>
-        </ol>
+        <!-- Key Research Questions -->
+        <section>
+            <h3>Key Research Questions</h3>
+            <ol>
+                <li>How accurately can machine learning models predict missing well-log data compared to traditional interpolation methods?</li>
+                <li>What are the most effective machine learning algorithms for lithology classification based on well-log data?</li>
+                <li>How does the quality and completeness of input data impact the performance of the predictive models?</li>
+                <li>What preprocessing techniques are necessary to handle noisy or incomplete well-log data?</li>
+                <li>Which well-log features contribute the most to accurate lithology classification?</li>
+                <li>How well do automated classification models compare to expert interpretations in terms of accuracy and reliability?</li>
+                <li>What are the computational costs and time efficiency of machine learning-based approaches compared to manual interpretation?</li>
+                <li>Can the developed models generalize well across different geological formations and well locations?</li>
+                <li>How can uncertainty in predictions be quantified and reduced in both missing log imputation and lithology classification?</li>
+                <li>What are the practical implications of integrating these automated solutions into the oil and gas industry’s decision-making processes?</li>
+            </ol>
+        <section>
+    </div>
+
+    <!-- Data Visualizations -->
+    <div class="container">
+        <h3>Data Visualizations</h3>
+        <div class="image-grid container">
+            <img src="assets/img/prep/visualizations/02-curves-plot.png" alt="Curves-Plot" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/01-box-plot.png" alt="Boxplot-Outliers" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/03-litho-distribution.png" alt="Litho-Distribution" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/07-dendrogram-clustering.png" alt="Dendrogram" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/04-histogram-plots.png" alt="Histogram" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/05-pairplot-corr.png" alt="PairplotCorr" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/06-heatmap-corr.png" alt="HeatmapCorr" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/08-2d-scatter-relations.png" alt="2DScatter" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/09-2d-scatter-margin.png" alt="2DScatterMarginal" class="grid-image" data-description="
+            ">
+            <img src="assets/img/prep/visualizations/10-3d-scatter.png" alt="3DScatter" class="grid-image" data-description="
+            ">
+        </div>
     </div>
     
-    
-    
-
+    <!-- Image Overlay -->
     <div class="overlay" id="overlay">
         <div>
             <button class="close-btn" id="closeBtn"></button>

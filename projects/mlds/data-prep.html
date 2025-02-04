@@ -31,7 +31,7 @@
         </h1>
         <p class="subtitle">Loading - Cleaning - Preprocessing and Visualizing</p>
 
-        <p class="h3-content">
+        <p class="h2-content">
             Oil and gas exploration data is highly expensive and resource-intensive. 
             Drilling operations and seismic surveys can cost millions or even tens of millions of dollars. 
             As a result, the availability of such data is limited compared to conventional datasets. 
@@ -41,12 +41,12 @@
 
         <!-- <p style="text-align: center;"><b>Why</b></p> -->
 
-        <p class="h3-content">
+        <p class="h2-content">
             In this project, data is collected through two main methods: retrieving data via the USGS API and downloading data 
             from the FORCE ML Competition. While USGS provides raw data (without labels) accessible via API, FORCE offers labeled data, which 
             is crucial for supervised machine learning algorithms. 
         </p>
-        <ul class="h3-content">
+        <ul class="h2-content">
             <li>USGS Data: Provides free access to well-log data from selected oil fields across the United States.</li>
             <li>FORCE Data: A labeled dataset specifically designed for lithology classification tasks.</li>
         </ul>
@@ -54,8 +54,8 @@
         <!-- <p style="text-align: center;"><b>Where</b></p> -->
 
         <section>
-            <h3>Data Collection</h3>
-            <p class="h3-content">
+            <h2>Data Collection</h2>
+            <p class="h2-content">
             <b>USGS API: </b>
                 Drilling, construction, geophysical data, and lithologic log for borehole USGS 145 | USGS Science Data Catalog. 
                 This dataset contains well logs in raw format of Well 145 and is collected using the USGS API. 
@@ -77,7 +77,7 @@
                 </a>
             </div>
 
-            <p class="h3-content">
+            <p class="h2-content">
                 <b>FORCE ML 2020: </b>FORCE is a machine learning competition focused on solving real-world problems in 
                 the oil and gas industry. Participants are provided with logs and labeled lithofacies data from over 
                 90 wells for model training.
@@ -104,8 +104,8 @@
         </section>
 
         <section>
-                <h3>Data Understanding</h3>
-                <p class="h3-content">Well-log data is tabular data, originally stored in <strong>LAS format</strong>. 
+                <h2>Data Understanding</h2>
+                <p class="h2-content">Well-log data is tabular data, originally stored in <strong>LAS format</strong>. 
                     The raw data is organized into files, with each file containing information for an individual well. 
                     An <strong>LAS file</strong> consists of a <strong>header</strong> and a <strong>tabular data section</strong>.
                 </p>
@@ -116,10 +116,10 @@
                         a specific geophysical logging method.</li>
                 </ul>
 
-                <p class="h3-content">In this dataset, <strong>depth</strong> is a crucial parameter for visualizing and correlating 
+                <p class="h2-content">In this dataset, <strong>depth</strong> is a crucial parameter for visualizing and correlating 
                     different log measurements. The LAS format can be easily converted into a DataFrame in Python.</p>
 
-                <p class="h3-content">For this project, only the tabular data is used for training machine learning models. The corresponding 
+                <p class="h2-content">For this project, only the tabular data is used for training machine learning models. The corresponding 
                     columns and their respective geophysical logging methods are described in the table below.</p>
 
             <table border="1">
@@ -154,7 +154,7 @@
             <p class="image-caption">
                 Table: Data columns in the FORCE ML 2020 dataset.
             </p>
-            <p class="h3-content">
+            <p class="h2-content">
                 "FORCE_2020_LITHOFACIES_LITHOLOGY" is the column containing labeled data. 
                 The labeling process requires the contribution of experts in the fields of geology and geophysics. Labeled column contains codes 
                 corresponding to various lithologies such as Sandstone, Sandstone/Shale, Shale, Marl, Dolomite, Limestone, Chalk, 
@@ -164,8 +164,8 @@
         </section>
 
         <section>
-            <h3>Data Cleaning</h3>
-            <p class="h3-content">
+            <h2>Data Cleaning</h2>
+            <p class="h2-content">
                 Well-log data is tabular data consisting of columns, with each column corresponding to the results of 
                 a specific measurement method. Additionally, the <b>DEPTH_MD</b> field provides depth information along the 
                 wellbore. Since logging operations are costly, certain log segments are often skipped, focusing only 
@@ -192,7 +192,7 @@
                 The bar chart shows the number of missing values in each column before and after the cleaning process.
                 Some columns with a small number of samples, dropping whole column is a better choice, such as DCAL, MUDWEIGHT, SGR, RMIC or DTS.
             </p>
-            <p class="h3-content">
+            <p class="h2-content">
                 Moreover, <b>outlier values</b> frequently appear in well-log data due to measurement disturbances caused by 
                 human factors, such as casing installation, wellbore collapse, or inaccuracies during equipment setup. 
                 The handling of outliers is performed individually for each log measurement.
@@ -215,7 +215,7 @@
                 All the null values and outliers have been removed from the raw data. The cleaned data is ready for preprocessing and model training.
             </p>
 
-            <p class="h3-content">
+            <p class="h2-content">
                 All the codes and data cleaning steps can be found in the following links.
             </p>
             <div class="external-links">
@@ -236,8 +236,8 @@
         </section>
 
         <section>
-            <h3>Data Transformation</h3>
-            <p class="h3-content">
+            <h2>Data Transformation</h2>
+            <p class="h2-content">
                 <ul>
                     <li>Feature generation</li>
                     <li>StandardScalar (Sklearn)</li>
@@ -248,8 +248,8 @@
         </section>
 
         <section>
-            <h3>Data Visualization</h3>
-            <p class="h3-content">
+            <h2>Data Visualization</h2>
+            <p class="h2-content">
                 The images/graphs below describe the nature of the data.
                 <em>Click on the image to enlarge and see more descriptions.</em>
             </p>
@@ -307,10 +307,10 @@
         </section>
 
         <section>
-            <h3>Key Insights and Next Steps</h3>
+            <h2>Key Insights and Next Steps</h2>
             <ul>
                 <li>
-                    <p class="h3-content">
+                    <p class="h2-content">
                         <b>Data Summary:</b> The dataset contains more than 90 wells with over 2 million rows and 28 columns. 
                                 However, it also includes null values, and only 1.4 million rows have labels. Additionally, some important 
                                 curves, such as DTS, DCAL, and MUD, are represented by a small amount of data. Outliers are also present in 
@@ -319,21 +319,21 @@
                     </p>
                 </li>
                 <li>
-                    <p class="h3-content">
-                        <p class="h3-content">
+                    <p class="h2-content">
+                        <p class="h2-content">
                             <b>Insights:</b>
                             The label data is imbalanced, with the majority of samples belonging to the Shale class. It requires a specific 
                             strategy to handle this imbalance, such as resampling techniques (oversampling the minority class or undersampling the majority class) 
                             or using algorithms that are robust to imbalanced data.
                         </p>
-                        <p class="h3-content">
+                        <p class="h2-content">
                             The features contain some data from some similar geophysical logging methods, such as RDEP, RSHA, RMED, RXO, and RMIC.
                             These features are highly correlated, and it is necessary to perform feature selection or dimensionality reduction.
                         </p>
                     </p>    
                 </li>
                 <li>
-                    <p class="h3-content">
+                    <p class="h2-content">
                         <b>Next Steps:</b>
                         To understand deeply the relationship and preparing for training data, next steps involve exploring the dataset using advanced 
                         techniques such as: 

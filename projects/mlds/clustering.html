@@ -1,61 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clustering - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Clustering</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Clustering
+            </h1>
+
+            <p class="h2-content">
+                Clustering is an unsupervised machine learning technique used to group similar data points into clusters based on 
+                their inherent patterns and similarities. It aims to discover natural structures in data without predefined labels, 
+                making it useful for tasks like customer segmentation, anomaly detection, and pattern recognition. General approaches 
+                to clustering include partition-based methods (e.g., K-Means), which divide data into a fixed number of clusters; 
+                hierarchical methods, which create nested groupings through iterative merging or splitting; density-based methods 
+                (e.g., DBSCAN), which identify clusters based on dense regions while ignoring noise; and model-based methods 
+                (e.g., Gaussian Mixture Models), which assume an underlying probabilistic distribution. The choice of method 
+                depends on the data’s structure, cluster shapes, and the need for scalability or robustness to noise.
+            </p>
+
+            <section>
+                <h2>Methods</h2>
+                <p class="h2-content">
+                    <b>Partition-Based Clustering (K-Means):</b> K-Means is a widely used clustering algorithm that partitions data into 
+                    k clusters by minimizing intra-cluster variance. It works iteratively by randomly initializing k centroids, 
+                    assigning each data point to the nearest centroid, and updating the centroids based on the mean of assigned 
+                    points until convergence. K-Means assumes that clusters are spherical and of roughly equal size, making it 
+                    less effective for complex, irregularly shaped clusters. The algorithm requires the number of clusters to 
+                    be predefined, which can be challenging if the optimal k is unknown. Despite its sensitivity to outliers 
+                    and initial centroid placement, K-Means is computationally efficient, making it suitable for large datasets 
+                    and applications like customer segmentation and image compression.
+                </p>
+                <p class="h2-content">
+                    <b>Hierarchical Clustering:</b> Hierarchical clustering builds a hierarchy of nested clusters using either an 
+                    agglomerative (bottom-up) or divisive (top-down) approach. In the agglomerative method, each data point 
+                    starts as an individual cluster, and clusters are iteratively merged based on similarity until a single 
+                    cluster remains. The divisive approach starts with all data points in one cluster and recursively splits 
+                    them into smaller clusters. The results are visualized in a dendrogram, which helps determine the optimal 
+                    number of clusters without explicitly setting k beforehand. Hierarchical clustering is effective for 
+                    structured analysis but is computationally expensive, making it impractical for large datasets. 
+                    Its sensitivity to the choice of linkage method (e.g., single, complete, or average) can affect 
+                    cluster formation, sometimes leading to poor results when noise is present.
+                </p>
+                <p class="h2-content">
+                    <b>Density-Based Clustering (DBSCAN):</b> DBSCAN identifies clusters based on data density, making it particularly 
+                    useful for detecting arbitrarily shaped clusters and distinguishing noise. It groups data points that are 
+                    closely packed together while treating sparsely distributed points as outliers. The algorithm relies on two 
+                    parameters: ε (epsilon), which defines the neighborhood radius, and MinPts, the minimum number of points 
+                    required to form a dense region. Unlike K-Means, DBSCAN does not require specifying the number of clusters 
+                    in advance, and it can effectively separate clusters with varying densities. However, it may struggle with 
+                    datasets where cluster densities vary significantly, as a single set of ε and MinPts values may not work well 
+                    across the entire dataset. DBSCAN is widely used in applications such as anomaly detection, geographic data 
+                    clustering, and noise filtering in large datasets.
+                </p>
+            </section>
+
+            <h2>Implementation</h2>
+            <section style="margin-left: 33px;">
+                <h3>1. Data Preparation for Clustering</h3>
+                <p class="h2-content">
+                    After data preprocessing process, we have a dataset which has been removed null values and cleaned outliers.
+                    The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br>
+                    <div class="external-links">
+                        <p>External Links:</p>
+                        <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                            Datasets
+                        </a>
+                    </div>
+                </p>
+                <div class="image">
+                    <img style="height: 350px;" src="assets/img/clustering/features_hist.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Histogram of all features after normalization.</p>
+                
+                <h3>2. K-Means Clustering</h3>
+                <div class="image-grid">
+                    <!-- Importing images... -->
+                    <img src="assets/img/clustering/kmean_3.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_4.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_7.png" alt="01" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Visualization of K-Means Clustering (k=3,4,7). Click on the image to open expanded view mode.</p>
+                
+
+                <h3>3. Hierarchical Clustering</h3>
+                <div class="image">
+                    <img style="height: 450px;" src="assets/img/clustering/dendrogram.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Dendrogram</p>
+
+                <h3>4. Density-Based Clustering (DBSCAN)</h3>
+                <div class="image-grid">
+                    <!-- Importing images... -->
+                    <img src="assets/img/clustering/dbscan_pc01.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/dbscan_pc02.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/dbscan_pc03.png" alt="01" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">2D Visualization of DBSCAN's results on different principal components.</p>
+
+
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/clustering/dbscan_3d.gif" alt="pca-cleaned-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">3D Visualization of the result of DBSCAN Clustering</p>
+            
+        </div>
+
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

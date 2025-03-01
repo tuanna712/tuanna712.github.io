@@ -1,61 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCA - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Principal Component Analysis (PCA)</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Principal Component Analysis (PCA)
+            </h1>
+            <p class="subtitle">Dimensionality Reduction</p>
+
+            <p class="h2-content">
+                A common challenge in machine learning problems is the presence of numerous features in the dataset, 
+                which can lead to issues such as overfitting, high computational costs, spurious correlations, and difficulties in visualization. 
+                To address these challenges, techniques like feature selection and feature engineering have been widely explored. 
+                One such powerful approach for tackling these issues is Principal Component Analysis (PCA).
+            </p>
+
+            <section>
+                <h2>Definition</h2>
+                <p class="h2-content">
+                    <b>Principal Component Analysis (PCA): </b>is a statistical technique used for dimensionality reduction by transforming a 
+                    high-dimensional dataset into a lower-dimensional space while preserving as much variance as possible. It achieves this by 
+                    identifying new axes (principal components) along which the data varies the most. Some of purposes of PCA include:
+                    <ul>
+                        <li>Dimensionality Reduction: Reduces the number of features while retaining important information.</li>
+                        <li>Noise Reduction: Eliminates insignificant variations and enhances meaningful patterns.</li>
+                        <li>Feature Extraction: Generates new uncorrelated features (principal components) that capture the most variance.</li>
+                        <li>Visualization: Helps in plotting high-dimensional data in 2D or 3D for interpretation.</li>
+                        <li>Improving Model Performance: Reducing feature redundancy can help some machine learning models perform better.</li>
+                    </ul>   
+                </p>
+                <p class="h2-content">
+                    <b>Optimization:</b> The goal of PCA is to identify the principal components that capture the most variance in the data 
+                    while minimizing the loss of information. This is achieved through an optimization problem where the objective is to 
+                    maximize the variance along the new axes (principal components). In mathematical terms, PCA can be viewed as an eigenvalue 
+                    decomposition problem, where the eigenvectors (principal components) and eigenvalues (variance explained) are derived from 
+                    the covariance matrix of the dataset.
+                </p>
+                <p class="h2-content">
+                    <b>Mathematical Procedure:</b> The PCA algorithm involves several steps:
+                    <ol>
+                        <li>Standardization: Center the data by subtracting the mean and scaling to unit variance.</li>
+                        <li>Covariance Matrix Calculation: Compute the covariance matrix \( S \).</li>
+                        <li>Eigenvalue Decomposition: Diagonalize the covariance matrix \( S \) to find the eigenvector matrix \( P \).</li>
+                        <li>Sorting: Select the first \( M \) eigenvectors (corresponding to the \( M \) 
+                            largest eigenvalues) and form the reduced matrix \( U \).</li>
+                        <li>Projection: Project the data into the reduced space using the selected eigenvectors.</li>
+                    </ol>
+                </p>
+            </section>
+
+            <h2>Implementation</h2>
+            <section style="margin-left: 33px;">
+                <h3>1. Dataset</h3>
+                <p class="h2-content">
+                    After data preprocessing process, we have a dataset which has been removed null values and cleaned outliers.
+                    The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br>
+                    <div class="external-links">
+                        <p>External Links:</p>
+                        <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                            Datasets
+                        </a>
+                    </div>
+                </p>
+                <div class="image">
+                    <img style="height: 350px;" src="assets/img/pca/pca_cleaned_data.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Cleaned data contains both numerical and categorical features.</p>
+                
+                <h3>2. Data Preparation for PCA</h3>
+                <p class="h2-content">
+                    The cleaned data includes categorical features such as GROUP, FORMATION, Borehole size (BS), 
+                    and Lithology. To prepare the data for unsupervised tasks, we remove the categorical features 
+                    and normalize the remaining data. Normalization is done using the built-in 
+                    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank">
+                        StandardScaler (Sklearn)
+                    </a>
+                    function, which standardizes the data by adjusting the mean to 0 and the standard deviation to 1, 
+                    ensuring that the data is ready for analysis.
+                </p>
+                <div class="image">
+                    <img style="height: 210px;" src="assets/img/pca/pca_numerical_data.png" alt="pca-numerical-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data after removing categorical and label columns. The categorical features such as GROUP, FORMATION, BS, 
+                    and Lithology have been removed. It remains 13 features.</p>
+                
+                <div class="image">
+                    <img style="height: 375px;" src="assets/img/pca/pca_normalized_data.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                
+                <h3>3. PCA Implementation <em>(n_components=2)</em></h3>
+                <p class="h2-content">
+                    In this implementation, we reduce the data to two principal components (n_components=2). 
+                    This allows for easier visualization and interpretation, while preserving the essential patterns and 
+                    structure of the original dataset. By selecting two components, we can plot the data in a 2D space and analyze 
+                    its variance more effectively, helping to uncover underlying trends and relationships.
+                </p>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/evec_chart2c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/ev_cum_chart2c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 550px;" src="assets/img/pca/pca_2d.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+
+                <h3>4. PCA Implementation <em>(n_components=3)</em></h3>
+                <p class="h2-content">
+                    By setting n_components=3, the PCA algorithm reduces the dataset to three principal components.
+                    This allows for a more comprehensive representation of the data in a 3D space, enabling us to visualize
+                    the relationships and patterns among the features more effectively. 
+                    The three principal components capture the most significant variance in the data,
+                    providing insights into the underlying structure and correlations within the dataset.
+                </p>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/evec_chart3c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/ev_cum_chart3c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 550;" src="assets/img/pca/pca_3d.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+
+
+                <h3>5. PCA Implementation <em>(covers 95% the variance of the data)</em></h3>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/evec_chart13c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 500px;" src="assets/img/pca/ev_cum_chart13c.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <div class="image">
+                    <img style="height: 300px; width: 650px;" src="assets/img/pca/top_ev.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                
+            </section>
+            
+            <section>
+                <h2>Conclusion</h2>
+                <p class="h2-content">
+                    Conclusion
+                </p>
+            </section>
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    
+                </p>
+                <div class="external-links">
+                    <p>External Links:</p>
+                    <a href="https://thinkonward.com/app/c/challenges/force-well-logs" target="_blank" class="item">
+                        <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
+                        Competition Announcement
+                    </a>
+                    <a href="https://terranubis.com/datainfo/FORCE-ML-Competition-2020-Synthetic-Models-and-Wells" target="_blank" class="item">
+                        <img src="assets/icons/globe-solid.svg" alt="data" data-description="">
+                        Data Source
+                    </a>
+                    <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                        Datasets
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1IvGW4lP8AE7RJ47Mzf6_QYCc30kB9AZt?usp=sharing" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="github" data-description="">
+                        LAS (Raw) Files
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

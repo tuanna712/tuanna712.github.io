@@ -25,13 +25,13 @@
     <div class="container">
         <!-- Project Title -->
         <div class="title">
-            <h1><a href="mlds/introduction.html" target="_blank">Automatically Predict Missing Log and Classify Lithologies<br> for Petrophysics Well-Log Data (2025)</a></h1>
+            <h1><a href="mlds/introduction.html" target="_blank">Missing Log Prediction and Lithologies classification<br> for Petrophysics Well-Log Data (2025)</a></h1>
             <p>
                 CSCI 5612 - Machine Learning, CU Boulder.
             </p>
         </div>
         
-        <div class="topic">
+        <!-- <div class="topic">
             <div class="topic-name">
                 <h3>Abstract</h3>
             </div>
@@ -40,32 +40,37 @@
                     ...updating...
                 </p>
             </div>
-        </div>
+        </div> -->
 
         <div class="topic">
             <div class="topic-name">
                 <h3>Objectives</h3>
             </div>
             <div class="topic-content">
-                ...updating...
+                This project aims to develop machine learning models that can predict missing well-log data and classify lithologies based on the available well-log data. By automating these tasks, the accuracy of well-log interpretation could be improved, enabling faster decision-making in oil and gas exploration and drilling.
+                Lithology classification refers to the process of identifying and categorizing rock types based on well-log data. It is essential for understanding subsurface geology, optimizing drilling strategies, and improving reservoir characterization.
             </div>
         </div>
 
-        <div class="topic">
+        <!-- <div class="topic">
             <div class="topic-name">
                 <h3>Key Results</h3>
             </div>
             <div class="topic-content">
                 ...updating...
             </div>
-        </div>
+        </div> -->
 
         <div class="topic">
             <div class="topic-name">
                 <h3>Main Tasks</h3>
             </div>
             <div class="topic-content">
-                ...updating...
+                Implementing a machine learning pipeline to predict missing well-log data and 
+                classify lithologies based on the available well-log data. 
+                The pipeline includes data preprocessing, feature engineering (PCA), 
+                unspervised learning (KMeans, Hierachical, DBSCAN), and supervised learning (Random Forest, XGBoost), 
+                evaluation, and visualization.
             </div>
         </div>
 
@@ -75,7 +80,6 @@
             </div>
             <div class="topic-content">
                 <ul style="padding-left: 20px;">
-                    <li>Data connector: Restful API</li>
                     <li>Machine learning: Sci-kit learn</li>
                     <li>Hyper-parameters: GridSearchCV</li>
                     <li>Visualization: Matplotlib, Plotly, Leaflet</li>
@@ -98,12 +102,19 @@
             </div>
         </div>
 
-        <!-- <div class="media">
+        <div class="media">
             <p>Screenshots collection</p>
-        </div> -->
+        </div>
         <div class="image-grid">
             <!-- Importing images... -->
-            <!-- <img src="" alt="01" class="grid-image" data-description=""> -->
+            <img src="/projects/mlds/assets/img/pca/evec_chart3c.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/pca/pca_3d.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/pca/ev_cum_chart13c.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/dendrogram.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_3.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_4.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_7.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/dbscan_3d.gif" alt="01" class="grid-image" data-description="">
         </div>
     
         <div class="overlay" id="overlay">
@@ -120,11 +131,11 @@
         </div>
 
         <!-- Footer -->
-        <!-- <footer>
+        <footer>
             <div class="footer-container">
                 <p>&copy; 2025 Tuan Nguyen.</p>
             </div>
-        </footer> -->
+        </footer>
 
 
     </div>

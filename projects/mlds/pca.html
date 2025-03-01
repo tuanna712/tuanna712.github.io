@@ -75,15 +75,16 @@
 
             <h2>Implementation</h2>
             <section style="margin-left: 33px;">
+<!-- 1. Dataset -->
                 <h3>1. Dataset</h3>
                 <p class="h2-content">
                     After data preprocessing process, we have a dataset which has been removed null values and cleaned outliers.
                     The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br>
                     <div class="external-links">
                         <p>External Links:</p>
-                        <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
-                            <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                            Datasets
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            Cleaned Dataset
                         </a>
                     </div>
                 </p>
@@ -91,115 +92,249 @@
                     <img style="height: 350px;" src="assets/img/pca/pca_cleaned_data.png" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">Cleaned data contains both numerical and categorical features.</p>
-                
+<!-- 2. Data Preparation for PCA -->
                 <h3>2. Data Preparation for PCA</h3>
                 <p class="h2-content">
-                    The cleaned data includes categorical features such as GROUP, FORMATION, Borehole size (BS), 
-                    and Lithology. To prepare the data for unsupervised tasks, we remove the categorical features 
-                    and normalize the remaining data. Normalization is done using the built-in 
-                    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank">
-                        StandardScaler (Sklearn)
-                    </a>
-                    function, which standardizes the data by adjusting the mean to 0 and the standard deviation to 1, 
-                    ensuring that the data is ready for analysis.
+                    For unsupervised learning tasks, the input data must follow a specific format and structure. 
+                    <b>Features should be numerical and standardized, while categorical variables should either be encoded or removed.</b> 
+                    Since unsupervised learning does not require labels, they should also be excluded. 
+                    In this case, the dataset consists of 17 features, including both numerical and categorical variables. 
+                    At this stage, I remove the label column (LITHOLOGY) along with categorical features such as GROUP, 
+                    FORMATION and Borehole size (BS) to ensure the data is properly formatted for analysis. 
+                    After removing there are total 13 features remaining.
                 </p>
                 <div class="image">
                     <img style="height: 210px;" src="assets/img/pca/pca_numerical_data.png" alt="pca-numerical-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">Data after removing categorical and label columns. The categorical features such as GROUP, FORMATION, BS, 
                     and Lithology have been removed. It remains 13 features.</p>
-                
+                <p class="h2-content">
+                    <b>Normalization is done using the built-in 
+                    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank">
+                        StandardScaler (Sklearn)
+                    </a>function, </b>
+                    which standardizes the data by adjusting the mean to 0 and the standard deviation to 1, 
+                    ensuring that the data is ready for analysis. Standardizing equation is shown as below, 
+                    where \( X \) is the original data, \( \bar{X} \) is the mean of the data, and \( s \) is the standard deviation.:
+                    <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                        \( 
+                            \begin{align*}
+                            Z = \frac{X - \bar{X}}{s}
+                            \end{align*}
+                            \)
+                    </p>
+                    <b>After normalization,</b> the data follows a standard normal distribution. This step is crucial for eliminating differences in 
+                    the range of feature values, which could impact the performance of PCA. Since the PCA algorithm is sensitive to feature scaling, 
+                    normalization ensures that all features contribute equally to the analysis, preventing dominant influence from variables with 
+                    larger magnitudes.
+                </p>
                 <div class="image">
                     <img style="height: 375px;" src="assets/img/pca/pca_normalized_data.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
-                
+                <p class="image-caption">Data before (categorical features removed) and after (prepared) normalization using StandardScaler.</p>
+                <div class="external-links" style="margin-top: 10px;">
+                    <p>External Links:</p>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                        Cleaned Dataset
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/no_categorical_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                        No Categorical and Label Dataset
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/normalized_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                        Normalized/Prepared Dataset
+                    </a>
+                </div>
+
+<!-- 3. PCA Implementation n=2 -->
                 <h3>3. PCA Implementation <em>(n_components=2)</em></h3>
                 <p class="h2-content">
-                    In this implementation, we reduce the data to two principal components (n_components=2). 
+                    PCA analyzes the variance in the data to identify the directions (principal components) that capture the most variation. 
+                    The transformation is achieved by projecting the data onto these principal components. 
+                    A key hyperparameter in PCA is the number of components, which determines the reduced dimensionality of the dataset. 
+                    This specifies how many principal components with the highest variance will be retained, preserving the most important 
+                    information while reducing complexity.<br><br>
+                    In this implementation, we reduce the data to two principal components <em>(n_components=2)</em>. 
                     This allows for easier visualization and interpretation, while preserving the essential patterns and 
                     structure of the original dataset. By selecting two components, we can plot the data in a 2D space and analyze 
-                    its variance more effectively, helping to uncover underlying trends and relationships.
+                    its variance more effectively, helping to uncover underlying trends and relationships.<br><br>
+                    By implementing PCA with <em>n_components=2</em>, the best two principal components cover <b>34% and 12% </b>of the variance, respectively. 
+                    The figure below shows the variance percentage of the best two principal components.
                 </p>
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/evec_chart2c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">The variance percentage of the best two principal components.</p>
+                
+                <p class="h2-content">
+                    <b>How much information (what percentage ) remains in the 2D dataset?</b><br>
+                    The first <b>two principal components account for 45% of the cumulative variance</b>, meaning that 45% of the information from 
+                    the original dataset is preserved in the reduced 2D representation. This indicates that these two components capture a 
+                    significant portion of the data's variability, enabling a meaningful lower-dimensional representation while retaining 
+                    essential patterns and structure.
+                </p>
+                
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/ev_cum_chart2c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">Cumulative variance explained by the first two Principal Components.</p>
+                <p class="h2-content">
+                    <b>2D Visualization:</b> PCA results enable data visualization in a 2D space while retaining a significant portion of the original 
+                    information. The colors in the plot represent different lithology types.<br><br>
+                    From the figure, it is evident that shale is the dominant lithology, while other types are confined to smaller regions. 
+                    The PCA projection reveals that the data is not well separated, suggesting weak correlations among features. However, 
+                    the presence of compact regions in the plot indicates that unsupervised learning algorithms can still be applied to 
+                    identify meaningful clusters.
+                </p>
                 <div class="image">
                     <img style="height: 550px;" src="assets/img/pca/pca_2d.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">2D scatter plot of the top two Principal Components.</p>
 
+                <div class="external-links" style="margin-top: 10px;">
+                    <p>External Links:</p>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        2 Principal Components (PCA) Code
+                    </a>
+                </div>
+<!-- 4. PCA Implementation n= 3 -->
                 <h3>4. PCA Implementation <em>(n_components=3)</em></h3>
                 <p class="h2-content">
                     By setting n_components=3, the PCA algorithm reduces the dataset to three principal components.
                     This allows for a more comprehensive representation of the data in a 3D space, enabling us to visualize
-                    the relationships and patterns among the features more effectively. 
-                    The three principal components capture the most significant variance in the data,
-                    providing insights into the underlying structure and correlations within the dataset.
+                    the relationships and patterns among the features more effectively. <br><br>
+                    The first three principal components account for <b>34%, 12%, and 10%</b> of the variance, respectively.
+                    These components correspond to three original features: <b>DTC, DRHO, and GR.</b>
                 </p>
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/evec_chart3c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">Variance percentage captured by the top three Principal Components.</p>
+                
+                <p class="h2-content">
+                    <b>How much information (what percentage ) remains in the 3D dataset?</b><br>
+                    The first three principal components <b>55% of the cumulative variance</b>, 
+                    meaning that just 3 out of 13 features retain more than half of the original dataset's information. 
+                    This allows for effective dimensionality reduction while preserving a significant portion of the data's variability.
+                </p>
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/ev_cum_chart3c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">Cumulative variance explained by the first three Principal Components.</p>
+                <p class="h2-content">
+                    <b>3D Visualization:</b> By reducing the dataset to three principal components, we can visualize the data in a 3D space.
+                    The colors in the plot represent different lithology types. <br><br>
+                </p>
                 <div class="image">
                     <img style="height: 550;" src="assets/img/pca/pca_3d.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">3D visualization of the top three principal components. <br>
+                    It colors by the lithology labels and reveals the distribution of different lithology types.
+                </p> 
+                <div class="external-links" style="margin-top: 10px;">
+                    <p>External Links:</p>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        3 Principal Components (PCA) Code
+                    </a>
+                </div>
 
-
+<!-- 5. PCA Implementation 95% -->
                 <h3>5. PCA Implementation <em>(covers 95% the variance of the data)</em></h3>
+                <p class="h2-content">
+                    To determine the optimal number of principal components that capture 95% of the variance, 
+                    a PCA model is applied to the dataset, and the explained variance ratio is computed. 
+                    This ratio represents the proportion of variance explained by each principal component. 
+                    By summing these ratios, we can identify the minimum number of components needed to achieve the target variance coverage.
+                </p>
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/evec_chart13c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">Variance percentage of Principal Components sorted in descending order</p>
+                
+                <p class="h2-content">
+                    Only the first two components account for more than 10% of the variance (34% and 12%), 
+                    while the remaining 11 components each contribute less than 10%. 
+                    The last four components each contribute less than 3% of the variance, 
+                    with the final component explaining only 0.07%. This allows for the removal of redundant 
+                    features while preserving the majority of the information.
+                </p>
+
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/pca/ev_cum_chart13c.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
-                <div class="image">
-                    <img style="height: 300px; width: 650px;" src="assets/img/pca/top_ev.png" alt="pca-normalized-data" class="grid-image" data-description="">
-                </div>
-                <p class="image-caption">Data before and after normalization using StandardScaler.</p>
+                <p class="image-caption">Cumulative Explained Variance by Principal Components shows that 95% of the information is captured by the first 10 components.</p>
                 
+                <p class="h2-content">
+                    From cummulative explained variance, we can see that <b>the first 10 components account for 96% of the variance</b>.
+                    This means that by using only the first 10 components, we can retain a significant amount of information from the original dataset.
+                    On the other hand, the last three components contribute very little to the overall variance.
+                    This is particularly useful for dimensionality reduction, as it allows us to simplify the dataset while still capturing most of the important patterns and relationships.
+                </p>
+                
+                <p class="h2-content">
+                    <b>Top 3 eigenvalues</b><br>
+                    From coding section, the top three eigenvalues is shown as [4.37, 1.54, and 1.27]. 
+                    It represents the amount of variance explained by the corresponding principal components in PCA. 
+                    There is a significant drop in the eigenvalues from the first to the second and third components,
+                    indicating that the first component captures the most variance, while the subsequent components 
+                    capture progressively less. This pattern indicates that the data has a dominant direction of 
+                    variation along the first principal component.
+                </p>
+                <div class="image">
+                    <img style="height: 175px; width: 650px;" src="assets/img/pca/top3_evalues.png" alt="top-eigen-values" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Top three eigenvalues from coding section.</p>
+
+                <div class="external-links" style="margin-top: 10px;">
+                    <p>External Links:</p>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Principal Components Analysis (95% Variance)
+                    </a>
+                </div>
             </section>
-            
+
+<!-- Conclusion -->
             <section>
                 <h2>Conclusion</h2>
                 <p class="h2-content">
-                    Conclusion
+                    In conclusion, Principal Component Analysis (PCA) is an effective technique for dimensionality reduction. 
+                    By applying PCA in this project, it successfully reduced the dataset to two and three principal components, 
+                    retaining a significant portion of the original information (45% with the first two principal components and 
+                    56% with three components). Furthermore, 95% of the variance is captured by the first 10 components.<br><br>
+
+                    The PCA results also enable visualization of the data in 2D and 3D spaces, revealing clusters corresponding 
+                    to different lithology types. This provides valuable insights for the subsequent clustering stage.
                 </p>
             </section>
+
+<!-- Deliverables -->
             <section>
                 <h2>Deliverables</h2>
                 <p class="h2-content">
-                    
+                    For your reference, all external links are provided below:
                 </p>
                 <div class="external-links">
                     <p>External Links:</p>
-                    <a href="https://thinkonward.com/app/c/challenges/force-well-logs" target="_blank" class="item">
-                        <img src="assets/icons/globe-solid.svg" alt="globe" data-description="">
-                        Competition Announcement
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data
                     </a>
-                    <a href="https://terranubis.com/datainfo/FORCE-ML-Competition-2020-Synthetic-Models-and-Wells" target="_blank" class="item">
-                        <img src="assets/icons/globe-solid.svg" alt="data" data-description="">
-                        Data Source
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/no_categorical_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        No Categorical and Label Data
                     </a>
-                    <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                        Datasets
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/normalized_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Normalized Data
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1IvGW4lP8AE7RJ47Mzf6_QYCc30kB9AZt?usp=sharing" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                        LAS (Raw) Files
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        PCA Codes
                     </a>
                 </div>
             </section>

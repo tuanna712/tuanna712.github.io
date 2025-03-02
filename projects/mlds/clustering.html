@@ -43,82 +43,171 @@
             </p>
 
             <section>
-                <h2>Methods</h2>
+                <h2>Methods: Compare and Contrast</h2>
                 <p class="h2-content">
                     <b>Partition-Based Clustering (K-Means):</b> K-Means is a widely used clustering algorithm that partitions data into 
-                    k clusters by minimizing intra-cluster variance. It works iteratively by randomly initializing k centroids, 
-                    assigning each data point to the nearest centroid, and updating the centroids based on the mean of assigned 
-                    points until convergence. K-Means assumes that clusters are spherical and of roughly equal size, making it 
-                    less effective for complex, irregularly shaped clusters. The algorithm requires the number of clusters to 
-                    be predefined, which can be challenging if the optimal k is unknown. Despite its sensitivity to outliers 
-                    and initial centroid placement, K-Means is computationally efficient, making it suitable for large datasets 
-                    and applications like customer segmentation and image compression.
+                    k clusters by minimizing intra-cluster variance. K-Means works by randomly initializing k centroids, assigning data 
+                    points to the nearest centroid, and updating the centroids based on the mean of the assigned points until convergence.
+                    <ul>
+                        <li>It assumes clusters are spherical and of similar size, making it less effective for irregularly shaped clusters.</li>
+                        <li>The number of clusters (k) must be predefined, which can be difficult if the optimal k is unknown. </li>
+                        <li>Despite being sensitive to outliers and initial centroids, K-Means is computationally efficient, 
+                            making it suitable for large datasets like customer segmentation and image compression.</li>
+                            
+                    </ul>
                 </p>
                 <p class="h2-content">
-                    <b>Hierarchical Clustering:</b> Hierarchical clustering builds a hierarchy of nested clusters using either an 
-                    agglomerative (bottom-up) or divisive (top-down) approach. In the agglomerative method, each data point 
-                    starts as an individual cluster, and clusters are iteratively merged based on similarity until a single 
-                    cluster remains. The divisive approach starts with all data points in one cluster and recursively splits 
-                    them into smaller clusters. The results are visualized in a dendrogram, which helps determine the optimal 
-                    number of clusters without explicitly setting k beforehand. Hierarchical clustering is effective for 
-                    structured analysis but is computationally expensive, making it impractical for large datasets. 
-                    Its sensitivity to the choice of linkage method (e.g., single, complete, or average) can affect 
-                    cluster formation, sometimes leading to poor results when noise is present.
+                    <b>Hierarchical Clustering:</b> Hierarchical clustering builds a hierarchy of nested clusters using either an agglomerative 
+                    (bottom-up) or divisive (top-down) approach. In the agglomerative method, each data point starts as an individual cluster,
+                     and clusters are iteratively merged based on similarity until a single cluster remains. 
+                     Some properties of Hierarchical Clustering are:
+                     <ul>
+                        <li>The divisive approach starts with all data points in one cluster and recursively splits them into smaller clusters. </li>
+                        <li>The results are visualized in a dendrogram, which helps determine the optimal number of clusters without explicitly setting k beforehand. </li>
+                        <li>Hierarchical clustering is effective for structured analysis.</li>
+                        <li>It is computationally expensive, making it impractical for large datasets. </li>
+                        <li>Its sensitivity to the choice of linkage method can affect cluster formation, sometimes leading to poor results when noise is present.</li>
+                    </ul>
+
                 </p>
                 <p class="h2-content">
-                    <b>Density-Based Clustering (DBSCAN):</b> DBSCAN identifies clusters based on data density, making it particularly 
-                    useful for detecting arbitrarily shaped clusters and distinguishing noise. It groups data points that are 
-                    closely packed together while treating sparsely distributed points as outliers. The algorithm relies on two 
-                    parameters: ε (epsilon), which defines the neighborhood radius, and MinPts, the minimum number of points 
-                    required to form a dense region. Unlike K-Means, DBSCAN does not require specifying the number of clusters 
-                    in advance, and it can effectively separate clusters with varying densities. However, it may struggle with 
-                    datasets where cluster densities vary significantly, as a single set of ε and MinPts values may not work well 
-                    across the entire dataset. DBSCAN is widely used in applications such as anomaly detection, geographic data 
-                    clustering, and noise filtering in large datasets.
+                    <b>Density-Based Clustering (DBSCAN):</b> DBSCAN identifies clusters based on data density, making it particularly useful 
+                    for detecting arbitrarily shaped clusters and distinguishing noise. DBSCAN groups closely packed data points and treats sparse points as outliers. 
+                    It relies on two parameters: \( \epsilon \) (epsilon) for the neighborhood radius and MinPts for the minimum points required to form a dense region.
+                    <ul>
+                        <li>Unlike K-Means, DBSCAN doesn't require specifying the number of clusters and can handle clusters with varying densities.</li>
+                        <li>It may struggle when cluster densities vary significantly, as a single ε and MinPts setting might not work well for all data.</li>
+                        <li>DBSCAN is commonly used in anomaly detection, geographic clustering, and noise filtering in large datasets.</li>
+                    </ul>
+                </p>
+                <p class="h2-content">
+                    <b>In short,</b> all three methods are unsupervised clustering techniques that work with unlabeled data and provide insights based on the data's structure. 
+                    Each method has its strengths and weaknesses.<br><br>
+                    <b>Compare and Contrast: Advantages</b>
+                    <ul>
+                        <li>K-Means is fast and works well for large datasets.</li>
+                        <li>Hierarchical Clustering doesn’t need you to specify the number of clusters, making it flexible for different kinds of analysis.</li>
+                        <li>DBSCAN overcomes K-Means’ limitation by handling clusters of different shapes and densities better.</li>
+                    </ul>
+                    <b>Compare and Contrast: Limitations</b>
+                    <ul>
+                        <li>K-Means requires you to specify the number of clusters (k) in advance and groups data based on spherical distance.</li>
+                        <li>Hierarchical Clustering depends on the chosen linkage method and can be slow with large datasets.</li>
+                        <li>DBSCAN relies on two important parameters (epsilon and MinPts) and might miss some clusters if these parameters are not set correctly.</li>
+                    </ul>
                 </p>
             </section>
 
             <h2>Implementation</h2>
             <section style="margin-left: 33px;">
+
+<!-- 1. Data Preparation for Clustering -->
                 <h3>1. Data Preparation for Clustering</h3>
                 <p class="h2-content">
                     After data preprocessing process, we have a dataset which has been removed null values and cleaned outliers.
-                    The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br>
-                    <div class="external-links">
-                        <p>External Links:</p>
-                        <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
-                            <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                            Datasets
+                    The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br> 
+                    However, K-Means and other clustering algorithms only work with numerical features. In this step, label column and categorical features are removed.
+                    The remaining features are then normalized using StandardScaler. The image below shows the data screenshot before and after removal and normalization.
+                    <div class="image">
+                        <img style="height: 550px;" src="assets/img/clustering/drop-label-data.png" alt="clustering-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Data before and after preprocessing.</p>
+
+                    The historam of all 13 features after normalization is shown below.
+
+                    <div class="image">
+                        <img style="height: 350px;" src="assets/img/clustering/features_hist.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Histogram of all features after normalization.</p>
+                    
+                    All the datasets and preprocessing code can be found in the links below:
+                    <div class="external-links" style="margin-top: 10px;">
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            Cleaned Dataset
+                        </a>
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/cleaned_data_nolabel.csv" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            Dropped Label Dataset
+                        </a>
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/normalized_data.csv" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            Normalized Dataset
+                        </a>
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/04_clustering.ipynb" target="_blank" class="item">
+                            <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                            Data Processing Code
                         </a>
                     </div>
                 </p>
-                <div class="image">
-                    <img style="height: 350px;" src="assets/img/clustering/features_hist.png" alt="pca-cleaned-data" class="grid-image" data-description="">
-                </div>
-                <p class="image-caption">Histogram of all features after normalization.</p>
-                
+                <p class="h2-content">
+                    <b>Principal Component Analysis: </b><br>
+                    To prepare data for the next stage, a PCA with n_components=3 is applied to the dataset.
+                    The dimenstionality is reduced from 13 to 3 and covers 55% of the variance/information of the data.
+                    The image below shows the PCA result.
+                    <div class="image">
+                        <img style="height: 280px;" src="assets/img/clustering/pca_3_clustering.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Dataset after applying PCA with 3 components and the corresponding bar chart of cumulative explained variance ratio.</p>
+                    
+                    <div class="image">
+                        <img style="height: 400px;" src="assets/img/clustering/pca_3d.gif" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">3D visualization of PCA-transformed data, with points colored by lithology types. 
+                        The distribution suggests the potential for clustering using unsupervised learning techniques.
+                    </p>
+                </p>
+
+<!-- 2. K-Means Clustering -->
                 <h3>2. K-Means Clustering</h3>
+                <p class="h2-content">
+                    The K-Means algorithm requires defining the number of clusters (k) beforehand, 
+                    but choosing the optimal k is a common challenge in clustering analysis. 
+                    Several methods, such as the Elbow method, Silhouette score, and Gap statistic, can help identify the best k value. <br><br>
+                    In this case, the <b>Silhouette</b> score analysis suggests that the top three <b>optimal k values are 3, 4, and 7. </b>
+                    Details of Silhouette analysis can be found in the code link at the end of this section.<br><br>
+
+                    The K-Means algorithm is then applied to the PCA 3-Components dataset with k=3,4, and 7.
+                    The images below show the clustering results with k=3,4, and 7. The centroids are marked with black crosses.
+                    The data points are colored in both cluster colors and lithology labels, which supports the clustering interpretation.
+                    Click on the image to open expanded view mode.
+                </p>
                 <div class="image-grid">
                     <!-- Importing images... -->
-                    <img src="assets/img/clustering/kmean_3.png" alt="01" class="grid-image" data-description="">
-                    <img src="assets/img/clustering/kmean_4.png" alt="01" class="grid-image" data-description="">
-                    <img src="assets/img/clustering/kmean_7.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_3.png" alt="kmean-3" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_4.png" alt="kmean-4" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_7.png" alt="kmean-7" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Visualization of K-Means Clustering (k=3,4,7). Click on the image to open expanded view mode.</p>
-                
-
+                <p class="image-caption">Scatter visualization of K-Means Clustering (k=3,4,7) using PC0 and PC1 axies. <br>
+                    The data points are colored by clusters (upper) and lithology labels (lower).</p>
+                <p class="h2-content">
+                    The figures above show that all three K-Means clustering results group most of the Sandstone data points into a single cluster. 
+                    However, some Sandstone values are also scattered across other clusters. With k=4 and k=7, the algorithm successfully identifies 
+                    Chalk (yellow) as a separate cluster. Overall, the clustering performance is not ideal, likely due to the original data points 
+                    not being well-separated in a spherical manner, which affects the effectiveness of the K-Means algorithm.
+                    <br>
+                    The code of Silhouette analysis and K-Means clustering can be found in the link below:
+                    <div class="external-links" style="margin-top: 10px;">
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/04_clustering.ipynb" target="_blank" class="item">
+                            <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                            Silhouette analysis and K-Means clustering
+                        </a>
+                    </div>
+                </p>
+<!-- 3. Hierarchical Clustering -->
                 <h3>3. Hierarchical Clustering</h3>
                 <div class="image">
                     <img style="height: 450px;" src="assets/img/clustering/dendrogram.png" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">Dendrogram</p>
 
+<!-- 4. Density-Based Clustering (DBSCAN) -->
                 <h3>4. Density-Based Clustering (DBSCAN)</h3>
                 <div class="image-grid">
                     <!-- Importing images... -->
-                    <img src="assets/img/clustering/dbscan_pc01.png" alt="01" class="grid-image" data-description="">
-                    <img src="assets/img/clustering/dbscan_pc02.png" alt="01" class="grid-image" data-description="">
-                    <img src="assets/img/clustering/dbscan_pc03.png" alt="01" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/dbscan_1.png" alt="dbscan_1" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/dbscan_2.png" alt="dbscan_2" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/dbscan_3.png" alt="dbscan_3" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">2D Visualization of DBSCAN's results on different principal components.</p>
 
@@ -127,9 +216,35 @@
                     <img style="height: 500px;" src="assets/img/clustering/dbscan_3d.gif" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">3D Visualization of the result of DBSCAN Clustering</p>
-            
-        </div>
+            </section>
 
+<!-- Deliverables -->
+        <section>
+            <h2>Deliverables</h2>
+            <p class="h2-content">
+                For your reference, all external links are provided below:
+            </p>
+            <div class="external-links">
+                <p>External Links:</p>
+                <a href="#" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                    Cleaned Data
+                </a>
+                <a href="#" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                    No Categorical and Label Data
+                </a>
+                <a href="#" target="_blank" class="item">
+                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                    Normalized Data
+                </a>
+                <a href="#" target="_blank" class="item">
+                    <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                    PCA Codes
+                </a>
+            </div>
+        </section>
+        </div>
         <!-- Image Expanded View -->
         <div class="overlay" id="overlay">
             <div>

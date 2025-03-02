@@ -30,42 +30,194 @@
             <h1 class="title">
                 Association Rule Mining (ARM)
             </h1>
-
+            <!-- Overview -->
+            <h2>Overview</h2>
             <p class="h2-content">
                 <b>Association Rule Mining (ARM)</b> is a fundamental data mining technique used to discover interesting relationships, 
                 patterns, and associations among items in large datasets. It is widely applied in market basket analysis, where it 
-                helps identify frequently co-occurring items in transactions.<br><br>
-
-                ARM is based on three key metrics: support, which measures how often an itemset appears in the 
-                dataset, and confidence, which indicates the likelihood of one item appearing given the presence of another, finally, lift, which
-                quantifies the strength of the association between two items by comparing their observed co-occurrence with their expected
-                co-occurrence if they were independent.<br><br>
-
-                The Apriori algorithm is a popular method for ARM, which uses a breadth-first search
-                strategy to find frequent itemsets by iteratively generating candidate itemsets and pruning those that do not meet the
-                minimum support threshold. The algorithm efficiently reduces the search space by leveraging the anti-monotonic property of
-                itemsets, which states that if an itemset is infrequent, all of its supersets must also be infrequent. This property allows
-                the algorithm to focus on promising candidates, making it computationally efficient for large datasets.<br>
+                helps identify frequently co-occurring items in transactions.
+                <ul>
+                    <li>
+                        <b>What is the Apriori algorithm?</b><br> 
+                        <b>The Apriori algorithm</b> is a popular method for ARM, which uses a breadth-first search
+                        strategy to find frequent itemsets by iteratively generating candidate itemsets and pruning those that do not meet the
+                        minimum support threshold. The algorithm efficiently reduces the search space by leveraging the anti-monotonic property of
+                        itemsets, which states that if an itemset is infrequent, all of its supersets must also be infrequent. This property allows
+                        the algorithm to focus on promising candidates, making it computationally efficient for large datasets.
+                    </li>
+                    
+                    <li><b>What are the rules?</b><br>
+                        Association rules in the Apriori algorithm define relationships between items in a dataset. 
+                        A rule is typically in the form "If X, then Y", meaning that when item X appears in a transaction, item Y is likely to appear as well. 
+                        <ul>
+                            <li>Support: measures how often an itemset appears in the dataset.</li>
+                            <li>Confidence: measures the likelihood of one item appearing given the presence of another, e.g: X given Y.</li>
+                            <li>Lift:  quantifies the strength of the association between two items by comparing their observed co-occurrence with 
+                                their expected co-occurrence if they were independent.</li>
+                        </ul>
+                    </li> 
+                    <div class="image">
+                        <img style="height: 250px; width: 400px" src="https://www.saedsayad.com/images/AR_1.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Functions of Rules
+                        (<a href="https://www.saedsayad.com/association_rules.htm" target="_blank">Source</a>)
+                    </p>
+                    
+                    <li>
+                        <b>How does it work?</b><br>
+                        The Apriori algorithm is a rule-based method for frequent itemset mining in large transactional datasets. 
+                        It works by iteratively identifying itemsets that appear frequently in 
+                        transactions using a minimum support threshold and then generating association rules from those itemsets. 
+                        The process involves pruning infrequent itemsets to improve efficiency and applying the Apriori property, 
+                        which states that a subset of a frequent itemset must also be frequent.
+                    </li>
+                    <div class="image">
+                        <img style="height: 300px; width: 450px" src="https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/R-Companion-Data-Mining_files/figure-html/unnamed-chunk-273-2.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Example of graph visualization for connections between items.
+                        (<a href="https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/association-analysis-basic-concepts-and-algorithms.html#static-visualizations" target="_blank">Source</a>)
+                    </p>
+                </ul>
             </p>
             </section>
-
+            <!-- Implementation -->
             <h2>Implementation</h2>
             <section style="margin-left: 33px;">
-                <h3>1. Data Preparation for ARM</h3>
+                <!-- 1. Data Preparation for ARM -->
+                <h3>1. Data Preparation</h3>
                 <p class="h2-content">
-                    After data preprocessing process, we have a dataset which has been removed null values and cleaned outliers.
-                    The dataset contains 17 features. The features are a mix of numerical and categorical variables.<br>
-                    <div class="external-links">
-                        <p>External Links:</p>
-                        <a href="https://drive.google.com/file/d/1uFnI8Sj83DiNCnLIhHiSHzSpFPpOgKEC/view?usp=sharing" target="_blank" class="item">
-                            <img src="assets/icons/table-solid.svg" alt="github" data-description="">
-                            Datasets
+                    To apply Association Rule Mining (ARM), the data must be converted into a transaction format. 
+                    Unlike traditional record-based data with fixed columns, transaction data consists of rows 
+                    where each row represents a unique transaction containing an unlimited number of items. 
+                    A Transaction ID is required to differentiate transactions.<br><br>
+
+                    In the original dataset, categorical columns like LITHOLOGY, BS, GROUP, and FORMATION already exist. 
+                    However, to better fit ARM, numerical features were transformed into categorical values through a discretization process. 
+                    For example, depth values were categorized into labels such as Shallow, Intermediate, Deep, and Ultra Deep based on predefined ranges. 
+                    Similarly, DTC, CALI, NPHI and RHOB were also converted into categorical groups. 
+                    Finally, column names were removed, and the data was structured into a basket format, where each row represents 
+                    a transaction containing a list of categorized items.<br><br>
+
+                    The comparison of data before and after the transformation is shown in figure below.
+                    <div class="image">
+                        <img style="height: 350px; width: 700px" 
+                        src="assets/img/arm/arm_data.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">The transaction dataset is prepared for Association Rule Mining.</p>
+
+                    The code for data preparation and the transaction dataset can be found in the external links.
+                    <div class="external-links" style="margin-top: 10px;">
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/arm/transaction_data.txt" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            Transaction Data
+                        </a>
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/04_2_arm_data.ipynb" target="_blank" class="item">
+                            <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                            ARM Data Preparation Code
+                        </a>
+                    </div>
+                    
+                </p>
+                <!-- 2. Code ARM -->
+                <h3>2. Code ARM</h3>
+                <p class="h2-content">
+                    The Apriori algorithm can be implemented in both Python, R languages. In this project, we used R language to implement the Apriori algorithm.
+                    The <b>arules</b> package in R provides a comprehensive framework for performing ARM tasks, including data preparation,
+                    rule generation, and evaluation. The package offers functions for loading transaction data,
+                    generating frequent itemsets, and extracting association rules based on user-defined support and confidence thresholds.
+                    <div class="image">
+                        <img style="height: 350px; width: 500px" 
+                        src="assets/img/arm/arm_r-code.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">ARM code in R.</p>
+                    </div>
+                    The code for Association Rule Mining can be found in the link below.
+                    <div class="external-links" style="margin-top: 10px;">
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/arm.r" target="_blank" class="item">
+                            <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                            ARM R Code
                         </a>
                     </div>
                 </p>
-            
-        </div>
 
+                <!-- 3. ARM Results -->
+                <h3>3. ARM Results</h3>
+                <p class="h2-content">
+                    <b>What thresholds did you use?</b> To find the best association rules, we set the support threshold to 0.35 and the confidence threshold to 0.25 and minlen is 2,
+                    which indicates that the rules only allow itemsets from 2 items, the occurence of the itemsets is 35% and above while the likelihood of the items given the presence of another is 25% and above.<br>
+                    <div class="image">
+                        <img style="height: 450px; width: 700px" 
+                        src="assets/img/arm/top10rules.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">The item frequency plot highlights the most frequently occurring items.</p>
+                    </div>
+
+                    <b>What are the top 15 rules for support?</b> <br>The top 15 rules are shown in the figure below.
+                    <div class="image">
+                        <img style="height: 245px; width: 700px" 
+                        src="assets/img/arm/Top15SupRules.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">Top 15 Support Rules.</p>
+                    </div>
+
+                    <b>What are the top 15 rules for confidence?</b> <br>The top 15 rules are shown in the figure below.
+                    <div class="image">
+                        <img style="height: 245px; width: 700px" 
+                        src="assets/img/arm/Top15ConfRules.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">Top 15 Confidence Rules.</p>
+                    </div>
+
+                    <b>What are the top 15 rules for lift?</b> <br>The top 15 rules are shown in the figure below.
+                    <div class="image">
+                        <img style="height: 245px; width: 700px" 
+                        src="assets/img/arm/Top15LiftRules.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">Top 15 Lift Rules.</p>
+                    </div>
+
+                    <b>Network visualization</b>
+                    <div class="image">
+                        <img style="height: 455px; width: 700px" 
+                        src="assets/img/arm/arm_graph.png" 
+                        alt="pca-cleaned-data" class="grid-image" data-description="">
+                        <p class="image-caption">The network visualization of rules illustrates the relationships and connections between items.</p>
+                    </div>
+                </p>
+
+            </section>
+
+<!-- Conclusion -->
+            <section>
+                <h2>Conclusion</h2>
+                What did you learn that pertains to your topic?
+            </section>
+
+<!-- Deliverables -->
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <p>External Links:</p>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/arm/transaction_data.txt" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                        Transaction Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/04_2_arm_data.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        ARM Data Preparation Python Code
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/arm.r" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        ARM R Code
+                    </a>
+                </div>
+            </section>
+        </div>
         <!-- Image Expanded View -->
         <div class="overlay" id="overlay">
             <div>

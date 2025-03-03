@@ -43,7 +43,7 @@
             </p>
 
             <section>
-                <h2>Methods: Compare and Contrast</h2>
+                <h2>Overview</h2>
                 <p class="h2-content">
                     <b>Partition-Based Clustering (K-Means):</b> K-Means is a widely used clustering algorithm that partitions data into 
                     k clusters by minimizing intra-cluster variance. K-Means works by randomly initializing k centroids, assigning data 
@@ -53,8 +53,13 @@
                         <li>The number of clusters (k) must be predefined, which can be difficult if the optimal k is unknown. </li>
                         <li>Despite being sensitive to outliers and initial centroids, K-Means is computationally efficient, 
                             making it suitable for large datasets like customer segmentation and image compression.</li>
-                            
                     </ul>
+                    <div class="image">
+                        <img style="height: 320px; width: 700px;" src="https://miro.medium.com/v2/resize:fit:561/0*mQCGBdYhzZ8YMZPv.png" alt="clustering-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">KMeans Clustering.
+                        (<a href="https://medium.com/analytics-vidhya/k-means-clustering-3ce2456db7f1" target="_blank">Source</a>)
+                    </p>
                 </p>
                 <p class="h2-content">
                     <b>Hierarchical Clustering:</b> Hierarchical clustering builds a hierarchy of nested clusters using either an agglomerative 
@@ -68,7 +73,12 @@
                         <li>It is computationally expensive, making it impractical for large datasets. </li>
                         <li>Its sensitivity to the choice of linkage method can affect cluster formation, sometimes leading to poor results when noise is present.</li>
                     </ul>
-
+                    <div class="image">
+                        <img style="height: 250px; width: 700px;" src="assets/img/clustering/hclust.png" alt="clustering-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Hierarchical Clustering.
+                        (<a href="https://www.researchgate.net/publication/342141592_A_Review_of_Super-Resolution_Single-Molecule_Localization_Microscopy_Cluster_Analysis_and_Quantification_Methods" target="_blank">Source</a>)
+                    </p>
                 </p>
                 <p class="h2-content">
                     <b>Density-Based Clustering (DBSCAN):</b> DBSCAN identifies clusters based on data density, making it particularly useful 
@@ -79,6 +89,12 @@
                         <li>It may struggle when cluster densities vary significantly, as a single ε and MinPts setting might not work well for all data.</li>
                         <li>DBSCAN is commonly used in anomaly detection, geographic clustering, and noise filtering in large datasets.</li>
                     </ul>
+                    <div class="image">
+                        <img style="height: 220px; width: 700px;" src="assets/img/clustering/dbscan_example.png" alt="clustering-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">DBSCAN Clustering.
+                        (<a href="https://www.kdnuggets.com/unveiling-hidden-patterns-an-introduction-to-hierarchical-clustering" target="_blank">Source</a>)
+                    </p>
                 </p>
                 <p class="h2-content">
                     <b>In short,</b> all three methods are unsupervised clustering techniques that work with unlabeled data and provide insights based on the data's structure. 
@@ -95,6 +111,50 @@
                         <li>Hierarchical Clustering depends on the chosen linkage method and can be slow with large datasets.</li>
                         <li>DBSCAN relies on two important parameters (epsilon and MinPts) and might miss some clusters if these parameters are not set correctly.</li>
                     </ul>
+                </p>
+                
+                <p class="h2-content">
+                    <b>Distance Measures</b><br>
+                    In hierarchical clustering, a distance measure quantifies the similarity or dissimilarity between data points, directly shaping cluster formation. 
+                    Since the method builds a dendrogram by iteratively merging or splitting clusters, the choice of distance metric influences which points are grouped together. 
+                    
+                    <div class="image">
+                        <img style="height: 350px; width: 700px;" src="assets/img/clustering/distance.png" alt="clustering-data" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Six types of distance measures.
+                        (<a href="https://www.maartengrootendorst.com/blog/distances/" target="_blank">Source</a>)
+                    </p>
+
+                    Common measures like Euclidean, Manhattan, and Cosine similarity suit different data types. Selecting an appropriate metric ensures meaningful clustering 
+                    that reflects the data’s inherent structure.
+                    <ul>
+                        <li>Manhattan Distance (or L1 norm) is calculated as:
+                                \[
+                                d_{Manhattan}(\mathbf{x}, \mathbf{y}) = \sum_{i=1}^{n} |x_i - y_i|
+                                \]
+                        </li>
+                        <li>
+                            Euclidean Distance (or L2 norm): between two points \( \mathbf{x} = (x_1, x_2, \dots, x_n) \) and 
+                                \( \mathbf{y} = (y_1, y_2, \dots, y_n) \) is given by:
+                                \[
+                                d_{Euclidean}(\mathbf{x}, \mathbf{y}) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+                                \]
+                        </li>
+                        <li>Cosine Similarity between two vectors is given by:
+                                \[
+                                \cos(\theta) = \frac{\sum_{i=1}^{n} x_i y_i}{\sqrt{\sum_{i=1}^{n} x_i^2} \cdot \sqrt{\sum_{i=1}^{n} y_i^2}}
+                                \]
+                        </li>
+                    </ul>
+                </p>
+
+                <p class="h2-content">
+                    <b>How Clustering is used in this project?</b><br>
+                    In this project, Kmeans, Hierarchical Clustering, and DBSCAN are applied to unsupervisedly cluster the dataset. 
+                    The label column is removed, and the remaining features are normalized.
+                    The K-Means algorithm is used to partition the data into clusters, while Hierarchical Clustering provides a dendrogram
+                    to visualize the relationships between data points. DBSCAN is employed to identify clusters of varying shapes and densities.
+                    Finally, the results of these clustering techniques are compared and analyzed to gain insights into the dataset's structure.
                 </p>
             </section>
 
@@ -156,6 +216,13 @@
                     <p class="image-caption">3D visualization of PCA-transformed data, with points colored by lithology types. 
                         The distribution suggests the potential for clustering using unsupervised learning techniques.
                     </p>
+                    The PCA data (n_components=3) can be found in the links below:
+                    <div class="external-links" style="margin-top: 10px;">
+                        <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/pca_data.csv" target="_blank" class="item">
+                            <img src="assets/icons/table-solid.svg" alt="dataset" data-description="">
+                            PCA (3PCs) Dataset
+                        </a>
+                    </div>
                 </p>
 
 <!-- 2. K-Means Clustering -->
@@ -195,14 +262,36 @@
                     </div>
                 </p>
 <!-- 3. Hierarchical Clustering -->
-                <h3>3. Hierarchical Clustering</h3>
+                <h3>3. Hierarchical Clustering & Cosine Similarity</h3>
+                To implement Hierarchical Clustering, the distance measure is set to calculate the distance between data points. 
+                Euclidean distance measures the absolute difference between points, forming clusters based on physical proximity, making it suitable 
+                for compact, spherical clusters. 
+                In contrast, cosine similarity captures the angle between vectors, grouping items with similar patterns regardless of magnitude, 
+                making it ideal for text and high-dimensional sparse data. Euclidean is sensitive to scale, often paired with Ward’s method, 
+                while cosine similarity is robust to scale differences and works well with average or complete linkage.<br>
+                The default distance measure is Euclidean distance, but in this case, Cosine Similarity is also used to compare the clustering results.
                 <div class="image">
-                    <img style="height: 450px;" src="assets/img/clustering/dendrogram.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    <img style="height: 300px;" src="assets/img/clustering/hclust_dendrogram.png" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Dendrogram</p>
+                <p class="image-caption">Dendrogram for Hierarchical Clustering with Euclidean and Cosine Similarity</p>
+
+                The dendrogram above shows the clustering results of Hierarchical Clustering with Euclidean and Cosine Similarity distance measures.
+                The y-axis represents the distance between clusters, while the x-axis shows the data points. At glance, the clustering with cosine similarity
+                seems to be more effective than the one with Euclidean distance. The distance are significant, and the clusters are well-separated.
+
+                <div class="image">
+                    <img style="height: 350px;" src="assets/img/clustering/hclust_comparison.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Hierarchical Clustering Results compared to the labels</p>
+
+                The image above shows the clustering results of Hierarchical Clustering with Cosine Similarity distance measure. The result points out the same number of clusters
+                as the label values. However, it can't separate the clusters well. The hierarchical clustering captures the general trend of the data but fails to identify the specific clusters.
+                For example, cluster 5 contains 2 labels (Chalk and Limestone), cluster 1 covers a scatter of data points. While sandstone is discretized into 3 clusters.
 
 <!-- 4. Density-Based Clustering (DBSCAN) -->
                 <h3>4. Density-Based Clustering (DBSCAN)</h3>
+                To implement DBSCAN, the hyperparameters epsilon and MinPts are experimented with different values to find the optimal. In this section, 3 sets of parameters are used, including
+                epsilon=0.3, MinPts=30; epsilon=0.4, MinPts=50; and epsilon=0.2, MinPts=7. The results are shown in the images below.
                 <div class="image-grid">
                     <!-- Importing images... -->
                     <img src="assets/img/clustering/dbscan_1.png" alt="dbscan_1" class="grid-image" data-description="">
@@ -210,40 +299,56 @@
                     <img src="assets/img/clustering/dbscan_3.png" alt="dbscan_3" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">2D Visualization of DBSCAN's results on different principal components.</p>
-
-
+                All three models partially captured the largest label (Sandstone) along with Limestone and SandstoneShale. 
+                However, these labels do not form spherical shapes, making them difficult to cluster using the K-Means algorithm. 
+                In contrast, DBSCAN, which can identify clusters of varying shapes and densities, proved more effective for this dataset. 
+                However, smaller and more scattered labels were not well captured, posing challenges for all unsupervised clustering algorithms.
                 <div class="image">
                     <img style="height: 500px;" src="assets/img/clustering/dbscan_3d.gif" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">3D Visualization of the result of DBSCAN Clustering</p>
+                The 3D visualization of DBSCAN clustering shows that the algorithm can identify clusters of varying shapes and densities.
             </section>
-
+<!-- Conclusion: Related to the topic(non-technical). -->
+            <section>
+                <h2>Conclusion</h2>
+                <p class="h2-content">
+                    Kmean results followed the spherical distance, which only captured the main part of Sandstone and had poor performance on other labels.
+                    Hierarchical Clustering with Cosine Similarity distance doesn't show a better performance than Kmeans, but it can capture the general trend of the data.
+                    DBSCAN is the best clustering algorithm for this dataset. It can identify clusters of varying shapes and densities.
+                    In conclusion, all applied three clustering algorithms are unsupervised learning techniques that work with unlabeled data and provide insights based on the data's structure.
+                    However, it is still limited by the original data points not being well-separated and raise the challenge to all clustering algorithms.
+                </p>
+            </section>
 <!-- Deliverables -->
-        <section>
-            <h2>Deliverables</h2>
-            <p class="h2-content">
-                For your reference, all external links are provided below:
-            </p>
-            <div class="external-links">
-                <p>External Links:</p>
-                <a href="#" target="_blank" class="item">
-                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                    Cleaned Data
-                </a>
-                <a href="#" target="_blank" class="item">
-                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                    No Categorical and Label Data
-                </a>
-                <a href="#" target="_blank" class="item">
-                    <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                    Normalized Data
-                </a>
-                <a href="#" target="_blank" class="item">
-                    <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
-                    PCA Codes
-                </a>
-            </div>
-        </section>
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/cleaned_data_nolabel.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Dropped Label Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/normalized_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Normalized Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/clustering/pca_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        PCA (3PCs) Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/04_clustering.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Clustering Code
+                    </a>
+                </div>
+            </section>
         </div>
         <!-- Image Expanded View -->
         <div class="overlay" id="overlay">

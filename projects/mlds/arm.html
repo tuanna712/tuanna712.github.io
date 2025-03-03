@@ -78,7 +78,14 @@
                     <p class="image-caption">Example of graph visualization for connections between items.
                         (<a href="https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/association-analysis-basic-concepts-and-algorithms.html#static-visualizations" target="_blank">Source</a>)
                     </p>
+
                 </ul>
+                <p class="h2-content">
+                    <b>How ARM is used in this project?</b><br>
+                    In this project, we applied ARM to the dataset to identify patterns and relationships of lithology types with other features.
+                    For example, the ARM can figure out whether the Sandstone type is more likely to occur with a specific depth, porosity ranges or any specific formation.
+                    The set of rules generated from the ARM can provide valuable insights which links the properties of each feature with the lithology types.
+                </p>
             </p>
             </section>
             <!-- Implementation -->
@@ -99,9 +106,11 @@
                     Finally, column names were removed, and the data was structured into a basket format, where each row represents 
                     a transaction containing a list of categorized items.<br><br>
 
+                    The label column is dropped to focus on the association rules between the features.<br><br>
+
                     The comparison of data before and after the transformation is shown in figure below.
                     <div class="image">
-                        <img style="height: 350px; width: 700px" 
+                        <img style="height: 300px; width: 700px" 
                         src="assets/img/arm/arm_data.png" 
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                     </div>
@@ -153,7 +162,11 @@
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                         <p class="image-caption">The item frequency plot highlights the most frequently occurring items.</p>
                     </div>
-
+                    The figure shows the top 10 items that appear most often in transactions, with the frequency normalized relative to the total number of transactions. 
+                    It discloses thar Low Porosity is the most common item with nearly 80% of transactions, followed by MidVelocity and DeepDepth.<br>
+                    In other words, we can say that 80% of the Porosity is in low interval, 70% of the velocity is in mid interval and 65% of the data is gauged in deep borehole.
+                    <br><br>
+                    
                     <b>What are the top 15 rules for support?</b> <br>The top 15 rules are shown in the figure below.
                     <div class="image">
                         <img style="height: 245px; width: 700px" 
@@ -161,6 +174,13 @@
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                         <p class="image-caption">Top 15 Support Rules.</p>
                     </div>
+                    The "Top 15 Rules of Support" from the figure above display the most frequently co-occurring items in the transaction data. 
+                    The highest support rule, "BS85" and "LowPorosity" with a support of 0.58, indicates that borehole size of 8.5 inches and 
+                    low porosity are commonly found together in the dataset. The third most frequent rule, "MidRHOB" and "MidVelocity" with 56%
+                     support, suggests a relationship where rock density is directly linked to the velocity of wave propagation in the rock. 
+                     These rules can help identify physical relationships, though some associations may require further investigation to fully 
+                     understand the connections between features.<br><br>
+
 
                     <b>What are the top 15 rules for confidence?</b> <br>The top 15 rules are shown in the figure below.
                     <div class="image">
@@ -169,6 +189,13 @@
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                         <p class="image-caption">Top 15 Confidence Rules.</p>
                     </div>
+                    The "Top 15 Rules of Confidence" in the figure above highlight the strongest associations between items in the transaction data. 
+                    The highest confidence rule, "{MidVelocity, VeryNarrowCaliper} → BS85" with a confidence of 1, means that whenever the velocity 
+                    is in the mid-range and the caliper is very narrow, the borehole size is always 8.5 inches. Similarly, the second rule indicates
+                     that when the velocity is mid-range, the caliper is very narrow, and the porosity is low, the borehole size is certainly 8.5 inches. 
+                     These relationships reflect physical properties and drilling conditions, such as caliper size, which measures borehole diameter 
+                     and impacts drilling performance. Other rules can be interpreted in a similar manner.<br><br>
+
 
                     <b>What are the top 15 rules for lift?</b> <br>The top 15 rules are shown in the figure below.
                     <div class="image">
@@ -177,14 +204,26 @@
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                         <p class="image-caption">Top 15 Lift Rules.</p>
                     </div>
+                    The "Top 15 Rules of Lift" in the figure above highlight the strongest mutual associations between items in the transaction data.
+                    Instead of one way association like confidence, the lift measures the strength of the association between two items.
+                    The results are sorted descendingly, therefore all 15 rules are larger than 1, which indicates that the items are positively correlated.
+                    The highest lift rule, "{BS85, LowPorosity, MidVelocity} → VeryNarrowCaliper" with a lift of 1.772, means that this is strong set of items
+                    where the borehole size of 8.5 inches, low porosity, and mid velocity are likely to occur together with a very narrow caliper. 
+                    Similarly, all other confidence can be interpreted.<br><br>
 
-                    <b>Network visualization</b>
+                    <b>Network visualization</b><br>
+                    The graph network visualization in ARM represents association rules as nodes (items) and edges (connections between items in a rule). 
+                    The thickness of edges indicates the strength of relationships, with thicker edges representing stronger associations. 
+                    Node size reflects item frequency, where larger nodes appear more often in transactions. Colors often indicate rule strength, 
+                    light red for weaker rules, red for moderate associations, and green for strong, high-confidence relationships. 
+                    This visualization helps identify key item relationships and uncover meaningful patterns in the dataset.
                     <div class="image">
                         <img style="height: 455px; width: 700px" 
                         src="assets/img/arm/arm_graph.png" 
                         alt="pca-cleaned-data" class="grid-image" data-description="">
                         <p class="image-caption">The network visualization of rules illustrates the relationships and connections between items.</p>
                     </div>
+                    From the graph, we can see that the most common items are BS85, DeepDepth, LowPorosity, MidRHOB, MidVelocity, NarrowCaliper and VeryNarrowCaliper.
                 </p>
 
             </section>
@@ -192,7 +231,12 @@
 <!-- Conclusion -->
             <section>
                 <h2>Conclusion</h2>
-                What did you learn that pertains to your topic?
+                By applying the Apriori algorithm, several association rules were identified, uncovering meaningful relationships between features. 
+                The results indicate that most gauged porosity falls within the low range, velocity tends to be in the mid-range, and a borehole 
+                size of 8.5 inches is commonly associated with narrow and very narrow calipers. Additionally, the majority of wells are deep, and 
+                rock density measurements typically fall within the mid-range.<br>
+                There is a strong correlation between the borehole size and the caliper size, as well as between the velocity and rock density.
+                The top lift rules indicate that the combination of borehole size 8.5, low porosity, and medium velocity is likely to occur with a very narrow caliper.
             </section>
 
 <!-- Deliverables -->

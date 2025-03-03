@@ -40,7 +40,7 @@
             </p>
 
             <section>
-                <h2>Definition</h2>
+                <h2>Overview</h2>
                 <p class="h2-content">
                     <b>Principal Component Analysis (PCA): </b>is a statistical technique used for dimensionality reduction by transforming a 
                     high-dimensional dataset into a lower-dimensional space while preserving as much variance as possible. It achieves this by 
@@ -53,12 +53,38 @@
                         <li>Improving Model Performance: Reducing feature redundancy can help some machine learning models perform better.</li>
                     </ul>   
                 </p>
+                <div class="image">
+                    <img style="height: 300px; width: 650px;" src="assets/img/pca/pca_theo.png" alt="pca-theoretical" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The original data is transformed into a new coordinate system defined by the principal components.
+                    (<a href="https://community.alteryx.com/t5/Data-Science/Tidying-up-with-PCA-An-Introduction-to-Principal-Components/ba-p/382557" target="_blank">Source</a>)
+                </p>
+
                 <p class="h2-content">
-                    <b>Optimization:</b> The goal of PCA is to identify the principal components that capture the most variance in the data 
-                    while minimizing the loss of information. This is achieved through an optimization problem where the objective is to 
-                    maximize the variance along the new axes (principal components). In mathematical terms, PCA can be viewed as an eigenvalue 
-                    decomposition problem, where the eigenvectors (principal components) and eigenvalues (variance explained) are derived from 
-                    the covariance matrix of the dataset.
+                    <b>How PCA works:</b> 
+                    PCA transforms a dataset by creating weighted linear combinations of the original variables. 
+                    These new variables (principal components) are designed to capture the maximum variance in 
+                    the data while reducing redundancy by eliminating correlations.
+                    PCA computes the covariance matrix, and derives eigenvectors and eigenvalues, which define the new dimensions.
+                    </p>
+                    <div class="image">
+                        <img style="height: 300px; width: 850px;" src="assets/img/pca/pca_eigenvv.png" alt="pca-theoretical" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Eigenvectors and Eigenvalues.
+                        (<a href="https://community.alteryx.com/t5/Data-Science/Tidying-up-with-PCA-An-Introduction-to-Principal-Components/ba-p/382557" target="_blank">Source</a>)
+                    </p>
+                    Each principal component captures a portion of the total variance in the dataset, 
+                    with the first component explaining the highest variance, followed by subsequent components with decreasing variance contributions. 
+                    The <b>explained variance ratio</b> quantifies how much information each principal component preserves, 
+                    helping to determine the optimal number of components needed for dimensionality reduction. <br>
+                    A cumulative explained variance plot is often used to visualize how many components are required 
+                    to retain a significant portion of the original data.
+                </p>
+                <div class="image">
+                    <img style="height: 250px; width: 500px;" src="assets/img/pca/cum-explained-variance-plot.png" alt="pca-theoretical" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">An example of the cumulative explained variance plot under PCA with on LRC with number of components equal to d = 768.
+                    (<a href="https://www.researchgate.net/publication/343786451" target="_blank">Source</a>)
                 </p>
                 <p class="h2-content">
                     <b>Mathematical Procedure:</b> The PCA algorithm involves several steps:
@@ -70,6 +96,18 @@
                             largest eigenvalues) and form the reduced matrix \( U \).</li>
                         <li>Projection: Project the data into the reduced space using the selected eigenvectors.</li>
                     </ol>
+                </p>
+                <p class="h2-content">
+                    <b>How PCA is used in this project?</b> This project's dataset consists of 17 features, including both numerical and categorical variables. 
+                    From a physical perspective, some features capture similar properties of natural objects, potentially leading to redundancy. 
+                    By applying PCA, the dataset is reduced while preserving a significant amount of information.<br><br>
+
+                    The PCA implementation conducts to find top 2 and 3 principal components, then evaluate how much information can be preserved in the reduced dataset.
+                    Another implementation is to find the number of principal components that can cover 95% of the variance in the dataset.<br>
+                    After that, the visualization of the PCA results is performed in 2D and 3D spaces, which potentally reveals the insights of dataset.
+                    The PCA results also are considered to use as input of unsupervised learning algorithms.<br><br>
+
+                    The PCA implementation in this project is done using Python with the <b>Scikit-learn</b> library.
                 </p>
             </section>
 
@@ -90,8 +128,8 @@
                 </p>
                 <div class="image">
                     <img style="height: 350px;" src="assets/img/pca/pca_cleaned_data.png" alt="pca-cleaned-data" class="grid-image" data-description="">
+                    <p class="image-caption">Cleaned data contains both numerical and categorical features.</p>
                 </div>
-                <p class="image-caption">Cleaned data contains both numerical and categorical features.</p>
 <!-- 2. Data Preparation for PCA -->
                 <h3>2. Data Preparation for PCA</h3>
                 <p class="h2-content">
@@ -105,9 +143,9 @@
                 </p>
                 <div class="image">
                     <img style="height: 210px;" src="assets/img/pca/pca_numerical_data.png" alt="pca-numerical-data" class="grid-image" data-description="">
+                    <p class="image-caption">Data after removing categorical and label columns.<br> The categorical features such as GROUP, FORMATION, BS, 
+                        and Lithology have been removed. The dataset remains 13 features.</p>
                 </div>
-                <p class="image-caption">Data after removing categorical and label columns. The categorical features such as GROUP, FORMATION, BS, 
-                    and Lithology have been removed. It remains 13 features.</p>
                 <p class="h2-content">
                     <b>Normalization is done using the built-in 
                     <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank">
@@ -132,6 +170,18 @@
                     <img style="height: 375px;" src="assets/img/pca/pca_normalized_data.png" alt="pca-normalized-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">Data before (categorical features removed) and after (prepared) normalization using StandardScaler.</p>
+                
+                <p class="h2-content">
+                    <b>Data after PCA Transformation</b><br>
+                    The detailed code implementation for PCA Transformation is provided in the next sections, <b>Implementation</b>.  
+                    In summary, PCA transforms the dataset into a new coordinate system defined by the principal components.  
+                    The transformed PCA (n_components=3) output is shown below.
+                </p>
+                <div class="image">
+                    <img style="height: 200px; width: 300px;" src="assets/img/pca/pca_transformed_data.png" alt="pca-trans-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The PCA transformation output with n_components=3, where PC0 captures the largest variance, followed by PC1 and PC2.</p>
+
                 <div class="external-links" style="margin-top: 10px;">
                     <p>External Links:</p>
                     <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/pca/cleaned_data.csv" target="_blank" class="item">
@@ -149,7 +199,7 @@
                 </div>
 
 <!-- 3. PCA Implementation n=2 -->
-                <h3>3. PCA Implementation <em>(n_components=2)</em></h3>
+                <h3>3. PCA Implementation <em>(n_components=2) & Results</em></h3>
                 <p class="h2-content">
                     PCA analyzes the variance in the data to identify the directions (principal components) that capture the most variation. 
                     The transformation is achieved by projecting the data onto these principal components. 
@@ -193,6 +243,15 @@
                 </div>
                 <p class="image-caption">2D scatter plot of the top two Principal Components.</p>
 
+                <p class="h2-content">
+                    <b>Summary: </b>The PCA with two principal components points out that the first two components account for 45% of the variance,
+                    which is a significant amount of information. The two principal components correspond to DTC and DRHO.
+                </p>
+                <div class="image">
+                    <img style="height: 165px; width: 700px;" src="assets/img/pca/pca2c_map.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The two principal components results correspond to DTC and DRHO.</p>
+
                 <div class="external-links" style="margin-top: 10px;">
                     <p>External Links:</p>
                     <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
@@ -201,7 +260,7 @@
                     </a>
                 </div>
 <!-- 4. PCA Implementation n= 3 -->
-                <h3>4. PCA Implementation <em>(n_components=3)</em></h3>
+                <h3>4. PCA Implementation <em>(n_components=3) & Results</em></h3>
                 <p class="h2-content">
                     By setting n_components=3, the PCA algorithm reduces the dataset to three principal components.
                     This allows for a more comprehensive representation of the data in a 3D space, enabling us to visualize
@@ -234,6 +293,16 @@
                 <p class="image-caption">3D visualization of the top three principal components. <br>
                     It colors by the lithology labels and reveals the distribution of different lithology types.
                 </p> 
+
+                <p class="h2-content">
+                    <b>Summary: </b>The PCA with three principal components points out that the first three components account for 55% of the variance,
+                    which is a significant amount of information. The three principal components correspond to DTC, DRHO and GR.
+                </p>
+                <div class="image">
+                    <img style="height: 185px; width: 700px;" src="assets/img/pca/pca3c_map.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The two principal components results correspond to DTC, DRHO and GR.</p>
+
                 <div class="external-links" style="margin-top: 10px;">
                     <p>External Links:</p>
                     <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/03_pca.ipynb" target="_blank" class="item">
@@ -243,7 +312,7 @@
                 </div>
 
 <!-- 5. PCA Implementation 95% -->
-                <h3>5. PCA Implementation <em>(covers 95% the variance of the data)</em></h3>
+                <h3>5. PCA Implementation <em>(covers 95% the variance of the data) & Results</em></h3>
                 <p class="h2-content">
                     To determine the optimal number of principal components that capture 95% of the variance, 
                     a PCA model is applied to the dataset, and the explained variance ratio is computed. 
@@ -285,9 +354,18 @@
                     variation along the first principal component.
                 </p>
                 <div class="image">
-                    <img style="height: 175px; width: 650px;" src="assets/img/pca/top3_evalues.png" alt="top-eigen-values" class="grid-image" data-description="">
+                    <img style="height: 175px; width: 700px;" src="assets/img/pca/top3_evalues.png" alt="top-eigen-values" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">Top three eigenvalues from coding section.</p>
+
+                <p class="h2-content">
+                    <b>Summary: </b>The PCA reveals that 95% of the information is covered by 10 features, the last four features only bring around 4% of the variance.
+                    Top ten principal components correspond features are shown in the below image.
+                </p>
+                <div class="image">
+                    <img style="height: 280px; width: 700px;" src="assets/img/pca/pca13c_map.png" alt="pca-normalized-data" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The two principal components results correspond to DTC, DRHO and GR.</p>
 
                 <div class="external-links" style="margin-top: 10px;">
                     <p>External Links:</p>
@@ -302,13 +380,21 @@
             <section>
                 <h2>Conclusion</h2>
                 <p class="h2-content">
-                    In conclusion, Principal Component Analysis (PCA) is an effective technique for dimensionality reduction. 
+                    
                     By applying PCA in this project, it successfully reduced the dataset to two and three principal components, 
                     retaining a significant portion of the original information (45% with the first two principal components and 
-                    56% with three components). Furthermore, 95% of the variance is captured by the first 10 components.<br><br>
+                    55% with three components). Furthermore, 95% of the variance is captured by the first 10 components.<br><br>
+
+                    The first principal component, which is the most important one, accounts for 34% of the total variance, 
+                    corresponding to the transformation of the DTC feature. 
+                    The last four principal components together contribute only about 4% of the variance.<br><br>
 
                     The PCA results also enable visualization of the data in 2D and 3D spaces, revealing clusters corresponding 
-                    to different lithology types. This provides valuable insights for the subsequent clustering stage.
+                    to different lithology types. This provides valuable insights for the subsequent clustering stage.<br><br>
+
+                    In conclusion, Principal Component Analysis (PCA) is an effective technique for dimensionality reduction,
+                    when allow simplifying the original dataset to 2 and 3 dimensions while preserving 45% and 55% of the information, respectively.
+                    The 95% of the data can be represented by 10 principal components, which is a significant reduction from the original 13 features.
                 </p>
             </section>
 

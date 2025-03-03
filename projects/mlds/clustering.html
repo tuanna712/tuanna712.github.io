@@ -228,28 +228,34 @@
 <!-- 2. K-Means Clustering -->
                 <h3>2. K-Means Clustering</h3>
                 <p class="h2-content">
-                    The K-Means algorithm requires defining the number of clusters (k) beforehand, 
+                    The K-Means algorithm requires defining the number of clusters (\(k\)) beforehand, 
                     but choosing the optimal k is a common challenge in clustering analysis. 
-                    Several methods, such as the Elbow method, Silhouette score, and Gap statistic, can help identify the best k value. <br><br>
-                    In this case, the <b>Silhouette</b> score analysis suggests that the top three <b>optimal k values are 3, 4, and 7. </b>
+                    Several methods, such as the Elbow method, Silhouette score, and Gap statistic, can help identify the best k value. 
+
+                    <div class="image">
+                        <img style="height: 200px; width: 600px;" src="assets/img/clustering/silhouette.png" alt="silhouette" class="grid-image" data-description="">
+                    </div>
+                    <p class="image-caption">Silhouette Analysis on input value to find out top 3 optinal k values.</p>
+
+                    In this case, the <b>Silhouette</b> score analysis suggests that the top three <b>optimal k values are  \(4, 3\) and \(7\). </b>
                     Details of Silhouette analysis can be found in the code link at the end of this section.<br><br>
 
-                    The K-Means algorithm is then applied to the PCA 3-Components dataset with k=3,4, and 7.
-                    The images below show the clustering results with k=3,4, and 7. The centroids are marked with black crosses.
+                    The K-Means algorithm is then applied to the PCA 3-Components dataset with \(k = 4, 3\) and \(7\).
+                    The images below show the clustering results with \(k = 4, 3\) and \(7\). The centroids are marked with black crosses.
                     The data points are colored in both cluster colors and lithology labels, which supports the clustering interpretation.
                     Click on the image to open expanded view mode.
                 </p>
                 <div class="image-grid">
                     <!-- Importing images... -->
-                    <img src="assets/img/clustering/kmean_3.png" alt="kmean-3" class="grid-image" data-description="">
                     <img src="assets/img/clustering/kmean_4.png" alt="kmean-4" class="grid-image" data-description="">
+                    <img src="assets/img/clustering/kmean_3.png" alt="kmean-3" class="grid-image" data-description="">
                     <img src="assets/img/clustering/kmean_7.png" alt="kmean-7" class="grid-image" data-description="">
                 </div>
-                <p class="image-caption">Scatter visualization of K-Means Clustering (k=3,4,7) using PC0 and PC1 axies. <br>
+                <p class="image-caption">Scatter visualization of K-Means Clustering (\(k=4, 3, 7\)) using PC0 and PC1 axies. <br>
                     The data points are colored by clusters (upper) and lithology labels (lower).</p>
                 <p class="h2-content">
                     The figures above show that all three K-Means clustering results group most of the Sandstone data points into a single cluster. 
-                    However, some Sandstone values are also scattered across other clusters. With k=4 and k=7, the algorithm successfully identifies 
+                    However, some Sandstone values are also scattered across other clusters. With \(k=4\) and \(k=7\), the algorithm successfully identifies 
                     Chalk (yellow) as a separate cluster. Overall, the clustering performance is not ideal, likely due to the original data points 
                     not being well-separated in a spherical manner, which affects the effectiveness of the K-Means algorithm.
                     <br>
@@ -286,12 +292,13 @@
 
                 The image above shows the clustering results of Hierarchical Clustering with Cosine Similarity distance measure. The result points out the same number of clusters
                 as the label values. However, it can't separate the clusters well. The hierarchical clustering captures the general trend of the data but fails to identify the specific clusters.
-                For example, cluster 5 contains 2 labels (Chalk and Limestone), cluster 1 covers a scatter of data points. While sandstone is discretized into 3 clusters.
+                For example, cluster 5 contains 2 labels (Chalk and Limestone), cluster 1 covers a scatter of data points. While sandstone is discretized into 3 clusters.<br><br>
+                The code for this part can be found in the Deriverables section.
 
 <!-- 4. Density-Based Clustering (DBSCAN) -->
                 <h3>4. Density-Based Clustering (DBSCAN)</h3>
                 To implement DBSCAN, the hyperparameters epsilon and MinPts are experimented with different values to find the optimal. In this section, 3 sets of parameters are used, including
-                epsilon=0.3, MinPts=30; epsilon=0.4, MinPts=50; and epsilon=0.2, MinPts=7. The results are shown in the images below.
+                {epsilon=0.3, MinPts=30}, {epsilon=0.4, MinPts=50} and {epsilon=0.2, MinPts=7}. The results are shown in the images below.
                 <div class="image-grid">
                     <!-- Importing images... -->
                     <img src="assets/img/clustering/dbscan_1.png" alt="dbscan_1" class="grid-image" data-description="">
@@ -307,15 +314,16 @@
                     <img style="height: 500px;" src="assets/img/clustering/dbscan_3d.gif" alt="pca-cleaned-data" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">3D Visualization of the result of DBSCAN Clustering</p>
-                The 3D visualization of DBSCAN clustering shows that the algorithm can identify clusters of varying shapes and densities.
+                The 3D visualization of DBSCAN clustering shows that the algorithm can identify clusters of varying shapes and densities.<br><br>
+                The code for this part can be found in the Deriverables section.
             </section>
 <!-- Conclusion: Related to the topic(non-technical). -->
             <section>
                 <h2>Conclusion</h2>
                 <p class="h2-content">
-                    Kmean results followed the spherical distance, which only captured the main part of Sandstone and had poor performance on other labels.
-                    Hierarchical Clustering with Cosine Similarity distance doesn't show a better performance than Kmeans, but it can capture the general trend of the data.
-                    DBSCAN is the best clustering algorithm for this dataset. It can identify clusters of varying shapes and densities.
+                    Kmean results followed the spherical distance, which only captured the main part of <b>Sandstone</b> and had poor performance on other labels.
+                    Hierarchical Clustering with Cosine Similarity distance doesn't show a better performance than Kmeans, but it can capture the general trend of the data (<b>Sandstone, Chalk and Limestone</b>).
+                    DBSCAN is the best clustering algorithm for this dataset. It can identify clusters of varying shapes and densities include some lithology labels (<b>Sandstone along with Limestone and SandstoneShale</b>).
                     In conclusion, all applied three clustering algorithms are unsupervised learning techniques that work with unlabeled data and provide insights based on the data's structure.
                     However, it is still limited by the original data points not being well-separated and raise the challenge to all clustering algorithms.
                 </p>

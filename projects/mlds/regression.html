@@ -1,61 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regression - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Regression</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Regression
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+
+            <h3>Linear Regression</h3>
+            <p class="h2-content">
+                <b>Linear Regression</b> is a statistical method used to model the relationship between a dependent variable 
+                and one or more independent variables. It assumes a straight-line relationship and is expressed as:
+            </p>
+            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                \( 
+                    \begin{align*}
+                    Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n + \epsilon
+                    \end{align*}
+                \)
+            </p>
+            <p class="h2-content">
+                Here, \(Y\) is the dependent variable, \(X\) are the independent variables, 
+                \(\beta\) are the coefficients, and \(\epsilon\) is the error term. 
+                Linear regression is commonly used for <b>predicting continuous values</b>,
+                 such as house prices or sales forecasting.
+            </p>
+
+            <div class="image">
+                <img style="height: 350px; " src="assets/img/regression/logistic_example.png" alt="Logistic Regression" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">Example of Logistic Regression.
+                (<a href="https://doi.org/10.1371/journal.pone.0290762" target="_blank">Source</a>)
+            </p>
+
+            <h3>Logistic Regression</h3>
+            <p class="h2-content">
+                <b>Logistic Regression</b> is used for classification problems where the output is categorical (e.g., 0 or 1, True or False).
+                Instead of fitting a straight line, it uses the <b>Sigmoid function</b> to output probabilities between 0 and 1:
+            </p>
+            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                \(
+                    P(Y=1 | X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n)}}
+                \)
+            </p>
+            <p class="h2-content">
+                This allows logistic regression to separate data into different classes based on probability thresholds.
+                It is widely used in spam detection, medical diagnoses, and customer churn prediction.
+            </p>
+
+            <h3>Similarities and Differences</h3>
+            <p class="h2-content">
+                <b>Similarities:</b> Both linear and logistic regression analyze relationships between independent and dependent variables 
+                and use coefficients (<code>β</code>) to determine their impact.
+            </p>
+            <p class="h2-content">
+                <b>Differences:</b> 
+                <ul>
+                    <li>Linear regression predicts continuous values, while logistic regression predicts probabilities for classification.</li>
+                    <li>Linear regression fits a straight line, whereas logistic regression uses a sigmoid curve.</li>
+                    <li>Logistic regression is evaluated using classification metrics like accuracy and F1-score, while linear regression uses RMSE or R².</li>
+                </ul>
+            </p>
+
+            <h3>Does Logistic Regression Use the Sigmoid Function?</h3>
+            <p class="h2-content">
+                Yes, logistic regression uses the <b>Sigmoid function</b> to convert any real-valued number into a probability between 0 and 1.
+                This function is given by:
+            </p>
+            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                \(
+                    \sigma(z) = \frac{1}{1 + e^{-z}}    
+                \)
+            </p>
+            <p class="h2-content">
+                This ensures that the output is always between 0 and 1, making it suitable for binary classification.
+            </p>
+
+            <h3>How Maximum Likelihood is Connected to Logistic Regression?</h3>
+            <p class="h2-content">
+                Logistic regression does not use the least squares method like linear regression. Instead, it uses 
+                <b>Maximum Likelihood Estimation (MLE)</b> to find the best coefficients (\(\beta\)).
+            </p>
+            <p class="h2-content">
+                MLE maximizes the probability that the predicted class labels match the actual labels in the training data.
+                It calculates the likelihood of the observed data given the model parameters and optimizes those parameters 
+                to make the predictions as accurate as possible.
+            </p>
+
+        <!-- Code -->
+            <h2>Code</h2>
+            <p class="h2-content">
+                Choose a labeled dataset that has only two label categories. Link to the dataset.<br> 
+                Then, prepare the data for modeling with logistic regression. 
+                Think about what this means and what you will need to do. <br>
+                Using that data, perform both Logistic regression classification AND 
+                multinomial naïve Bayes classification. <br>
+                Compare and discuss the results and include the confusion matrices and accuracies. Link to the code.  
+            </p>
+
+        <!-- Results -->
+            <h2>Results</h2>
+            <p class="h2-content">
+                ...  
+            </p>
+
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+                What did you learn (and/or what can you predict here) that pertains to your topic?
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Dropped Label Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Normalized Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        PCA (3PCs) Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Clustering Code
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

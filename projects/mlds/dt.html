@@ -1,61 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decision Tree - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Decision Tree</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Decision Tree
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+            <p class="h2-content">
+                <em>Describe DTs and what it can be used for? <br>
+                Have at least two images that support your description. <br>
+                Include a discussion of how and why GINI, Entropy, and Information Gain are used and include a 
+                small example that uses either GINI or Entropy AND Information GAIN to measure the "goodness" of a split.<br> 
+                Also explain why it is generally possible to create an infinite number of trees.</em>
+            </p>
+            <p class="h2-content">
+                A <b>Decision Tree (DT)</b> is a supervised learning algorithm used for both classification and regression tasks. 
+                It works by recursively splitting data into smaller subsets based on feature values, forming a tree-like structure 
+                where each internal node represents a decision based on a feature, branches represent outcomes, and leaf nodes 
+                represent final predictions. Decision Trees are widely used in customer segmentation, medical diagnosis, 
+                and credit risk analysis.
+            </p>
+            
+            <div class="image">
+                <img style="height: 450px; " src="https://dataaspirant.com/wp-content/uploads/2017/01/B03905_05_01-compressor.png" alt="Decision Tree classifier" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">Example of Decision Tree classifier.
+                (<a href="https://dataaspirant.com/how-decision-tree-algorithm-works/" target="_blank">Source</a>)
+            </p>
+            
+            <h4>How GINI, Entropy, and Information Gain Work</h4>
+            <p class="h4-content">
+                When building a Decision Tree, the algorithm must decide the best feature to split on. This is done using:
+                <ul>
+                    <li><b>GINI Index:</b> Measures impurity (how mixed the classes are). A GINI score of 0 means perfect separation.</li>
+                    <li><b>Entropy:</b> Measures randomness or disorder. Lower entropy means better purity in the split.</li>
+                    <li><b>Information Gain (IG):</b> Measures the improvement in purity after a split. The feature with the highest IG is chosen.</li>
+                </ul>
+            </p>
+
+            <h4>Example: Using Entropy and Information Gain</h4>
+            <p>
+                Suppose we have a dataset of 10 customers deciding whether to buy a product based on "Age".
+                Before splitting, the dataset has an entropy of:
+            </p>
+            <p>
+                <code>Entropy = - (p_yes * log₂(p_yes) + p_no * log₂(p_no))</code>
+            </p>
+            <p>
+                If we split the dataset into "Young" and "Old" groups and the entropy of each group decreases, 
+                we calculate the <b>Information Gain</b>:
+            </p>
+            <p>
+                <code>IG = Entropy(before) - Weighted Average Entropy(after)</code>
+            </p>
+            <p>
+                The feature with the highest IG is the best choice for the split.
+            </p>
+
+            <img src="entropy_calculation.jpg" alt="Entropy Calculation Example">
+
+            <h4>Why an Infinite Number of Trees is Possible</h4>
+            <p>
+                Decision Trees can theoretically be grown indefinitely because:
+            </p>
+            <ul>
+                <li>There are numerous ways to split features at each level.</li>
+                <li>Continuous features can be divided at infinite points.</li>
+                <li>Small variations in training data lead to different tree structures.</li>
+            </ul>
+            <p>
+                However, fully growing a tree leads to overfitting. To prevent this, methods like <b>pruning</b> and 
+                setting a <b>maximum depth</b> are used to ensure generalization.
+            </p>
+
+        <!-- Data Prep -->
+            <h2>Data Prep</h2>
+            <p class="h2-content">
+                Prepare data for use with decision tree modeling. LINK to the sample of data. 
+                Also include information and a small image of the Training Set and Testing set 
+                and explain how you created them and why they are (and must be) disjoint. 
+                It is fine to use (and link to) the same data that you used from multinomial Naive Bayes above. 
+            </p>
+
+        <!-- Code -->
+            <h2>Code</h2>
+            <p class="h2-content">
+                Create code that performs DT modeling on your dataset. LINK to the code. 
+            </p>
+
+        <!-- Results -->
+            <h2>Results</h2>
+            <p class="h2-content">
+                Discuss, illustrate, describe, and visualize the results. 
+                Include the confusion matrix and the accuracy. 
+                Create and include at least three different trees with difference root nodes 
+                (you think about how to do this) and other difference (up to you).  
+            </p>
+
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+                What did you learn (and/or what can you predict here) that pertains to your topic?
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Dropped Label Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Normalized Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        PCA (3PCs) Data
+                    </a>
+                    <a href="#" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Clustering Code
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

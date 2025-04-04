@@ -1,61 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naive Bayes - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Naive Bayes</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Naive Bayes
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+            <p class="h2-content">
+                Naïve Bayes (NB) is a probabilistic classifier based on Bayes' Theorem, assuming that features are independent. 
+                It is widely used for tasks like text classification, spam detection, sentiment analysis, and medical diagnosis 
+                due to its efficiency and scalability. <br><br>
+
+                Mathematically, Bayes’ Theorem states the following relationship, given class variable \(y\) 
+                and dependent feature vector \(x_1\) through \(x_n\):<br>
+
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \( 
+                        \begin{align*}
+                        P(y \vert x_1, ..., x_n) & = \frac{P(y) P(x_1, ..., x_n \vert y)}{P(x_1, ..., x_n)} \\
+                        \end{align*}
+                    \)
+                </p>
+                Using the naive conditional independence assumption that
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                        P(x_i | y, x_1, \dots, x_{i-1}, x_{i+1}, \dots, x_n) = P(x_i | y),
+                    \)
+                </p>
+                for all \( i \), this relationship is simplified to
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                        P(y \mid x_1, \dots, x_n) = \frac{P(y) \prod_{i=1}^{n} P(x_i \mid y)}{P(x_1, \dots, x_n)}.
+                    \)
+                </p>
+
+                Since \( P(x_1, \dots, x_n) \) is constant given the input, we can use the following classification rule:
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                        \begin{align*}
+                        P(y \mid x_1, \dots, x_n) \propto P(y) \prod_{i=1}^{n} P(x_i \mid y)\\
+                        \hat{y} = \arg\max_{y} P(y) \prod_{i=1}^{n} P(x_i \mid y)
+                        \end{align*}
+                \)
+                </p>
+
+                More mathematical details can be found in the <a href="https://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf" target="_blank">The Optimality of Naive Bayes</a>.<br><br>
+                NB calculates the probability of a class given input features and assigns the most likely class, 
+                making it effective even with small datasets. It is particularly useful for high-dimensional 
+                data, especially in natural language processing (NLP), because it is fast, simple, 
+                and works well when feature independence holds approximately.<br>
+
+                <div class="image">
+                    <img style="height: 200px;" src="assets/img/nb/nb-example.png" alt="Naive-Bayes-classifier" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Naive Bayes classifier.
+                    (<a href="https://www.aspires.cc/naive-bayes/" target="_blank">Source</a>)
+                </p>
+
+                Despite their simple assumptions, Naïve Bayes classifiers work well in many real-world tasks, especially in 
+                document classification and spam filtering. They need only a small amount of training data to learn the 
+                required parameters. One reason they are so fast is that they treat each feature separately, allowing 
+                them to estimate probabilities independently. This makes Naïve Bayes much quicker than more complex methods 
+                and helps reduce issues caused by having too many features (the curse of dimensionality).
+            </p>
+        <!-- Gaussian Naïve Bayes -->
+            <p class="h2-content">
+                <b>Gaussian Naïve Bayes:</b> implements the Gaussian Naive Bayes algorithm for classification. 
+                The likelihood of the features is assumed to be Gaussian:
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \( 
+                        P(x_i \mid y) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x_i - \mu)^2}{2\sigma^2}}
+                    \)
+                </p>
+                Gaussian Naïve Bayes is used when features are continuous numbers and follow a normal (bell-shaped) 
+                distribution. It calculates probabilities using a mathematical formula for Gaussian distribution.
+                It works well for medical diagnoses, financial risk analysis, and sensor data, where numbers like 
+                height, weight, or temperature are involved.<br>
+
+                <div class="image">
+                    <img style="height: 330px; " src="assets/img/nb/gaussian_example.png" alt="Gaussian-Naive-Bayes" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Gaussian Naive Bayes classifier.
+                    (<a href="https://doi.org/10.1371/journal.pone.0290762" target="_blank">Source</a>)
+                </p>
+
+                More details in: 
+                <a href="https://scikit-learn.org/stable/modules/naive_bayes.html#gaussian-naive-bayes" target="_blank">
+                    Scikit-learn # Gaussian Naive Bayes</a>.<br>
+
+            </p>
+
+        <!-- Multinomial Naïve Bayes -->
+            <p class="h2-content">
+                <b>Multinomial Naïve Bayes:</b> is suitable for discrete data, particularly useful for text classification problems such as spam detection and document classification. 
+                It models feature likelihoods using the multinomial distribution:
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                    P(x_i \mid y) = \frac{(N_{i,y} + \alpha)}{\sum_j (N_{j,y} + \alpha)}
+                    \)
+                </p>
+                where \( N_{i,y} \) is the number of times feature \( i \) appears in class \( y \), and \( \alpha \) is a smoothing parameter (Laplace smoothing).<br>
+                Multinomial Naïve Bayes is best for text classification, where features represent word counts or frequency 
+                of terms. It assumes words follow a multinomial distribution and is commonly used in spam filtering, 
+                news categorization, and sentiment analysis. If your data is based on how many times something appears, 
+                this is the right choice.<br>
+
+                <div class="image">
+                    <img style="height: 200px; width: 500px;" 
+                    src="https://media.licdn.com/dms/image/v2/D4D12AQHsyOOwRlmMIg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1685792014092?e=2147483647&v=beta&t=43EaQy2x5675bfGyhYkMkogsEuitaqbNPIhTj-LNxcY" 
+                    alt="naive-nayes-classifier" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Naive Bayes classifier.
+                    (<a href="https://www.linkedin.com/pulse/naive-bayes-theorem-machine-learning-rohit-bele" target="_blank">Source</a>)
+                </p>
+
+                More details in: 
+                <a href="https://scikit-learn.org/stable/modules/naive_bayes.html#multinomial-naive-bayes" target="_blank">
+                    Scikit-learn # Multinomial Naive Bayes</a>.<br>
+            </p>
+
+        <!-- Bernoulli Naïve Bayes -->
+            <p class="h2-content">
+                <b>Bernoulli Naïve Bayes:</b> is designed for binary/boolean features, commonly used for text classification with binary term occurrence (e.g., word presence/absence in a document).
+                The likelihood function follows the Bernoulli distribution:
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                    P(x_i \mid y) = p_i^{x_i} (1 - p_i)^{(1 - x_i)}
+                    \)
+                </p>
+                where \( p_i \) is the probability of feature \( x_i \) occurring in class \( y \).<br>
+                Bernoulli Naïve Bayes is also used for text classification, but instead of counting words, 
+                it looks at whether a word is present or absent (yes/no). It is great for spam detection, fraud detection, 
+                and topic classification, where only the presence of certain words matters, not how many times they appear.<br>
+                
+                
+                
+                More details in: 
+                <a href="https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes" target="_blank">
+                    Scikit-learn # Bernoulli Naive Bayes</a>.<br>
+            </p>
+        
+            <!-- Categorical Naïve Bayes -->
+            <p class="h2-content">
+                <b>Categorical Naïve Bayes:</b> is used for categorical (non-numeric) features where each feature can take one of several discrete values. 
+                It assumes that feature distributions follow categorical probability distributions:
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                    P(x_i = k \mid y) = \frac{N_{i,k,y} + \alpha}{N_{i,y} + d\alpha}
+                    \)
+                </p>
+                where \( N_{i,k,y} \) is the count of feature \( i \) taking category \( k \) in class \( y \), \( N_{i,y} \) is the total count of feature \( i \) in class \( y \), \( d \) is the number of unique categories, and \( \alpha \) is a smoothing parameter.<br>
+                
+                Categorical Naïve Bayes is designed for categorical (non-numeric) data, like colors, job titles, or blood types. 
+                It works best when features have fixed categories rather than numbers. It is commonly used in customer 
+                segmentation, medical diagnoses, and recommendation systems, where labels, not numbers, define the data.<br>
+                More details in: 
+                <a href="https://scikit-learn.org/stable/modules/naive_bayes.html#categorical-naive-bayes" target="_blank">
+                    Scikit-learn # Categorical Naive Bayes</a>.<br>
+            </p>
+            <p class="h2-content">
+                <b>Why smoothing is required for Naive Bayes models?</b>
+                <p>Naïve Bayes calculates probabilities based on observed frequencies in the training data. 
+                    When a feature is missing in a particular class, its probability becomes zero, which can 
+                    cause the entire classification to fail. This is known as the zero-probability problem 
+                    and can severely limit the model's ability to generalize to unseen data.
+                </p>
+            
+                <p>To address this, smoothing techniques like Laplace Smoothing add a small constant to all 
+                    feature counts, ensuring that no probability is ever exactly zero. This prevents the model 
+                    from discarding potentially valid classifications and improves robustness, particularly when 
+                    dealing with sparse datasets. By redistributing probability mass slightly, smoothing allows 
+                    the model to make reasonable predictions even when encountering previously unseen features.<br><br>
+
+                    <b>Mathematically,</b> without smoothing, the probability of a sample \( w \) given class \( C \) is computed as:<br>
+                    \[ P(w | C) = \frac{count(w, C)}{\sum_{w'} count(w', C)} \]
+
+                    If \( count(w, C) = 0 \), then \( P(w | C) = 0 \), which makes the overall probability zero.<br>
+
+                    Applying solutions such as Laplace Smoothing, a new term of a constant \( \alpha \) (usually 1) is added to the formula:<br>
+
+                    \[ P(w | C) = \frac{count(w, C) + \alpha}{\sum_{w'} count(w', C) + \alpha \cdot |V|} \]
+
+                    where \( |V| \) is the number of classes. This ensures that no probability is ever exactly zero.
+                </p>
+
+            </p>
+
+        <!-- Data Prep -->
+            <h2>Data Preparation</h2>
+            <p class="h2-content">
+                <b>Data Preparation: </b>
+                Each kind of Naive Bayes requires different data preparation.
+                <ul>
+                    <li>Gaussian Naive Bayes: requires continuous numerical input data that follows a normal (Gaussian) distribution.</li>
+                    <li>Multinomial Naive Bayes: designed for count-based data, where features represent discrete frequency counts of occurrences 
+                        (e.g., word counts in text classification).</li>
+                    <li>Categorical Naive Bayes: works with categorical data, assuming that each feature can take on a fixed number of discrete 
+                        values without an inherent ordering.</li>
+                </ul>
+
+                <br>From previous data cleaning process, a suitable subset of data is selected for Naive Bayes classification.
+                The main task is classify the Lithology based on the features of CALI, RHOB, NPHI and DTC.
+                The data preparation for each type of Naive Bayes is as follows:
+                <ul>
+                    <li>Gaussian Naive Bayes: Keep the features as continuous numerical values, then normalize the data using min-max scaling algorithm.</li>
+                    <li>Multinomial Naive Bayes: Using binning to convert continuous features into discrete bins, then apply one-hot encoding to represent the data.</li>
+                    <li>Categorical Naive Bayes: Similar to multinomial NB data and applying ordinal encoding to represent the data.</li>
+                </ul>
+                <br>The data before and after preparation is shown below:
+
+                <div class="image">
+                    <img style="height: 300px" src="assets/img/nb/nb_data_prep.png" alt="naive-bayes-data-preparation" class="grid-image" data-description="">
+                </div>
+
+                <p class="image-caption">A subset of dataset before and after preparation. The entire dataset has over 13K samples.</p>
+            </p>
+
+            <p class="h2-content">
+                <b>Data Splitting:</b><br>
+                <b>Train-test splitting</b> is a fundamental step to evaluate a model's performance. 
+                The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
+                uses to assess its accuracy. <br>
+                
+                <b>These sets must be disjoint,</b> meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
+                the model's generalization ability, which is need to predict real-world data.
+                On the other hand, if the model were tested on data it had already seen, it would give an overly optimistic accuracy, failing to reflect the generalization ability.<br>
+
+                <div class="image">
+                    <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
+                    alt="train-test-split-procedure" class="grid-image" data-description="">
+                </div>
+
+                <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
+
+                A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
+                Below is a simple illustration of train-test splitting:
+
+                <div class="image">
+                    <img style="height: 300px" src="assets/img/nb/nb-train-test-split.png" 
+                    alt="train-test-split" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Subset of traning features and labels values and the ratio of training and testing sets.</p>
+
+                At the end of data processing stage, the training set has 11,177 samples and the testing set has 2795 samples.
+            </p>
+
+        <!-- Results -->
+            <h2>Results</h2>
+            After processing the data, three Naive Bayes models include Gaussian, Multinomial and Categorical Naive Bayes are trained and evaluated.
+            The accuracy table on test set shows Gaussian NB has the highest performance of 0.55, while Multinomial and Categorical NB have lower accuracies of 0.53 and 0.5, respectively.
+
+            <div class="image">
+                <img style="height: 300px; width: 600px" src="assets/img/nb/nb_accuracies.png" 
+                alt="train-test-split" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">Testing accuracies of three Naive Bayes models.</p>
+
+            The confusion matrices of three models are shown below:
+            <div class="image-grid container">
+                <img src="assets/img/nb/gnb_conf_matrix.png"  alt="gnb_conf_matrix" class="grid-image" data-description="
+                ">
+                <img src="assets/img/nb/mnb_conf_matrix.png"  alt="mnb_conf_matrix" class="grid-image" data-description="
+                ">
+                <img src="assets/img/nb/cnb_conf_matrix.png"  alt="cnb_conf_matrix" class="grid-image" data-description="
+                ">
+            </div>
+
+            The classification reports are conducted to compare the performance on each prediction class.
+            <div class="image-grid container">
+                <img src="assets/img/nb/gnb_report.png"  alt="gnb_report" class="grid-image" data-description="
+                ">
+                <img src="assets/img/nb/mnb_report.png"  alt="mnb_report" class="grid-image" data-description="
+                ">
+                <img src="assets/img/nb/cnb_report.png"  alt="cnb_report" class="grid-image" data-description="
+                ">
+            </div>
+            <p class="h2-content">
+                <b>Gaussian Naïve Bayes:</b>The Gaussian Naive Bayes model shows moderate overall performance with 55% accuracy. 
+                It performs well on dominant classes like Sandstone and Tuff, achieving high precision and recall, but struggles 
+                significantly with minority classes such as Marl, Dolomite, and Limestone due to class imbalance and likely 
+                feature overlap. Chalk has high recall but low precision, indicating overprediction. 
+                The macro-average F1-score of 0.38 highlights poor performance across less frequent classes, 
+                while the weighted F1-score of 0.50 suggests the model favors well-represented categories. 
+                Overall, the model is biased toward dominant lithologies and lacks generalization across all classes.<br><br>
+
+                <b>Multinomial Naïve Bayes:</b>The Categorical Naive Bayes model achieves 50% accuracy, with strong performance 
+                on dominant classes like Sandstone and Tuff but poor generalization on minority classes such as Marl, Dolomite, 
+                and Limestone. While Tuff achieves a high recall of 0.97, classes like Marl and Dolomite are barely predicted, 
+                indicating severe imbalance issues. Chalk and Coal show moderate balance between precision and recall, while 
+                SandstoneShale and Limestone suffer from low precision and recall. The macro F1-score of 0.35 and weighted 
+                F1-score of 0.47 further reflect the model’s bias toward frequent classes and limited effectiveness across 
+                the full class spectrum.<br><br>
+
+                <b>Categorical Naïve Bayes:</b>The Multinomial Naive Bayes model shows poor overall performance, 
+                with an accuracy of 53% driven almost entirely by its strong bias toward the Sandstone class, which it 
+                predicts overwhelmingly (recall of 0.98). All other classes, including Chalk, Marl, Tuff, and SandstoneShale, 
+                receive zero recall, meaning the model fails to identify any of their instances. The macro average F1-score of 
+                just 0.15 highlights the model’s severe imbalance and lack of generalization. This suggests Multinomial Naive Bayes 
+                is unsuitable for this multi-class imbalanced dataset without significant preprocessing or class-balancing techniques.<br><br>
+            </p>   
+
+            <p class="h2-content">
+                Creatively and clearly discuss, compare, illustrate, describe, and visualize the results. 
+                Include confusion matrices and the accuracies. 
+            </p>
+
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+                The results show that Gaussian Naive Bayes performs the best overall, handling continuous well-log data effectively. 
+                Categorical Naive Bayes performs well on certain classes like Tuff but struggles with others. Multinomial Naive Bayes 
+                is highly biased towards the majority class and fails to generalize well. 
+                GaussianNB is the most suitable for lithology prediction, but further improvements can be made with resampling, 
+                feature engineering, or ensemble methods.
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Code & Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/gnb_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data for Gaussian NB
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/cnb_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data for Categorical NB
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/mnb_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data for Multinomial NB
+                    </a>
+                </div>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/mnb_train.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Training Features Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/mnb_train_labels.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Training Label Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/mnb_test.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Testing Features Data
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/nb/mnb_test_labels.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Testing Label Data
+                    </a>
+                </div>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/05_naive_bayes_data.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="code" data-description="">
+                        Data Preparation Code
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/05_naive_bayes.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="code" data-description="">
+                        Naive Bayes Modeling Code
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

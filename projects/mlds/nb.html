@@ -216,7 +216,6 @@
         <!-- Data Prep -->
             <h2>Data Preparation</h2>
             <p class="h2-content">
-                <b>Data Preparation: </b>
                 Each kind of Naive Bayes requires different data preparation.
                 <ul>
                     <li>Gaussian Naive Bayes: requires continuous numerical input data that follows a normal (Gaussian) distribution.</li>
@@ -234,43 +233,65 @@
                     <li>Multinomial Naive Bayes: Using binning to convert continuous features into discrete bins, then apply one-hot encoding to represent the data.</li>
                     <li>Categorical Naive Bayes: Similar to multinomial NB data and applying ordinal encoding to represent the data.</li>
                 </ul>
-                <br>The data before and after preparation is shown below:
+            </p>
+            <p class="h2-content">
+                <ol>
+                    <li>
+                        <b><em>Image of before & after cleaning data.</em></b>
+                        <br>The data before and after preparation is shown below:
 
-                <div class="image">
-                    <img style="height: 300px" src="assets/img/nb/nb_data_prep.png" alt="naive-bayes-data-preparation" class="grid-image" data-description="">
-                </div>
+                        <div class="image">
+                            <img style="height: 300px" src="assets/img/nb/nb_data_prep.png" alt="naive-bayes-data-preparation" class="grid-image" data-description="">
+                            <p class="image-caption">A subset of dataset before and after preparation. The entire dataset has over 13K samples.</p>
+                        </div>
+                    </li>
 
-                <p class="image-caption">A subset of dataset before and after preparation. The entire dataset has over 13K samples.</p>
+                    <li>
+                        <b><em>Image of the sample train and test data.</em></b><br>
+                        Below is a simple illustration of train-test splitting:
+                        <div class="image">
+                            <img style="height: 300px" src="assets/img/nb/nb-train-test-split.png" 
+                            alt="train-test-split" class="grid-image" data-description="">
+                            <p class="image-caption">Subset of traning features and labels values and the ratio of training and testing sets.</p>
+                        </div>
+                        At the end of data processing stage, the training set has 11,177 samples and the testing set has 2,795 samples.
+                    </li>
+
+                    <li>
+                        <b><em>How the test train split was created?</em></b><br>
+                        Train-test splitting is a fundamental step to evaluate a model's performance. 
+                        The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
+                        uses to assess its accuracy. <br>
+                        
+                        
+                        <div class="image">
+                            <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
+                            alt="train-test-split-procedure" class="grid-image" data-description="">
+                        </div>
+
+                        <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
+
+                        A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
+                    </li>
+
+                    <li>
+                        <b><em>Why it is important to create a disjoint split?</em></b><br>
+                        These sets must be disjoint, meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
+                        the model's generalization ability, which is need to predict real-world data.
+                        On the other hand, if the model were tested on data it had already seen, it would give an overly optimistic accuracy, failing to reflect the generalization ability.<br>
+
+                    </li>
+                </ol>
+            </p> 
+            <p class="h2-content">
+                
+
+                
             </p>
 
             <p class="h2-content">
-                <b>Data Splitting:</b><br>
-                <b>Train-test splitting</b> is a fundamental step to evaluate a model's performance. 
-                The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
-                uses to assess its accuracy. <br>
                 
-                <b>These sets must be disjoint,</b> meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
-                the model's generalization ability, which is need to predict real-world data.
-                On the other hand, if the model were tested on data it had already seen, it would give an overly optimistic accuracy, failing to reflect the generalization ability.<br>
-
-                <div class="image">
-                    <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
-                    alt="train-test-split-procedure" class="grid-image" data-description="">
-                </div>
-
-                <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
-
-                A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
-                Below is a simple illustration of train-test splitting:
-
-                <div class="image">
-                    <img style="height: 300px" src="assets/img/nb/nb-train-test-split.png" 
-                    alt="train-test-split" class="grid-image" data-description="">
-                </div>
-                <p class="image-caption">Subset of traning features and labels values and the ratio of training and testing sets.</p>
-
-                At the end of data processing stage, the training set has 11,177 samples and the testing set has 2795 samples.
-            </p>
+                </p>
 
         <!-- Results -->
             <h2>Results</h2>

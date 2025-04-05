@@ -34,101 +34,221 @@
         <!-- Overview -->
             <h2>Overview</h2>
 
-            <h3>Linear Regression</h3>
             <p class="h2-content">
-                <b>Linear Regression</b> is a statistical method used to model the relationship between a dependent variable 
-                and one or more independent variables. It assumes a straight-line relationship and is expressed as:
-            </p>
-            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
-                \( 
-                    \begin{align*}
-                    Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n + \epsilon
-                    \end{align*}
-                \)
-            </p>
-            <p class="h2-content">
-                Here, \(Y\) is the dependent variable, \(X\) are the independent variables, 
-                \(\beta\) are the coefficients, and \(\epsilon\) is the error term. 
-                Linear regression is commonly used for <b>predicting continuous values</b>,
-                 such as house prices or sales forecasting.
-            </p>
+                <ol>
+                    <li>
+                        <p class="h2-content">
+                            <b>Define and explain linear regression?</b><br>
+                            Linear Regression is a statistical method used to model the relationship between a dependent variable 
+                            and one or more independent variables. It assumes a straight-line relationship and is expressed as:
+                            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                                \( 
+                                    \begin{align*}
+                                    Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n + \epsilon
+                                    \end{align*}
+                                \)
+                            </p>
+                            Where:
+                                <ul>
+                                    <li>\( Y \) is the dependent variable (target)</li>
+                                    <li>\( X_1, X_2, ..., X_n \) are the independent variables (features)</li>
+                                    <li>\( \beta_0, \beta_1, ..., \beta_n \) are the coefficients/weights</li>
+                                    <li>\( \epsilon \) is the error term (residual)</li>
+                                </ul>
 
-            <div class="image">
-                <img style="height: 350px; " src="assets/img/regression/logistic_example.png" alt="Logistic Regression" class="grid-image" data-description="">
-            </div>
-            <p class="image-caption">Example of Logistic Regression.
-                (<a href="https://doi.org/10.1371/journal.pone.0290762" target="_blank">Source</a>)
-            </p>
+                            <b><em>How the model is trained:</em></b>
+                            <ul>
+                                <li>Linear regression is trained by minimizing the <i>Mean Squared Error (MSE)</i>:
+                                    <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                                        \( \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2 \)
+                                    </p>
+                                </li>
+                                <li>
+                                    The optimal coefficients \( \beta \) are estimated using methods like 
+                                    Ordinary Least Squares (OLS) or Gradient Descent.
+                                </li>
+                            </ul>
+                            <b><em>How it makes predictions:</em></b>
+                            <ul>
+                                <li>
+                                    Once trained, the model predicts outcomes by plugging input feature values into the learned linear equation.
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
 
-            <h3>Logistic Regression</h3>
-            <p class="h2-content">
-                <b>Logistic Regression</b> is used for classification problems where the output is categorical (e.g., 0 or 1, True or False).
-                Instead of fitting a straight line, it uses the <b>Sigmoid function</b> to output probabilities between 0 and 1:
-            </p>
-            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
-                \(
-                    P(Y=1 | X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n)}}
-                \)
-            </p>
-            <p class="h2-content">
-                This allows logistic regression to separate data into different classes based on probability thresholds.
-                It is widely used in spam detection, medical diagnoses, and customer churn prediction.
-            </p>
+                    <li>
+                        <p class="h2-content">
+                            <b>Define and explain logistic regression?</b><br>
+                            Logistic Regression is used for classification problems where the output is categorical (e.g., 0 or 1, True or False).
+                            Instead of fitting a straight line, it uses the Sigmoid function to output probabilities between 0 and 1:
+                            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                                \(
+                                    P(Y=1 | X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_nX_n)}}
+                                    \)
+                            </p>
+                            <div class="image">
+                                <img style="height: 450px; " src="assets/img/reg/logistic_example.png" alt="Logistic Regression" class="grid-image" data-description="">
+                                <p class="image-caption">Example of Logistic Regression.(<a href="https://doi.org/10.1371/journal.pone.0290762" target="_blank">Source</a>)</p>
+                            </div>
+                            <p class="h2-content">
+                                <b><em>How the model is trained:</em></b>
+                                <ul>
+                                        <li>
+                                            Logistic regression is trained using <i>Maximum Likelihood Estimation (MLE)</i>, aiming to find the coefficients that maximize
+                                            the likelihood of observing the given outcomes. 
+                                        </li> 
+                                        <li>
+                                            The loss function used is <i>Binary Cross-Entropy</i>:<br>
+                                            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                                                \( \text{Loss} = -\frac{1}{n} \sum_{i=1}^n [y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)] \)
+                                            </p>
+                                        </li>
+                                    </ul>
+                            </p>
+                            <p  class="h2-content">
+                                <b><em>How it makes predictions:</em></b>
+                                <ul>
+                                    <li>The model computes the probability of the output belonging to class 1.</li>
+                                    <li>If the predicted probability exceeds a threshold (e.g., 0.5), the prediction is class 1; otherwise, it is class 0.</li>
+                                    <li>This allows logistic regression to separate data into different classes based on probability thresholds.</li>
+                                </ul>
+                            </p>
+                        </p>
+                    </li>
 
-            <h3>Similarities and Differences</h3>
-            <p class="h2-content">
-                <b>Similarities:</b> Both linear and logistic regression analyze relationships between independent and dependent variables 
-                and use coefficients (<code>β</code>) to determine their impact.
-            </p>
-            <p class="h2-content">
-                <b>Differences:</b> 
-                <ul>
-                    <li>Linear regression predicts continuous values, while logistic regression predicts probabilities for classification.</li>
-                    <li>Linear regression fits a straight line, whereas logistic regression uses a sigmoid curve.</li>
-                    <li>Logistic regression is evaluated using classification metrics like accuracy and F1-score, while linear regression uses RMSE or R².</li>
-                </ul>
-            </p>
+                    <li>
+                        <p class="h2-content">
+                        <b>How are they similar and how are they different?</b><br>
+                            <b><em>Similarities:</em></b> 
+                            <ul>
+                                <li>Both linear and logistic regression analyze relationships between independent and dependent variables 
+                            and use coefficients (<code>β</code>) to determine their impact.</li>
+                            </ul>
+                            <b><em>Differences:</em></b> 
+                            <ul>
+                                <li>Linear regression predicts continuous values, while logistic regression predicts probabilities for classification.</li>
+                                <li>Linear regression fits a straight line, whereas logistic regression uses a sigmoid curve.</li>
+                                <li>Logistic regression is evaluated using classification metrics like accuracy and F1-score, while linear regression uses RMSE or R².</li>
+                            </ul>
+                        </p>
+                    </li>
 
-            <h3>Does Logistic Regression Use the Sigmoid Function?</h3>
-            <p class="h2-content">
-                Yes, logistic regression uses the <b>Sigmoid function</b> to convert any real-valued number into a probability between 0 and 1.
-                This function is given by:
-            </p>
-            <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
-                \(
-                    \sigma(z) = \frac{1}{1 + e^{-z}}    
-                \)
-            </p>
-            <p class="h2-content">
-                This ensures that the output is always between 0 and 1, making it suitable for binary classification.
-            </p>
+                    <li>
+                        <p class="h2-content">
+                            <b>Does logistic regression use the Sigmoid function?</b><br>
+                            Yes, logistic regression uses the Sigmoid function to convert any real-valued number into a probability between 0 and 1.
+                            This ensures that the output is always between 0 and 1, making it suitable for binary classification.
+                    </li>
 
-            <h3>How Maximum Likelihood is Connected to Logistic Regression?</h3>
-            <p class="h2-content">
-                Logistic regression does not use the least squares method like linear regression. Instead, it uses 
-                <b>Maximum Likelihood Estimation (MLE)</b> to find the best coefficients (\(\beta\)).
-            </p>
-            <p class="h2-content">
-                MLE maximizes the probability that the predicted class labels match the actual labels in the training data.
-                It calculates the likelihood of the observed data given the model parameters and optimizes those parameters 
-                to make the predictions as accurate as possible.
+                    <li>
+                        <p class="h2-content">
+                            <b>Explain how maximum likelihood is connected to logistic regression?</b><br>
+                            Logistic regression does not use the least squares method like linear regression. Instead, it uses 
+                            Maximum Likelihood Estimation (MLE) to find the best coefficients (\(\beta\)).<br>
+                            MLE maximizes the probability that the predicted class labels match the actual labels in the training data.
+                            It calculates the likelihood of the observed data given the model parameters and optimizes those parameters 
+                            to make the predictions as accurate as possible.
+                        </p>
+                    </li>
+                </ol>
             </p>
 
         <!-- Code -->
-            <h2>Code</h2>
+            <h2>Data Preparation</h2>
             <p class="h2-content">
-                Choose a labeled dataset that has only two label categories. Link to the dataset.<br> 
-                Then, prepare the data for modeling with logistic regression. 
-                Think about what this means and what you will need to do. <br>
-                Using that data, perform both Logistic regression classification AND 
-                multinomial naïve Bayes classification. <br>
-                Compare and discuss the results and include the confusion matrices and accuracies. Link to the code.  
-            </p>
+                <ol>
+                    <li>
+                        <b><em>Image of before & after cleaning data.</em></b><br>
+                        For Logistic Regression Modeling, a subset of data which includes only two label categories was used.
+                        The purpose is to classify the lithology of Sandstone Shale and Limestone.<br>
+                        The featues are cleaned and normalized using StandardScaler to ensure all features have a mean of 0 
+                        and a standard deviation of 1.
+                        <div class="image">
+                            <img style="height: 250px" src="assets/img/reg/reg_b_a.png" 
+                            alt="data-cleaning" class="grid-image" data-description="">
+                            <p class="image-caption">Data before and after cleaning and preprocessing process.</p>
+                        </div>
+                        
+                        The dataset has 4,909 samples included 2,523 samples of Sandstone Shale and 2,386 sample of Limestone.
+                        <div class="image">
+                            <img style="height: 500px" src="assets/img/reg/reg_3d_data.png" 
+                            alt="3d-view-data" class="grid-image" data-description="">
+                            <p class="image-caption">3D visualization of dataset for Logistic Regression modeling.</p>
+                        </div>
+                    </li>
 
-        <!-- Results -->
+                    <li>
+                        <b><em>Image of the sample train and test data.</em></b><br>
+                        Train - Test splitting is conducted to evaluate the model's performance, in which 80% of the data is used for training and 20% for testing.
+                        The visualization of train-test splitting is shown below:
+                        <div class="image">
+                            <img style="height: 400px" src="assets/img/reg/reg_train_test_split.png" 
+                            alt="train-test-split-procedure" class="grid-image" data-description="">
+                            <p class="image-caption">Visualization of train-test splitting.</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <b><em>How the test train split was created?</em></b><br>
+                        Train-test splitting is a fundamental step to evaluate a model's performance. 
+                        The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
+                        uses to assess its accuracy. <br>
+                        
+                        
+                        <div class="image">
+                            <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
+                            alt="train-test-split-procedure" class="grid-image" data-description="">
+                            <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
+                        </div>
+
+
+                        A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
+                    </li>
+
+                    <li>
+                        <b><em>Why it is important to create a disjoint split?</em></b><br>
+                        These sets must be disjoint, meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
+                        the model's generalization ability, which is need to predict real-world data.
+                        On the other hand, if the model were tested on data it had already seen, it would give an overly optimistic accuracy, failing to reflect the generalization ability.<br>
+
+                    </li>
+                </ol>
+            </p> 
+
+
+            
+            <!-- Results -->
             <h2>Results</h2>
             <p class="h2-content">
-                ...  
+                <b>Logistic Regression</b><br>
+                The Logistic Regression was trained on training set to predict the lithologies of Sandstone Shale and Limestone.
+                The accuracy on testing set is <b>94.4%</b> and the confusion matrix is shown below:
+
+                <div class="image">
+                    <img style="height: 450px; width: 550px;" src="assets/img/reg/reg_cm.png" 
+                    alt="confusion-matrix-regression" class="grid-image" data-description="">
+                    <p class="image-caption">The confusion matrix of the regression model.</p>
+                </div>
+
+                <br><br>
+                <b>Multinomial Naïve Bayes</b><br>
+                The Multinomial Naïve Bayes was trained the same training set and evaluated with defined testing set.
+                The accuracy on testing set is <b>92.06%</b> and the confusion matrix is shown below:
+                <div class="image">
+                    <img style="height: 450px; width: 550px;" src="assets/img/reg/mnb_cm.png" 
+                    alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
+                    <p class="image-caption">The confusion matrix of the Multinomial Naïve Bayes model.</p>
+                </div>
+
+                To compare the performance of the two models, the comprehensive table of metrics including 
+                precision, recall, and f1-score has been constructed. The details are shown below:
+
+                <div class="image">
+                    <img style="height: 180px; width: 780px;" src="assets/img/reg/reg_report.png" 
+                    alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
+                    <p class="image-caption">The performance metrics of Linear Regression and Multinomial Naive Bayes models.</p>
+                </div>
             </p>
 
         <!-- Conclusions -->
@@ -143,25 +263,17 @@
                     For your reference, all external links are provided below:
                 </p>
                 <div class="external-links">
-                    <a href="#" target="_blank" class="item">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/reg/reg_before.csv" target="_blank" class="item">
                         <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                        Cleaned Data
+                        Data Before
                     </a>
-                    <a href="#" target="_blank" class="item">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/reg/reg_after.csv" target="_blank" class="item">
                         <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                        Dropped Label Data
+                        Data After (Cleaned)
                     </a>
-                    <a href="#" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                        Normalized Data
-                    </a>
-                    <a href="#" target="_blank" class="item">
-                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
-                        PCA (3PCs) Data
-                    </a>
-                    <a href="#" target="_blank" class="item">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/07_regression.ipynb" target="_blank" class="item">
                         <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
-                        Clustering Code
+                        Data Preparation and Modeling Notebook
                     </a>
                 </div>
             </section>

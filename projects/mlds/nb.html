@@ -248,7 +248,7 @@
 
                     <li>
                         <b><em>Image of the sample train and test data.</em></b><br>
-                        Below is a simple illustration of train-test splitting:
+                        To prepare for modeling, a rate of 80/20 train-test splitting has been implemented. Below is a simple illustration of train-test splitting:
                         <div class="image">
                             <img style="height: 300px" src="assets/img/nb/nb-train-test-split.png" 
                             alt="train-test-split" class="grid-image" data-description="">
@@ -263,15 +263,15 @@
                         The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
                         uses to assess its accuracy. <br>
                         
-                        
                         <div class="image">
                             <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
                             alt="train-test-split-procedure" class="grid-image" data-description="">
+                            <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
                         </div>
 
-                        <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
-
                         A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
+                        This helps evaluate how well the model generalizes to unseen data. The split is often done randomly, but in cases like imbalanced data or 
+                        time series, special techniques like stratified or time-based splitting are used to maintain data characteristics or order.
                     </li>
 
                     <li>
@@ -283,15 +283,6 @@
                     </li>
                 </ol>
             </p> 
-            <p class="h2-content">
-                
-
-                
-            </p>
-
-            <p class="h2-content">
-                
-                </p>
 
         <!-- Results -->
             <h2>Results</h2>

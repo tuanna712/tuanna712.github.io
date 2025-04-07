@@ -195,17 +195,15 @@
                         The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
                         uses to assess its accuracy. <br>
                         
-                        
                         <div class="image">
                             <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
                             alt="train-test-split-procedure" class="grid-image" data-description="">
                             <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
                         </div>
 
-
                         A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
-                    </li>
-
+                        This helps evaluate how well the model generalizes to unseen data. The split is often done randomly, but in cases like imbalanced data or 
+                        time series, special techniques like stratified or time-based splitting are used to maintain data characteristics or order.
                     <li>
                         <b><em>Why it is important to create a disjoint split?</em></b><br>
                         These sets must be disjoint, meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
@@ -221,40 +219,88 @@
             <!-- Results -->
             <h2>Results</h2>
             <p class="h2-content">
+                <b>Linear Regression</b><br>
+                The Linear Regression is a regression model that predicts the continuous values. The model's output is a linear combination of the input features.
+                Therefore, to use Linear Regression for classification, a threshold of 0.5 is set to classify the predicted values into two classes.
+                The plot below shows the prediction of Linear Regression model on test data:
+                <div class="image">
+                    <img style="height: 350px; width: 550px;" src="assets/img/reg/reg_lr_plot.png" 
+                    alt="confusion-matrix-regression" class="grid-image" data-description="">
+                    <p class="image-caption">The prediction of Linear Regression model on test data.</p>
+                </div>
+
+                It is clear that there is a difference on the distribution of each class and accidentally, the Linear Regression model is able to classify two lithologies.
+                This also reason the accuracy of <b>94.5%</b> on test data. The confusion matrix is shown below, where 1 indicates Sandstone Shale and 0 indicates Limestone:
+                <div class="image">
+                    <img style="height: 450px; width: 550px;" src="assets/img/reg/reg_lr_cm.png" 
+                    alt="confusion-matrix-regression" class="grid-image" data-description="">
+                    <p class="image-caption">The confusion matrix of the Linear Regression model.</p>
+                </div>
+            </p>
+            <p class="h2-content">
                 <b>Logistic Regression</b><br>
                 The Logistic Regression was trained on training set to predict the lithologies of Sandstone Shale and Limestone.
                 The accuracy on testing set is <b>94.4%</b> and the confusion matrix is shown below:
-
                 <div class="image">
                     <img style="height: 450px; width: 550px;" src="assets/img/reg/reg_cm.png" 
                     alt="confusion-matrix-regression" class="grid-image" data-description="">
-                    <p class="image-caption">The confusion matrix of the regression model.</p>
+                    <p class="image-caption">The confusion matrix of the Logistic Regression model.</p>
                 </div>
 
                 <br><br>
                 <b>Multinomial Naïve Bayes</b><br>
                 The Multinomial Naïve Bayes was trained the same training set and evaluated with defined testing set.
-                The accuracy on testing set is <b>92.06%</b> and the confusion matrix is shown below:
+                The accuracy on testing set is <b>92.06%</b> and the confusion matrix is shown below, where 1 indicates 
+                Sandstone Shale and 0 indicates Limestone:
                 <div class="image">
                     <img style="height: 450px; width: 550px;" src="assets/img/reg/mnb_cm.png" 
                     alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
                     <p class="image-caption">The confusion matrix of the Multinomial Naïve Bayes model.</p>
                 </div>
 
-                To compare the performance of the two models, the comprehensive table of metrics including 
+                To compare the performance of three models, the comprehensive table of metrics including 
                 precision, recall, and f1-score has been constructed. The details are shown below:
-
                 <div class="image">
-                    <img style="height: 180px; width: 780px;" src="assets/img/reg/reg_report.png" 
+                    <img style="height: 180px;" src="assets/img/reg/reg_report.png" 
                     alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
                     <p class="image-caption">The performance metrics of Linear Regression and Multinomial Naive Bayes models.</p>
                 </div>
+                It is clear that all three models yield high accuracy, with Logistic Regression and Linear Regression achieving 94.4% and 94.5% accuracy, respectively.
+                The Multinomial Naïve Bayes model achieved 92.06% accuracy.
             </p>
 
         <!-- Conclusions -->
             <h2>Conclusions</h2>
             <p class="h2-content">
-                What did you learn (and/or what can you predict here) that pertains to your topic?
+                By modeling regression algorithms, it is clear to realize that regression is a fundamental approach in 
+                supervised learning used to predict continuous outcomes. It helps capture the relationship between input 
+                variables and a numerical target, making it widely applicable in areas like forecasting, risk analysis, 
+                and pricing models.<br><br>
+
+                However, in this experiment, the Regression is designed to classify the lithologies of Sandstone Shale and
+                Limestone. The Linear Regression is conducted with a threshold of 0.5 to classify the predicted values into two classes.
+                While the Logistic Regression is trained to predict the probability of the target class and the Multinomial Naïve Bayes 
+                counts the number of occurrences of each feature in each class for prediction.<br><br>
+                
+                <b><em>Comparison the result of all three models .</em></b><br>
+                All approaches yield high accuracy, with Logistic Regression and Linear Regression achieving 94.4% and 94.5% accuracy, respectively.
+                The Multinomial Naïve Bayes model achieved 92.06% accuracy.<br><br>
+                
+                The close performance between Logistic and Linear Regression suggests that the dataset may have a strong linear relationship 
+                and is well-suited for models that assume linear decision boundaries. Despite Linear Regression being primarily designed for 
+                continuous output, when adapted for classification (e.g., by thresholding), it can still perform competitively in certain binary 
+                tasks. Logistic Regression, however, is more appropriate for classification problems due to its probabilistic output and handling 
+                of binary outcomes, which also contributes to its robust and interpretable performance.<br><br>
+
+                Meanwhile, the Multinomial Naïve Bayes model, while slightly lower in accuracy, is known for its simplicity and speed, 
+                particularly in categorical data. Its assumption of feature independence may limit its performance when 
+                features are correlated, which could explain the slight drop in accuracy compared to regression models. 
+                <br><br>
+
+                <b><em>Why a specific algorithm is works/does not work for your project?</em></b><br>
+                The reason for the high accuracy is the dataset is well-prepared and cleaned, and the features are normalized. The difference in 
+                data distribution of two classes is also a reason for the high accuracy.
+
             </p>
 <!-- Deliverables -->
             <section>

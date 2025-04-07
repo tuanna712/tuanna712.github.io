@@ -42,6 +42,7 @@
             </p> -->
             <p class="h2-content">
                 <p class="h2-content">
+                    <b><em>What is Decision Tree?</em></b><br>
                     Decision Trees are machine learning models used for classification and regression tasks. 
                     They recursively split data into subsets based on feature values to create a tree-like structure. 
                     The goal is to maximize homogeneity within each subset, making predictions at leaf nodes based on 
@@ -56,13 +57,19 @@
                     (<a href="https://dataaspirant.com/how-decision-tree-algorithm-works/" target="_blank">Source</a>)
                 </p>
 
-                <b>How does Decision Tree work?</b>
                 <p class="h2-content">
-                    To train a Decision Tree, the algorithm begins by selecting the feature that best splits the data 
-                    based on a criterion like Gini impurity or entropy. This process is repeated recursively, 
-                    dividing the data into subsets until stopping criteria (e.g., tree depth or minimum samples per leaf) 
-                    are met. Once trained, predictions are made by following the path from the root to a leaf node, 
-                    where the final prediction is determined.
+                    <b><em>How is the model trained?</em></b><br>
+                    Training a Decision Tree involves selecting the best features and thresholds to split the data at each node in a way that 
+                    improves the model’s accuracy. The algorithm evaluates all possible splits using criteria Gini Impurity or Information Gain 
+                    for classification, and chooses the one that best separates the data. 
+                    This process continues recursively until a stopping condition is met, such as a maximum depth or minimum number of samples per leaf.
+                </p>
+                <p class="h2-content">
+                    <b><em>How does it make predictions?</em></b><br>
+                    To make a prediction, a new data point is passed through the tree starting from the root node. At each internal node, 
+                    the model checks the feature value against the split condition and follows the appropriate branch. 
+                    This continues until the data point reaches a leaf node, where the model outputs the predicted class label 
+                    (for classification) or average value (for regression) associated with that leaf.
                 </p>
                 
                 <div class="image">
@@ -73,7 +80,7 @@
 
                 
                 <p class="h2-content">
-                    <b>The usage of the Entropy and Information Gain</b>
+                    <b><em>The usage of the Entropy and Information Gain</em></b><br>
                     Gini impurity, entropy, and information gain are used to evaluate potential splits in a decision tree. 
                     Gini impurity focuses on minimizing the probability of incorrect classifications, while entropy measures 
                     disorder or uncertainty in the data. Information gain quantifies how much uncertainty is reduced after a split. 
@@ -106,7 +113,7 @@
                         \)
                     </p><br>
                 </p>
-                
+
                 <p class="h2-content">
                     <b><em>Why it is generally possible to create an infinite number of trees?</em></b><br>
                     Decision Trees can have an infinite number of possible structures due to the flexibility in choosing splitting features, 
@@ -124,8 +131,10 @@
             <p class="h2-content">
                 <ol>
                     <li>
-                        <b><em>Image of before & after cleaning data.</em></b>
-
+                        <b><em>Image of before & after cleaning data.</em></b><br>
+                        For classification task, the predictors are selected including DEPTH, GROUP, FORMATION, CALI, RHOB, NPHI, DTC and BS.
+                        The data is cleaned and processed to remove duplicates, handle missing values, and convert categorical variables into numerical format.
+                        The figure below shows the data before and after cleaning and processing.
                         <div class="image">
                             <img style="height: 280px;" src="assets/img/dt/dt_b_a.png" alt="cleaned_data" class="grid-image" data-description="">
                         </div>
@@ -133,7 +142,9 @@
                     </li>
 
                     <li>
-                        <b><em>Image of the sample train and test data.</em></b>
+                        <b><em>Image of the sample train and test data.</em></b><br>
+                        Train-test splitting is a fundamental step to evaluate a model's performance. A rate of 80% for training and 20% for testing is used.
+                        The label also is detached from the predictors. The figure below shows the sample of train and test data.
                         <div class="image">
                             <img style="height: 400px;" src="assets/img/dt/dt_data.png" alt="DT data" class="grid-image" data-description="">
                         </div>
@@ -143,8 +154,10 @@
                     <li>
                         <b><em>How the test train split was created?</em></b><br>
                         Train-test splitting is a fundamental step to evaluate a model's performance. 
-                        The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, which acts as unseen data and 
-                        uses to assess its accuracy. <br>
+                        The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, 
+                        which acts as unseen data and uses to assess its accuracy. <br>
+                        Using Scikit-learn's <code>train_test_split()</code> function is a prominent method to perform this split with a common split ratio is 80% for training and 20% for testing.
+                        The dataset is split into training and testing sets later on.
                         
                         
                         <div class="image">
@@ -153,8 +166,6 @@
                         </div>
 
                         <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
-
-                        A common split ratio is 80% for training and 20% for testing, though this can vary depending on the dataset size and problem complexity. 
                     </li>
 
                     <li>
@@ -172,23 +183,29 @@
         <!-- Results -->
             <h2>Results</h2>
             <p class="h2-content">
-                Discuss, illustrate, describe, and visualize the results. 
-                Include the confusion matrix and the accuracy. 
-                Create and include at least three different trees with difference root nodes 
-                (you think about how to do this) and other difference (up to you).  
+                By changing the max_depth of the Decision Tree, a set of different models are created.
+                The first approach is to use the default max_depth of 3, 4, and 5, which shows a ascending trend of accuracy.
+                The model with max_depth = 5 shows the best accuracy of <b>81.4%</b> on the test set, while <b>74.2%</b> and 
+                <b>78.3%</b> for max_depth = 3 and 4, respectively.
+
             </p>
             <div class="image">
                 <img style="height: 400px; width: 800px;" src="assets/img/dt/acc_models_345.png" alt="decision-tree-accuracies" class="grid-image" data-description="">
-                <p class="image-caption">Testing accuracies of models with different max_depth (3, 4, 5)</p>
+                <p class="image-caption">Testing accuracies of models with different max_depth (3, 4, 5)</p><br>
             </div>
-            The classification reports are conducted to compare the performance on each prediction class.
+            The confusion matrix are conducted to compare the performance on each prediction class.
+            All models show the highest accuracy on the Sandstone Sand class, while the lowest accuracy on the Dolomite class.
+            The reason could be the imbalance of the dataset. The difference in confusion matrix also shows the model with max_depth = 5
+            has the best performance on the test set.
             <div class="image-grid container">
                 <img src="assets/img/dt/cm_dt_3.png"  alt="confusion-matrix-depth-3" class="grid-image" data-description="">
                 <img src="assets/img/dt/cm_dt_4.png"  alt="confusion-matrix-depth-4" class="grid-image" data-description="">
                 <img src="assets/img/dt/cm_dt_5.png"  alt="confusion-matrix-depth-5" class="grid-image" data-description="">
             </div>
-            <p class="image-caption">Confusion matrix of Decision Tree models with different max_depth (3, 4, 5).<br>
-
+            <p class="image-caption">Confusion matrix of Decision Tree models with different max_depth (3, 4, 5).</p><br>
+            
+                For a clearer view, the tree plot of all models are conducted to show the structure of the tree.
+                By the color and the number on each node, the decision tree can be interpreted.
             <div class="image">
                 <img style="height: 300px;" src="assets/img/dt/plot_tree_3.png" alt="decision-tree-plot" class="grid-image" data-description="">
                 <p class="image-caption">Decision Tree with max_depth = 3.</p>
@@ -200,13 +217,25 @@
 
             <div class="image">
                 <img style="height: 400px; width: 800px;" src="assets/img/dt/acc_depth.png" alt="decision-tree-accuracy" class="grid-image" data-description="">
-                <p class="image-caption">Hypertuning of max_depth shows convergence at max_depth=14 and testing accuracy reach 92%.<br>
+                <p class="image-caption">Hypertuning of max_depth shows convergence at max_depth=14 and testing accuracy reach 92%.</p><br>
             </div>
+            For exploring the best max_depth, a set of models are created with max_depth from 1 to 24. The testing accuracies are collected and 
+            ploted to show the trend of the model performance. The model with max_depth = 14 shows the best performance with the testing accuracy of 92%.
 
         <!-- Conclusions -->
             <h2>Conclusions</h2>
             <p class="h2-content">
-                What did you learn (and/or what can you predict here) that pertains to your topic?
+                By modeling the Decision Tree algorithm, it is clear to realize that DT is a popular tree-based method for classification. 
+                It is also easy for interpretation and visualization, making it useful for explaining model decisions to non-technical users. 
+                However, it can easily overfit the training data if not properly pruned or regularized. Despite this, Decision Trees 
+                serve as a strong foundation for more advanced ensemble methods like Random Forests and Gradient Boosting, 
+                which help overcome its limitations and improve predictive performance.<br><br>
+
+                When dealing with imbalanced data, DT tends to favor the majority class, which can lead to biased predictions and poor 
+                performance on the minority class. This happens because the splitting criteria like Gini Impurity or Information Gain 
+                may not account for class distribution effectively. It can be seen in the class of Dolomite, which has the lowest accuracy.
+                To address this, techniques such as class weighting, resampling (oversampling the minority or undersampling the majority), 
+                or using ensemble methods that handle imbalance better.
             </p>
 <!-- Deliverables -->
             <section>

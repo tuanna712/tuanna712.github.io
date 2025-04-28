@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
+    
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
+    
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Ensemble Methods
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+
+            <p class="h2-content">
+                <b>What is Ensemble Learning?</b><br>
+                Ensemble learning combines multiple models (often weak learners) to create a stronger, more accurate model 
+                by aggregating their predictions through methods like voting or averaging. It leverages diversity among models 
+                to improve accuracy, stability, and generalization. Common techniques include bagging (e.g., Random Forest), 
+                boosting (e.g., AdaBoost, Gradient Boosting), and stacking. Ensemble methods offer higher accuracy, 
+                greater robustness, and often reduce overfitting compared to individual models.
+            </p>
+            <div class="image">
+                <img style="height: 250px; width: 600px;" src="https://viso.ai/wp-content/uploads/2024/02/Common-Ensemble-Methods.jpg" 
+                alt="ensemble-leanring" class="grid-image" data-description="">
+                <p class="image-caption">Common Ensemble Methods.
+                    <a href="https://viso.ai/deep-learning/ensemble-learning/" target="_blank">(Source)</a>
+                </p>
+            </div>
+
+            <p class="h2-content">
+                <b>Application and outcomes of Ensemble Learning to the project</b><br>
+                This project uses complicated data with multiple classes and imbalances. 
+                Ensemble methods provide a comprehensive solution to address the classification tasks and handle these data challenges. 
+                The project employs Random Forest and LightGBM to optimize model performance by improving accuracy, reducing overfitting, 
+                and enhancing robustness. By leveraging the strengths of these ensemble techniques, the final models achieve better generalization 
+                and more reliable predictions across all classes, even in the presence of class imbalance.
+            </p>
+
+            <p class="h2-content">
+                <b>Random Forest Method</b><br>
+                Random Forest is a powerful ensemble learning method that builds multiple decision trees using random subsets of the data and features. 
+                Each tree makes an independent prediction, and the final output is determined by majority vote (for classification) or averaging (for regression). 
+                
+            </p>
+            <div class="image">
+                <img style="height: 350px; width: 600px;" src="https://miro.medium.com/v2/resize:fit:1010/1*R3oJiyaQwyLUyLZL-scDpw.png" 
+                alt="ensemble-leanring" class="grid-image" data-description="">
+                <p class="image-caption">Random Forest Method.
+                    <a href="https://medium.com/@denizgunay/random-forest-af5bde5d7e1e" target="_blank">(Source)</a>
+                </p>
+            </div>
+            <p class="h2-content">
+                This randomness improves accuracy, reduces overfitting, and enhances reliability. 
+                Key features include handling missing data, ranking feature importance, scaling well to large datasets, and versatility 
+                across classification and regression tasks. Random Forest assumes that individual trees are trained on different data samples, 
+                make independent decisions, and that combining diverse predictions leads to more accurate results.
+            </p>
+            <p class="h2-content">
+                <b>LightGBM Method</b><br>
+                LightGBM (Light Gradient Boosting Machine) is a fast, widely used for classification and regression tasks. 
+                It improves on traditional GBM by using two key techniques: 
+                <ul style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px;">
+                    <li>Gradient-based One-Side Sampling (GOSS): which prioritizes data points with large gradients to speed up training.</li>
+                    <li>Exclusive Feature Bundling (EFB): which reduces memory usage by combining mutually exclusive features.</li>
+                </ul>
+                LightGBM uses a histogram-based split finding method, discretizing features into bins to accelerate the search for optimal splits. 
+                These innovations make LightGBM highly scalable, efficient, and accurate, especially for large datasets.
+            </p>
+        <!-- Code -->
+            <h2>Data Preparation</h2>
+            <p class="h2-content">
+                <b>Data used before and after transformation</b><br>
+                <div class="image">
+                    <img style="height: 300px;" src="assets/img/svm/svm_transformed_data.png" 
+                    alt="svm-data" class="grid-image" data-description="">
+                    <p class="image-caption">Data transformation for SVMs.</p>
+                </div>
+                <b>Screenshot of Train and Test data</b>
+                <div class="image">
+                    <img style="height: 250px;" src="assets/img/svm/svm_data.png" 
+                    alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
+                    <p class="image-caption">Train test data after splitting.</p>
+                </div>
+            </p> 
+            
+            <!-- Results -->
+            <h2>Results</h2>
+            <p class="h2-content">
+                <b>Random Forest Result</b><br>
+                <div class="image-grid container">
+                    <img src="assets/img/ensemble/rf_cr.png" alt="RandomForest" class="grid-image" data-description="">
+                    <img src="assets/img/ensemble/rf_cm.png" alt="RandomForest" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The results of Random Forest Model.</p>
+
+                <b>XGBoost Result</b><br>
+                <div class="image-grid container">
+                    <img src="assets/img/ensemble/xgb_cr.png" alt="XGBoost" class="grid-image" data-description="">
+                    <img src="assets/img/ensemble/xgb_cm.png" alt="XGBoost" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The result of XGBoost Model.</p>
+
+                <b>LightBGM Result</b><br>
+                <div class="image-grid container">
+                    <img src="assets/img/ensemble/lgbm_cr.png" alt="LightGBM" class="grid-image" data-description="">
+                    <img src="assets/img/ensemble/xgb_cm.png" alt="LightGBM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The result of LightGBM model.</p>
+
+                <b>Model Comparison</b><br>
+                <div class="image">
+                    <img style="height: 300px; width: 750px;" src="assets/img/ensemble/ensemble_accs.png" 
+                    alt="ensemble-models-acc" class="grid-image" data-description="">
+                    <p class="image-caption">Ensemble Model Accuracies</p>
+                </div>
+            </p>
+
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/raw.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Data Before
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/ensemble/cleaned_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Data After (Cleaned)
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/09_ensemble.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Data Preparation and Modeling Notebook
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
+</html>

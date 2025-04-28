@@ -1,61 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVM - MLDS</title>
-    <!-- Favicons -->
-    <link href="assets/img/fav-icon.png" rel="icon">
-    <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <!-- Link to external JS -->
-    <script src="assets/js/loadNav.js"></script>
-    <style>
-        .error-container {
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .error-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .error-container p {
-            margin-bottom: 20px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: grey;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .under-construction{
-            width: 40%;
-            margin-top: 20px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- Menu Bar -->
-    <div id="nav"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
     
-    <!-- Main -->
-    <div class="error-container">
-        <h1>Support Vector Machines (SVM)</h1>
-        <h2>Page is Under Construction</h2>
-        <p>We are currently working on this section. The content will be available soon.</p>
-        <a href="index.html" class="back-home">Go Back to Introduction</a>
-    </div>
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
     
-    <div class="error-container">
-        <img src="assets/img/under-construction.png" alt="Underconstruction" class="under-construction">
-    </div>
-</body>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Support Vector Machines (SVM)
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+            <p class="h2-content">
+                <p class="h2-content">
+                    <b>SVM Explanation</b><br>
+                    Support Vector Machine (SVM) is a powerful supervised learning algorithm used for both classification and regression tasks. 
+                    It is particularly effective for high-dimensional spaces and when there is a clear margin of separation between classes.<br>
+                    SVM attempts to find a hyperplane that best separates the data points of different classes. 
+                    For 2D data, this is a line; for 3D, a plane; and in higher dimensions, it's a hyperplane.<br>
+                        <div class="image">
+                            <img style="height: 200px; width: 700px;" src="https://drek4537l1klr.cloudfront.net/rhys/HighResolutionFigures/figure_6-3.png" 
+                            alt="svm" class="grid-image" data-description="">
+                            <p class="image-caption">The SVM algorithm finds a hyperplane that passes through the feature space.
+                                <a href="https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-6/109" target="_blank">(Source)</a>
+                            </p>
+                        </div>
+                    The linear decision boundary is represented as:
+                    $$ f(x) = w^T x + b $$
+                    where:
+                    <ul>
+                      <li>\( w \): weight vector (normal to the hyperplane)</li>
+                      <li>\( b \): bias or offset</li>
+                      <li>\( x \): input feature vector</li>
+                    </ul>
+                </p>
+
+                <p>
+                    The goal of SVM is to maximize the margin while minimizing classification errors. For linearly separable data:
+                    $$
+                    \min_{w, b} \frac{1}{2} \|w\|^2 \\
+                    \text{subject to } y_i(w^T x_i + b) \geq 1
+                    $$
+                    This ensures that data points are on the correct side of the margin.
+                </p>
+        
+                <p>
+                    When data is not perfectly separable, SVM introduces slack variables \( \xi_i \) and a penalty parameter \( C \):
+                    $$
+                    \min \frac{1}{2} \|w\|^2 + C \sum \xi_i \\
+                    \text{subject to } y_i(w^T x_i + b) \geq 1 - \xi_i, \quad \xi_i \geq 0
+                    $$
+                </p>
+
+                <p class="h2-content">
+                    <b>How the kernel works</b><br>
+                    A kernel works by computing the dot product between data points in a higher-dimensional feature space without explicitly transforming the data. 
+                    This kernel trick allows algorithms like SVM to learn non-linear decision boundaries by replacing the standard dot product with a kernel function 
+                    (e.g., polynomial or RBF), enabling complex patterns to be captured efficiently in the original input space.
+                </p>
+
+                <p class="h2-content">
+                    <b>Why the dot product is so critical to the use of the kernel?</b><br>
+                    The dot product is critical in SVM because both the optimization and prediction steps rely entirely on computing similarities between data points,
+                    which are expressed as dot products. Kernel functions allow us to replace these dot products with computations in a higher-dimensional 
+                    space without explicitly transforming the data, enabling SVM to handle non-linear patterns efficiently through the kernel trick.
+                </p>
+                <div class="image">
+                    <img style="height: 250px; width: 1000px;" src="assets/img/svm/svm_1.png" 
+                    alt="svm-kernel" class="grid-image" data-description="">
+                    <p class="image-caption">Examples of kernel functions.
+                        <a href="https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-6/109" target="_blank">(Source)</a>
+                    </p>
+                </div>
+                <p class="h2-content">
+                    <b>What the polynomial and rbf kernel function look like?</b><br>
+                    For non-linear decision boundaries, SVM uses the kernel trick to implicitly map data into a higher-dimensional space:
+                    <ul>
+                        <li><strong>Linear kernel</strong>: \( K(x, x') = x^T x' \)</li>
+                        <li><strong>Polynomial kernel</strong>: \( K(x, x') = (x^T x' + r)^d \)</li>
+                        <li><strong>RBF (Gaussian)</strong>: \( K(x, x') = \exp(-\gamma \|x - x'\|^2) \)</li>
+                    </ul>
+                    This allows SVM to find complex boundaries without explicitly computing the transformation.
+                </p>
+            
+                <p class="h2-content">
+                    <b>Why SVMs are linear separators?</b><br>
+                    SVMs are linear separators because, at their core, they find the optimal hyperplane that linearly separates data in the feature space. 
+                    Even when using non-linear kernels, the separation remains linear in the transformed (higher-dimensional) space. 
+                    The kernel trick allows SVMs to model complex boundaries in the original space by applying a linear decision function in this new space,
+                    so the model itself is always a linear classifier in some (possibly implicit) feature space.
+                </p>
+                
+                <p class="h2-content">
+                    <b>Dot product in the use of kernel<br></b>
+                    The dot product is fundamental in SVMs because it measures the similarity between data points. 
+                    Kernels replace the standard dot product with a function that computes this similarity in a 
+                    higher-dimensional space without explicitly transforming the data. This kernel trick 
+                    enables SVMs to handle non-linear patterns efficiently, allowing complex decision boundaries 
+                    to be modeled while maintaining computational efficiency.<br>
+                </p>
+
+                <p class="h2-content">
+                    <b>Example of SVM using Polynomial kernel with \(r = 1\) and \(d = 2\).<br></b>
+                    In genernal, let \(A = (a_1, a_2)\) and \(B = (b_1, b_2)\) are two 2D points, using the Polynomial kernel: \( K(A, B) = (A^T B + r)^d \).<br> 
+                    We have:
+                    \[
+                    K(A, B) = (a_1 b_1 + a_2 b_2 + 1)^2
+                    \]
+                    Expanding this, we get:
+                    \[
+                    K(A, B) = a_1^2 b_1^2 + a_2^2 b_2^2 + 2a_1 b_1 a_2 b_2 + 2a_1 b_1 + 2a_2 b_2 + 1
+                    \]
+                    \(K(A, B)\) can be expressed as a dot product:
+                    \[
+                    K(A, B) = [a_1^2, a_2^2, \sqrt{2} a_1 a_2, \sqrt{2} a_1, \sqrt{2} a_2, 1]^T [b_1^2, b_2^2, \sqrt{2} b_1 b_2, \sqrt{2} b_1, \sqrt{2} b_2, 1]
+
+                    \]
+                    Thus, the explicit feature mapping \(\phi(A)\), \(\phi(B)\) is:
+                    \[
+                    \phi(A) = (a_1^2, a_2^2, \sqrt{2} a_1 a_2, \sqrt{2} a_1, \sqrt{2} a_2, 1)
+                    \]
+                    \[
+                    \phi(B) = (b_1^2, b_2^2, \sqrt{2} b_1 b_2, \sqrt{2} b_1, \sqrt{2} b_2, 1)
+                    \]
+                    This transformation goes from 2 dimensions space to 6 dimensions space.<br>
+                    Example: \(A = (1, 2), B = (2, 3)\).
+                    The transformation of A is \([1, 4, 2\sqrt{2}, \sqrt{2}, 2\sqrt{2}, 1]\).
+                    The transformation of B is \([4, 9, 6\sqrt{2}, 2\sqrt{2}, 3\sqrt{2}, 1]\)
+                    Using transformed values to calculate \(K(A, B)\), we have:
+                    \[
+                    K(A, B) = [1, 4, 2\sqrt{2}, \sqrt{2}, 2\sqrt{2}, 1]^T [1, 4, 2\sqrt{2}, \sqrt{2}, 2\sqrt{2}, 1]
+                    \]
+                    \[
+                    K(A, B) = 1 \times 4 + 4 \times 9 + 2\sqrt{2} \times 2\sqrt{2} + \sqrt{2} \times \sqrt{2} + 2\sqrt{2} \times 2\sqrt{2} +1 =81
+                    \]
+                    While the Kernel from 2D data is:
+                    \[
+                    K(A, B) = [(1 \times 2 + 2 \times 3) +1]^2 = 81
+                    \]
+                    <p class="h2-content"></p>
+                        We can conclude that the kernel trick is a powerful technique that allows SVM to handle non-linear decision 
+                        boundaries by implicitly mapping data into a higher-dimensional space. This is achieved without explicitly 
+                        performing the transformation, making the computation efficient and scalable. 
+                    </p>
+                </p>
+            </p>
+
+        <!-- Code -->
+            <h2>Data Preparation</h2>
+            <p class="h2-content">
+                The SVMs require numerical data, so we process and clean the dataset to ensure it is suitable for modeling. 
+                The normalization of the data is also performed to ensure that all features contribute equally to the distance calculations.<br><br>
+                <b>Is the train test split different or the same?</b><br>
+                The train-test split is a crucial step in preparing the dataset for SVM modeling. It involves dividing the dataset into two separated subsets:
+                <ul>
+                    <li><strong>Training Set</strong>: Used to train the SVM model, allowing it to learn the patterns and relationships in the data.</li>
+                    <li><strong>Test Set</strong>: Used to evaluate the performance of the trained model on unseen data, providing an estimate of how well the model generalizes.</li>
+                </ul>
+                The figure below shows the train-test split of the dataset, which is essential for evaluating the model's performance.
+                <div class="image">
+                    <img style="height: 250px;" src="assets/img/svm/svm_data.png" 
+                    alt="confusion-matrix-multinomial-nb" class="grid-image" data-description="">
+                    <p class="image-caption">Train test data after splitting.</p>
+                </div>
+                The original labels as categories are transformed into numerical values to ensure compatibility with the SVM algorithm.<br>
+                The link to dataset and preprocessing code are provided in the Deliverables section below.
+            </p> 
+            
+            <!-- Results -->
+            <h2>Results</h2>
+            <p class="h2-content">
+                <b>Data used before and after transformation(if transformed, image)</b><br>
+                    <div class="image">
+                        <img style="height: 300px;" src="assets/img/svm/svm_transformed_data.png" 
+                        alt="svm-data" class="grid-image" data-description="">
+                        <p class="image-caption">Data transformation for SVMs.</p>
+                    </div>
+                <b>Mention the Split in your Train-Test Split Page</b>
+            </p>
+            <p class="h2-content">
+                <b>SVM - Linear Kernels</b>
+                <div class="image-grid container">
+                    <img src="assets/img/svm/LinearKernel_C01_CR.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/LinearKernel_C10_CR.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/LinearKernel_C70_CR.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Classification Report of Linear Kernel SVMs.</p>
+
+                <div class="image-grid container">
+                    <img src="assets/img/svm/LinearKernel_C01_CM.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/LinearKernel_C10_CM.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/LinearKernel_C70_CM.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Confusion Matrix of Linear Kernel SVMs.</p>
+            </p>
+
+            <p class="h2-content">
+                <b>SVM - Polynomial Kernels</b>
+                <div class="image-grid container">
+                    <img src="assets/img/svm/PolyKernel_C12_CR.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/PolyKernel_C23_CR.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/PolyKernel_C35_CR.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Classification Report of Polynomial Kernel SVMs.</p>
+
+                <div class="image-grid container">
+                    <img src="assets/img/svm/PolyKernel_C12_CM.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/PolyKernel_C23_CM.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/PolyKernel_C35_CM.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Confusion Matrix of Polynomial Kernel SVMs.</p>
+            </p>
+
+            <p class="h2-content">
+                <b>SVM - Radial Basis Function Kernels</b>
+                <div class="image-grid container">
+                    <img src="assets/img/svm/RBFKernel_C01_CR.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/RBFKernel_C10_CR.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/RBFKernel_C30_CR.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Classification Report of Radial Basis Function Kernel SVMs.</p>
+
+                <div class="image-grid container">
+                    <img src="assets/img/svm/RBFKernel_C01_CM.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/RBFKernel_C10_CM.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/RBFKernel_C30_CM.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Confusion Matrix of Radial Basis Function Kernel SVMs.</p>
+            </p>
+
+            <p class="h2-content">
+                <b>Decision Boundary of SVMs</b>
+                <div class="image-grid container">
+                    <img src="assets/img/svm/svm_boundary_linear.png" alt="Decision Boundary SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/svm_boundary_poly.png" alt="Decision Boundary SVM" class="grid-image" data-description="">
+                    <img src="assets/img/svm/svm_boundary_rbf.png" alt="Decision Boundary SVM" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">The Decision Boundary of SVMs.</p>
+            </p>
+
+            <p class="h2-content">
+                <b>Models Comparison</b>
+                <div class="image">
+                    <img style="height: 350px; width: 750px;" src="assets/img/svm/svm_comparison.png" 
+                    alt="svm" class="grid-image" data-description="">
+                    <p class="image-caption">Accuracies comparison of the different settings of SVM.</p>
+                </div>
+            </p>
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/raw.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Data Before
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/svm/cleaned_data.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Data After (Cleaned)
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/08_svm.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Data Preparation and Modeling Notebook
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
 </html>

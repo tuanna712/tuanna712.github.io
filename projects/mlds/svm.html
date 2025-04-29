@@ -192,16 +192,23 @@
             <!-- Results -->
             <h2>Results</h2>
             <p class="h2-content">
-                <b>Data used before and after transformation(if transformed, image)</b><br>
+                <b>Data transformation</b><br>
+                The original dataset is normalized and the label is encoded to numerical values. 
+                Af transformation, the <b>train test split</b> is performed with a 80% training and 20% testing split.
+                The splitting result is shown in the data preparation section above.
                     <div class="image">
                         <img style="height: 300px;" src="assets/img/svm/svm_transformed_data.png" 
                         alt="svm-data" class="grid-image" data-description="">
                         <p class="image-caption">Data transformation for SVMs.</p>
                     </div>
-                <b>Mention the Split in your Train-Test Split Page</b>
             </p>
             <p class="h2-content">
+                The project is implemented using the SVM algorithm with different kernel functions, including linear, polynomial, 
+                and radial basis function (RBF) kernels.<br>
                 <b>SVM - Linear Kernels</b>
+                The settings of \(Cost\) parameter \(C\) are set to 0.1, 1.0, and 7.0. It shows an improvement in accuracy as the value of \(C\) increases,
+                which indicates that the model is able to fit the data better with a higher penalty for misclassification.<br>
+                The highest accuracy is achieved with \(C = 7.0\) is 69%.
                 <div class="image-grid container">
                     <img src="assets/img/svm/LinearKernel_C01_CR.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
                     <img src="assets/img/svm/LinearKernel_C10_CR.png" alt="Linear Kernel SVM" class="grid-image" data-description="">
@@ -219,6 +226,13 @@
 
             <p class="h2-content">
                 <b>SVM - Polynomial Kernels</b>
+                The Polynomial kernel is used with different settings of degree \(d\) and constant \(r\).
+                The settings of \(Cost\) parameter \(C\) are set to 1, 2, and 3 and the degree \(d\) varies from 2 to 5.
+                The performance of the Polynomial kernel SVMs is shown below.
+                The highest accuracy is achieved with \(C = 3\) and \(d = 5\) is 86% indicates that 
+                the model is able to fit the data better with a higher degree of polynomial and a higher penalty for misclassification.
+                It can be reasoned that the Polynomial kernel is able to capture the non-linear patterns in the data better than the Linear kernel.<br>
+                <br>
                 <div class="image-grid container">
                     <img src="assets/img/svm/PolyKernel_C12_CR.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
                     <img src="assets/img/svm/PolyKernel_C23_CR.png" alt="Polynomial Kernel SVM" class="grid-image" data-description="">
@@ -236,6 +250,9 @@
 
             <p class="h2-content">
                 <b>SVM - Radial Basis Function Kernels</b>
+                The Radial Basis Function (RBF) kernel is used with different settings of \(Cost\) parameter \(C\) and gamma \(\gamma\).
+                The settings of \(Cost\) parameter \(C\) are set to 0.1, 1.0, and 3.0. 
+                The highest accuracy is achieved with \(C = 3.0\) is 86%.
                 <div class="image-grid container">
                     <img src="assets/img/svm/RBFKernel_C01_CR.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
                     <img src="assets/img/svm/RBFKernel_C10_CR.png" alt="RBF Kernel SVM" class="grid-image" data-description="">
@@ -252,7 +269,8 @@
             </p>
 
             <p class="h2-content">
-                <b>Decision Boundary of SVMs</b>
+                <b>Decision Boundary of SVMs</b><br>
+                The visualization of the decision boundary for each kernel on two variables is shown below.
                 <div class="image-grid container">
                     <img src="assets/img/svm/svm_boundary_linear.png" alt="Decision Boundary SVM" class="grid-image" data-description="">
                     <img src="assets/img/svm/svm_boundary_poly.png" alt="Decision Boundary SVM" class="grid-image" data-description="">
@@ -262,7 +280,10 @@
             </p>
 
             <p class="h2-content">
-                <b>Models Comparison</b>
+                <b>Models Comparison</b><br>
+                The accuracies of the different settings of SVMs are compared in the figure below. 
+                From that, the Polynomial kernel SVMs with \(C = 3\) and \(d = 5\) achieves the highest accuracy of 86%,
+                followed by the RBF kernel SVMs with \(C = 3\) achieving 86% as well.
                 <div class="image">
                     <img style="height: 350px; width: 750px;" src="assets/img/svm/svm_comparison.png" 
                     alt="svm" class="grid-image" data-description="">
@@ -271,8 +292,13 @@
             </p>
         <!-- Conclusions -->
             <h2>Conclusions</h2>
+            
             <p class="h2-content">
-
+                In conclusion, the SVM algorithm is a powerful tool for classification tasks, especially when dealing with high-dimensional data.
+                The results show that the Polynomial kernel SVMs with \(C = 3\) and \(d = 5\) achieved the highest accuracy of 86%,
+                indicating that it is able to capture the non-linear patterns in the data better than the Linear and RBF kernel SVMs.
+                From the Classification Report and Confusion Matrix, we can see that the model is able to classify almost the data points from the majority of the classes correctly.
+                Some failures are observed when missclassifying between Sand Stone and Sandstone Shale, which share similar physical properties.
             </p>
 <!-- Deliverables -->
             <section>

@@ -51,7 +51,7 @@
             </div>
 
             <p class="h2-content">
-                <b>Application and outcomes of Ensemble Learning to the project</b><br>
+                <b>Application and outcomes of Ensemble Learning</b><br>
                 This project uses complicated data with multiple classes and imbalances. 
                 Ensemble methods provide a comprehensive solution to address the classification tasks and handle these data challenges. 
                 The project employs Random Forest and LightGBM to optimize model performance by improving accuracy, reducing overfitting, 
@@ -109,21 +109,25 @@
             <!-- Results -->
             <h2>Results</h2>
             <p class="h2-content">
-                <b>Random Forest Result</b><br>
+                The project implements three ensemble methods: Random Forest, XGBoost, and LightGBM.<br>
+                <b>Random Forest</b><br>
+                Random Forest performs well on the dataset, achieving an accuracy of 95%. 
                 <div class="image-grid container">
                     <img src="assets/img/ensemble/rf_cr.png" alt="RandomForest" class="grid-image" data-description="">
                     <img src="assets/img/ensemble/rf_cm.png" alt="RandomForest" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">The results of Random Forest Model.</p>
 
-                <b>XGBoost Result</b><br>
+                <b>XGBoost</b><br>
+                XGBoost also achieves an accuracy of 94.9%, similar to Random Forest.
                 <div class="image-grid container">
                     <img src="assets/img/ensemble/xgb_cr.png" alt="XGBoost" class="grid-image" data-description="">
                     <img src="assets/img/ensemble/xgb_cm.png" alt="XGBoost" class="grid-image" data-description="">
                 </div>
                 <p class="image-caption">The result of XGBoost Model.</p>
 
-                <b>LightBGM Result</b><br>
+                <b>LightBGM</b><br>
+                LightGBM achieves an accuracy of 95%, outperforming the other two models.
                 <div class="image-grid container">
                     <img src="assets/img/ensemble/lgbm_cr.png" alt="LightGBM" class="grid-image" data-description="">
                     <img src="assets/img/ensemble/xgb_cm.png" alt="LightGBM" class="grid-image" data-description="">
@@ -131,6 +135,11 @@
                 <p class="image-caption">The result of LightGBM model.</p>
 
                 <b>Model Comparison</b><br>
+                All three models perform well, where Random Forest and LightGBM slightly better. 
+                Models are compared based on the accuracy score on the test set.
+                From the confusion matries, we can see that the models perform well on most classes,
+                but there are some misclassifications, especially between Sandstone and Sandstone Shale.
+                This two classes are often confused with each other, because of the similarity in the physical properties.
                 <div class="image">
                     <img style="height: 300px; width: 750px;" src="assets/img/ensemble/ensemble_accs.png" 
                     alt="ensemble-models-acc" class="grid-image" data-description="">
@@ -141,7 +150,9 @@
         <!-- Conclusions -->
             <h2>Conclusions</h2>
             <p class="h2-content">
-
+                Ensemble methods, including Random Forest, XGBoost, and LightGBM, effectively handle complex classification tasks with imbalanced data. 
+                The project demonstrates that these methods can significantly improve model performance by leveraging the strengths of multiple models. 
+                With the performance of 95% accuracy, Random Forest and LightGBM could be considered the best models for this dataset.
             </p>
 <!-- Deliverables -->
             <section>

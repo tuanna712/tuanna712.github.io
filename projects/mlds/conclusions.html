@@ -33,7 +33,7 @@
 
             <!-- Overview -->
             <div class="content-row">
-                <div class="content-column content-text" style="width: 70%; float: left;">
+                <div class="content-column content-text" style="width: 100%; float: left;">
                     <p class="h2-content">
                         Started with the machine learning approaches for Lithology Classification using borehole data, 
                         the project has collected and prepared a dataset from two different sources: USGS API and FORCE ML 2020.<br><br>
@@ -43,10 +43,22 @@
                         in identifying distinct lithological groups based on well log data. <br><br>
                         The results indicate that the clustering algorithms effectively captured the underlying patterns in the data,
                         which are most likely related to the major classes of lithology. <br><br>
-
+                        <div class="image-grid">
+                            <!-- Importing images... -->
+                            <img src="assets/img/clustering/dbscan_1.png" alt="dbscan_1" class="grid-image" data-description="">
+                            <img src="assets/img/clustering/dbscan_2.png" alt="dbscan_2" class="grid-image" data-description="">
+                            <img src="assets/img/clustering/dbscan_3.png" alt="dbscan_3" class="grid-image" data-description="">
+                        </div>
+                        <p class="image-caption">2D Visualization of DBSCAN's results on different principal components.</p>
+                        
                         The Supervised learning approaches showed promising results, with the Random Forest model achieving the highest accuracy of 0.95.
                         It indicates that the model can effectively classify lithological types based on well log data.
                     </p>
+                    <div class="image">
+                        <img style="height: 300px; width: 750px;" src="assets/img/ensemble/ensemble_accs.png" 
+                        alt="ensemble-models-acc" class="grid-image" data-description="">
+                        <p class="image-caption">Ensemble Model Accuracies</p>
+                    </div>
 
                     <p class="h2-content">
                         <b>Inferences</b><br>
@@ -59,9 +71,9 @@
                     </p>
                 </div>
 
-                <div class="content-column content-image" style="width: 30%; float: left; text-align: center;">
+                <!-- <div class="content-column content-image" style="width: 30%; float: left; text-align: center;">
                     <img src="assets/img/conclusion/arch.jpg" alt="UtahGeology" style="max-width: 100%; height: auto;">
-                </div>
+                </div> -->
             </div>
         </div>
 

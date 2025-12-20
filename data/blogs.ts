@@ -10,7 +10,7 @@ export const blogs: BlogPost[] = [
     id: 1,
     slug: 'seismic-stratigraphy-analysis-2021',
     title: 'Seismic Stratigraphy Analysis for unstructured trap determining at Block 09-1,Cuu Long Basin (2021)',
-    date: '2025-08-01',
+    date: '2022-08-01',
     summary: 'With the advancement of machine learning, new approaches like automatic and semi-automatic seismic horizon interpretation enable detailed mapping of subsurfaces, even capturing individual seismic events. This project covers a 973 km² 3D4C seismic volume and over 500 wells.',
     featured: true,
   },

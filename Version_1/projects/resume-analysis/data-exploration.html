@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Exploration</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="assets/img/icon.png" rel="icon">
+    <link href="assets/img/icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <!-- <div id="preloader"></div> -->
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <style>
+        .sub_header{
+          background: linear-gradient(45deg, #23a527, #f5f1a8);
+          color: white;
+          border: none;
+          padding-top: 0px;
+          padding-bottom: 20px;
+          font-size: 20px;
+          text-align: center;
+          border-radius: 30;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .content {
+            max-width:fit-content;
+            margin: 0 auto;
+            padding: 20px;
+            /* background-color: #f9f9f9; */
+            border-radius: 8px;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+        strong {
+            color: #333;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: left;
+            margin-top: 50px; 
+            margin-bottom: 100px; 
+            /* Increase space between rows */
+        }
+
+        .row:nth-child(even) .content { /* Alternate rows */
+            order: 1;
+        }
+
+        .row:nth-child(even) .image {
+            order: 2;
+        }
+
+        .image {
+            flex: 1.5; /* Larger image */
+            padding: 10px;
+        }
+
+        .content {
+            flex: 2; /* Wider text box */
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            /* Increase size of images */
+            transform: scale(1.2); /* Optional: Slightly larger */
+        }
+
+        .textbox {
+            /* background-color: #f5f5f5; */
+            padding: 70px; /* Add more padding */
+            /* border-radius: 5px; */
+        }
+
+        /* Optional: Media Query for responsiveness */
+        @media (max-width: 768px) {
+            .row {
+            flex-direction: column; /* Stack image and text on smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body class="services-page">
+    <!-- Header -->
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/icon.png" alt="">
+            <h1 class="sitename">Data Exploration</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="data-exploration.html">Data Exploration</a></li>
+                <li><a href="Models-Implemented.html">Models Implemented</a></li>
+                <li><a href="conclusion-results.html">Conclusion & Results</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Page Title -->
+        <div class="page-title light-background">
+            <div class="container">
+            <h1>Data Exploration</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                <li><a href="index.html">Home</a></li>
+                <li class="current">Data</li>
+                </ol>
+            </nav>
+            </div>
+        </div>
+
+        <!-- Data Preprocessing Methodology -->
+        <div class="container">
+            <br><br>
+            <p class="sub_header"><br><b>Data Preprocessing Methodology</b></p>
+            <p>The data we initially scraped is in a raw format, consisting of text files without a specific structure. To begin our analysis, we compiled all the text files into a single CSV file, which allowed us to start extracting meaningful insights. The data consists of resumes in plain text, containing a mix of alphabets, digits, and special characters, with no standardized formatting. Hence, the cleaning process involved several stages, including text standardization, pattern recognition using regular expressions (regex), and applying natural language processing (NLP) techniques.</p>
+            <p>Below are the key steps we have taken:</p>
+        
+            <ol>
+                <li><strong>Standardization and Text Preprocessing</strong>
+                    <ul>
+                        <li><strong>Lowercasing:</strong> We started by converting all text to lowercase to ensure uniformity across the dataset, eliminating case-sensitive variations.</li>
+                        <li><strong>Removal of Unnecessary Elements:</strong> We removed punctuation, special characters, URLs, and numerical values, depending on the specific requirements of the task.</li>
+                        <li><strong>Tokenization:</strong> We applied tokenization to split the text into individual words or phrases.</li>
+                        <li><strong>Stop Word Removal:</strong> Common, non-informative words (e.g., "the", "and", "is") were filtered out to reduce noise and improve the focus on more meaningful terms.</li>
+                        <li><strong>Stemming and Lemmatization:</strong> We applied stemming or lemmatization to reduce words to their root or base forms (e.g., "running" becomes "run").</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Data Cleaning and Filtering</strong>
+                    <ul>
+                        <li><strong>Removal of Empty Files:</strong> We identified some files with a word count of zero, which indicated that they were empty. These were removed from the dataset.</li>
+                        <li><strong>Language Filtering:</strong> Four files were written in languages other than English. Since our analysis is focused on English-language resumes, these non-English files were removed.</li>
+                        <li><strong>Handling Corrupted Data:</strong> Some resumes had a high proportion of special characters (around 50% of the word count), suggesting they were corrupted. These files were flagged for further inspection and will be tested with the NLP model before deciding whether to keep or remove them.</li>
+                        <li><strong>Addressing User Errors:</strong> We observed that a few resumes began with the word "continued," likely due to user errors. These entries were removed to ensure data consistency.</li>
+                        <li><strong>Removal of Redundant Text:</strong> A common phrase, "Candidate has been called," appeared in several resumes, likely as part of a feedback section. Since this phrase did not provide useful information, it was removed from the dataset.</li>
+                    </ul>
+                </li>
+        
+                <li><strong>Elimination of Duplicates and Missing Data</strong></li>
+                
+                <li><strong>Text Normalization and Refinement</strong>
+                    <ul>
+                        <li><strong>Spell Correction:</strong> We applied spell correction techniques to correct common spelling mistakes and enhance the text quality.</li>
+                        <li><strong>Text Normalization:</strong> Additional normalization techniques were applied to ensure consistency in the format of the text (e.g., handling variations like "USA" and "U.S.A.").</li>
+                    </ul>
+                </li>
+        
+                <li><strong>Next Steps – NLP Modeling</strong>
+                    <ul>
+                        <li>The next phase of the project involves training an NLP model to gain deeper insights into the data.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Data Exploration -->
+        
+        <div class="container">
+            <br>
+            <p class="sub_header"><br><b>Data Exploration</b></p>
+            <!-- First Row: Image left, Text right -->
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/most_common.png" alt="Image 1">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>This Graph shows the distribution of the number of most common words in the resume</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Second Row: Text left, Image right (Alternate) -->
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/wordCloud.png" alt="Image 2">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>The Word Cloud visually represents the most frequent terms in the dataset, where larger words indicate higher frequencies.
+                    This provides a quick, intuitive overview of the predominant words or themes in the dataset.<br>
+                    Hence words like 'System' , 'Project', 'Data' , 'Management' appear most frequenctly indicating that they are the dominant words.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Third Row: Image left, Text right -->
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/pie.png" alt="Image 3">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>When examining a category distribution pie chart, the objective is to comprehend how the data is segmented across various categories. 
+                    This visualization is particularly effective for comparing the proportions of individual categories to the entire dataset. 
+                    From the chart beside, it is evident that cloud engineers and data analysts represent the most popular job categories, whereas technical writers and systems administrators rank as the least popular.</p>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Fourth Row: Text left, Image right (Alternate) -->
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/resume.png" alt="Image 4">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>This bar chart illustrates the number of resumes available for each job title. Notably, 
+                    Data Engineer, Full Stack Developer, and Product Manager are among the most commonly available positions.
+                  </p>
+                </div>
+              </div>
+            </div>
+        
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Correlation.png" alt="Image 6">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>A heatmap displays the correlation coefficients between multiple variables in a dataset, 
+                    helping to identify relationships — both positive and negative—among them.
+                  </p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Violin.png" alt="Image 10">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>
+                    A violin plot of skills by education level is a powerful visualization tool that 
+                    combines aspects of box plots and density plots to showcase the distribution of 
+                    skill levels across different educational backgrounds.This helps reveals the distribution 
+                    and density of skill levels for each education category.
+                  </p>
+                  </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Avg_word_count.png" alt="Image 5">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>This bar chart displays the Average word count per job title. Devops Engineer being teh highest 
+                    with a count of close to 1600 and frontend developer having word count of 600.
+                  </p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/bar.png" alt="Image 7">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>This histogram displays the number of words in resumes, offering valuable insights into the length trends among candidates. 
+                    The distribution indicates whether applicants lean towards concise or detailed resumes. 
+                    Notably, the majority of resumes in our dataset average around 500 words, suggesting a preference for shorter and more succinct presentations.
+                  </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Stacked_area_chart.png" alt="Image 8">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>
+                    Stacked area chart is used to show trends over time for multiple categories like skills, education ,experience while illustrating their cumulative effect. 
+                    It allows for an easy comparison of the total and individual contributions of each category.
+                  </p>
+                  </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Scatter.png" alt="Image 9">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>
+                    A pair plot of skills, education, experience, and certifications can provide valuable 
+                    insights into the relationships and interactions between these variables in a dataset 
+                    related to job applicants, employees, or a specific field.
+                  </p>
+                  </div>
+              </div>
+            </div>
+        
+            <div class="row">
+              <div class="image">
+                <img src="assets/img/Word_count_vs_experience.png" alt="Image 11">
+              </div>
+              <div class="content">
+                <div class="textbox">
+                  <p>
+                    A bubble chart depicting the relationship between word count, experience, and education 
+                    levels provides a multidimensional view of how these variables interact in resumes. 
+                    Each bubble represents an individual resume, where the x-axis indicates word count, the y-axis 
+                    represents years of experience, and the size of the bubble corresponds to the education level 
+                    (e.g., smaller bubbles for Bachelor’s degrees and larger ones for Master’s or PhDs).
+                  </p>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

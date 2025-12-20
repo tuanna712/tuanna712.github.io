@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Preparation EDA- MLDS</title>
+    
+        <!-- Favicons -->
+        <link href="assets/img/fav-icon.png" rel="icon">
+        <link href="assets/img/fav-icon.png" rel="apple-touch-icon">
+    
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="assets/css/nav.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/data-prep.css">
+    
+        <!-- Link to external JS -->
+        <script src="assets/js/loadNav.js"></script>
+        <script src="assets/js/loadCollectionActions.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+
+    <body>
+        <!-- Menu Bar -->
+        <div id="nav"></div>
+        
+        <!-- Main -->
+        <div class="container">
+            <h1 class="title">
+                Decision Tree
+            </h1>
+
+        <!-- Overview -->
+            <h2>Overview</h2>
+            <!-- <p class="h2-content">
+                <em>Describe DTs and what it can be used for? <br>
+                Have at least two images that support your description. <br>
+                Include a discussion of how and why GINI, Entropy, and Information Gain are used and include a 
+                small example that uses either GINI or Entropy AND Information GAIN to measure the "goodness" of a split.<br> 
+                Also explain why it is generally possible to create an infinite number of trees.</em>
+            </p> -->
+            <p class="h2-content">
+                <p class="h2-content">
+                    <b><em>What is Decision Tree?</em></b><br>
+                    Decision Trees are machine learning models used for classification and regression tasks. 
+                    They recursively split data into subsets based on feature values to create a tree-like structure. 
+                    The goal is to maximize homogeneity within each subset, making predictions at leaf nodes based on 
+                    the most frequent class or value. The splits are determined using criteria like Gini impurity, entropy, 
+                    and information gain, which help to choose the best features for each decision point.
+                </p><br>
+
+                <div class="image">
+                    <img style="height: 450px;" src="https://dataaspirant.com/wp-content/uploads/2017/01/B03905_05_01-compressor.png" alt="Decision Tree classifier" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Decision Tree classifier.
+                    (<a href="https://dataaspirant.com/how-decision-tree-algorithm-works/" target="_blank">Source</a>)
+                </p>
+
+                <p class="h2-content">
+                    <b><em>How is the model trained?</em></b><br>
+                    Training a Decision Tree involves selecting the best features and thresholds to split the data at each node in a way that 
+                    improves the model’s accuracy. The algorithm evaluates all possible splits using criteria Gini Impurity or Information Gain 
+                    for classification, and chooses the one that best separates the data. 
+                    This process continues recursively until a stopping condition is met, such as a maximum depth or minimum number of samples per leaf.
+                </p>
+                <p class="h2-content">
+                    <b><em>How does it make predictions?</em></b><br>
+                    To make a prediction, a new data point is passed through the tree starting from the root node. At each internal node, 
+                    the model checks the feature value against the split condition and follows the appropriate branch. 
+                    This continues until the data point reaches a leaf node, where the model outputs the predicted class label 
+                    (for classification) or average value (for regression) associated with that leaf.
+                </p>
+                
+                <div class="image">
+                    <img style="height: 400px; width: 650px; " src="assets/img/dt/dt_example.png" alt="DT example" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Decision Tree classifier.
+                    (<a href="https://dl.acm.org/doi/10.5555/2564781" target="_blank">Source</a>)<br>
+
+                
+                <p class="h2-content">
+                    <b><em>The usage of the Entropy and Information Gain</em></b><br>
+                    Gini impurity, entropy, and information gain are used to evaluate potential splits in a decision tree. 
+                    Gini impurity focuses on minimizing the probability of incorrect classifications, while entropy measures 
+                    disorder or uncertainty in the data. Information gain quantifies how much uncertainty is reduced after a split. 
+                    The goal is to choose the split that results in the purest subsets, improving model accuracy.
+                </p>
+
+                <div class="image">
+                    <img style="height: 400px; width: 500px; " src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ia_qq3N6UJKKj3gPlm3LyA.png" alt="DT example" class="grid-image" data-description="">
+                </div>
+                <p class="image-caption">Example of Decision Tree classifier.
+                    (<a href="https://medium.com/data-science/decision-tree-classifier-explained-a-visual-guide-with-code-examples-for-beginners-7c863f06a71e" target="_blank">Source</a>)<br>
+
+                <p class="h2-content">
+                    <b>GINI Impurity's Example:</b>
+                    Consider a dataset with 100 samples, where 70 are class A and 30 are class B. The Gini impurity is calculated as:</p>
+                <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                    \(
+                        Gini = 1 - (p_A^2 + p_B^2) = 1 - ((0.7)^2 + (0.3)^2) = 1 - (0.49 + 0.09) = 0.42
+                    \)
+                </p>
+                
+                <p class="h2-content">
+                    <b>Information Gain's Example:</b>
+                    For a dataset split by a feature, calculate the entropy before and after the split. For a split where one subset 
+                    has 60% class A and 40% class B, and the other has 20% class A and 80% class B, information gain is as the below equation. 
+                    The result reflects how much the split reduces uncertainty.
+                    <p style="display: flex; justify-content: center; align-items: center; height: auto; text-align: center;">
+                        \(
+                            IG = Entropy_{\text{(before)}} - \left( \frac{|subset_1|}{|total|} \cdot Entropy_{(\text{subset}_1)} + \frac{|subset_2|}{|total|} \cdot Entropy_{(\text{subset}_2)} \right)
+                        \)
+                    </p><br>
+                </p>
+
+                <p class="h2-content">
+                    <b><em>Why it is generally possible to create an infinite number of trees?</em></b><br>
+                    Decision Trees can have an infinite number of possible structures due to the flexibility in choosing splitting features, 
+                    thresholds, and stopping criteria. Small changes in the data, tree depth, or splitting criteria can result in a completely 
+                    different tree. Moreover, overfitting can lead to highly complex trees, further increasing the number of potential tree configurations.<br>
+                    For example, if a dataset has many features, each feature can be split at various thresholds, leading to numerous combinations
+                    of splits and branches, resulting in an exponential growth of possible tree structures.
+                </p>
+            </p>
+            
+            
+            
+        <!-- Data Prep -->
+            <h2>Data Preparation</h2>
+            <p class="h2-content">
+                <ol>
+                    <li>
+                        <b><em>Image of before & after cleaning data.</em></b><br>
+                        For classification task, the predictors are selected including DEPTH, GROUP, FORMATION, CALI, RHOB, NPHI, DTC and BS.
+                        The data is cleaned and processed to remove duplicates, handle missing values, and convert categorical variables into numerical format.
+                        The figure below shows the data before and after cleaning and processing.
+                        <div class="image">
+                            <img style="height: 280px;" src="assets/img/dt/dt_b_a.png" alt="cleaned_data" class="grid-image" data-description="">
+                        </div>
+                        <p class="image-caption">Data before vs after cleaning and processing.<br>
+                    </li>
+
+                    <li>
+                        <b><em>Image of the sample train and test data.</em></b><br>
+                        Train-test splitting is a fundamental step to evaluate a model's performance. A rate of 80% for training and 20% for testing is used.
+                        The label also is detached from the predictors. The figure below shows the sample of train and test data.
+                        <div class="image">
+                            <img style="height: 400px;" src="assets/img/dt/dt_data.png" alt="DT data" class="grid-image" data-description="">
+                        </div>
+                        <p class="image-caption">Cleaned dataset and Train-Test splitting for Decision Tree classifier.
+                    </li>
+
+                    <li>
+                        <b><em>How the test train split was created?</em></b><br>
+                        Train-test splitting is a fundamental step to evaluate a model's performance. 
+                        The dataset is divided into a Training Set, which is seen data that provided for model training, and a Testing Set, 
+                        which acts as unseen data and uses to assess its accuracy. <br>
+                        Using Scikit-learn's <code>train_test_split()</code> function is a prominent method to perform this split with a common split ratio is 80% for training and 20% for testing.
+                        The dataset is split into training and testing sets later on.
+                        
+                        
+                        <div class="image">
+                            <img style="height: 250px" src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_train-test-split_0.jpg" 
+                            alt="train-test-split-procedure" class="grid-image" data-description="">
+                        </div>
+
+                        <p class="image-caption">Train test split procedure. (<a href="https://builtin.com/data-science/train-test-split" target="_blank">Source</a>)</p>
+                    </li>
+
+                    <li>
+                        <b><em>Why it is important to create a disjoint split?</em></b><br>
+                        These sets must be disjoint, meaning they should not share any data points, to ensure a fair evaluation. The purpose is evaluate 
+                        the model's generalization ability, which is need to predict real-world data.
+                        On the other hand, if the model were tested on data it had already seen, it would give an overly optimistic accuracy, failing to reflect the generalization ability.<br>
+
+                    </li>
+                </ol>
+            </p> 
+
+            
+
+        <!-- Results -->
+            <h2>Results</h2>
+            <p class="h2-content">
+                By changing the max_depth of the Decision Tree, a set of different models are created.
+                The first approach is to use the default max_depth of 3, 4, and 5, which shows a ascending trend of accuracy.
+                The model with max_depth = 5 shows the best accuracy of <b>81.4%</b> on the test set, while <b>74.2%</b> and 
+                <b>78.3%</b> for max_depth = 3 and 4, respectively.
+
+            </p>
+            <div class="image">
+                <img style="height: 400px; width: 800px;" src="assets/img/dt/acc_models_345.png" alt="decision-tree-accuracies" class="grid-image" data-description="">
+                <p class="image-caption">Testing accuracies of models with different max_depth (3, 4, 5)</p><br>
+            </div>
+            The confusion matrix are conducted to compare the performance on each prediction class.
+            All models show the highest accuracy on the Sandstone Sand class, while the lowest accuracy on the Dolomite class.
+            The reason could be the imbalance of the dataset. The difference in confusion matrix also shows the model with max_depth = 5
+            has the best performance on the test set.
+            <div class="image-grid container">
+                <img src="assets/img/dt/cm_dt_3.png"  alt="confusion-matrix-depth-3" class="grid-image" data-description="">
+                <img src="assets/img/dt/cm_dt_4.png"  alt="confusion-matrix-depth-4" class="grid-image" data-description="">
+                <img src="assets/img/dt/cm_dt_5.png"  alt="confusion-matrix-depth-5" class="grid-image" data-description="">
+            </div>
+            <p class="image-caption">Confusion matrix of Decision Tree models with different max_depth (3, 4, 5).</p><br>
+            
+                For a clearer view, the tree plot of all models are conducted to show the structure of the tree.
+                By the color and the number on each node, the decision tree can be interpreted.
+            <div class="image">
+                <img style="height: 300px;" src="assets/img/dt/plot_tree_3.png" alt="decision-tree-plot" class="grid-image" data-description="">
+                <p class="image-caption">Decision Tree with max_depth = 3.</p>
+                <img style="height: 300px;" src="assets/img/dt/plot_tree_4.png" alt="decision-tree-plot" class="grid-image" data-description="">
+                <p class="image-caption">Decision Tree with max_depth = 4.</p>
+                <img style="height: 300px;" src="assets/img/dt/plot_tree_5.png" alt="decision-tree-plot" class="grid-image" data-description="">
+                <p class="image-caption">Decision Tree with max_depth = 5.</p>
+            </div>
+
+            <div class="image">
+                <img style="height: 400px; width: 800px;" src="assets/img/dt/acc_depth.png" alt="decision-tree-accuracy" class="grid-image" data-description="">
+                <p class="image-caption">Hypertuning of max_depth shows convergence at max_depth=14 and testing accuracy reach 92%.</p><br>
+            </div>
+            For exploring the best max_depth, a set of models are created with max_depth from 1 to 24. The testing accuracies are collected and 
+            ploted to show the trend of the model performance. The model with max_depth = 14 shows the best performance with the testing accuracy of 92%.
+
+        <!-- Conclusions -->
+            <h2>Conclusions</h2>
+            <p class="h2-content">
+                By modeling the Decision Tree algorithm, it is clear to realize that DT is a popular tree-based method for classification. 
+                It is also easy for interpretation and visualization, making it useful for explaining model decisions to non-technical users. 
+                However, it can easily overfit the training data if not properly pruned or regularized. Despite this, Decision Trees 
+                serve as a strong foundation for more advanced ensemble methods like Random Forests and Gradient Boosting, 
+                which help overcome its limitations and improve predictive performance.<br><br>
+
+                When dealing with imbalanced data, DT tends to favor the majority class, which can lead to biased predictions and poor 
+                performance on the minority class. This happens because the splitting criteria like Gini Impurity or Information Gain 
+                may not account for class distribution effectively. It can be seen in the class of Dolomite, which has the lowest accuracy.
+                To address this, techniques such as class weighting, resampling (oversampling the minority or undersampling the majority), 
+                or using ensemble methods that handle imbalance better.
+            </p>
+<!-- Deliverables -->
+            <section>
+                <h2>Code & Deliverables</h2>
+                <p class="h2-content">
+                    For your reference, all external links are provided below:
+                </p>
+                <div class="external-links">
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/dt/dt_before.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Data (before)
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/data/dt/dt_after.csv" target="_blank" class="item">
+                        <img src="assets/icons/table-solid.svg" alt="data" data-description="">
+                        Cleaned Data (after)
+                    </a>
+                    <a href="https://github.com/tuanna712/MLDSSpring25/blob/main/notebooks/06_decision_tree.ipynb" target="_blank" class="item">
+                        <img src="assets/icons/github-brands-solid.svg" alt="github" data-description="">
+                        Data Preparation and Modeling Notebook
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!-- Image Expanded View -->
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+            <div class="img-disp" id="imgDisp">
+                <img id="expandedImage" src="" alt="Expanded Image">
+            </div>
+
+            <div class="img-desc" id="imgDesc">
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+    </body>
+</html>

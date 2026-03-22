@@ -2,7 +2,7 @@ import { BlogPost } from '../types';
 
 /**
  * This file contains the metadata for blog posts.
- * The actual content is in markdown files in the `data/blog/` directory.
+ * Markdown bodies live in `public/data/blog/` (served at `/data/blog/<slug>.md` after build).
  * The slug should match the filename (without .md).
  */
 export const blogs: BlogPost[] = [

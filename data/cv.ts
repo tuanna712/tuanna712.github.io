@@ -9,7 +9,7 @@ export const cv: {
     awards: CVEntry[];
     certifications: CVEntry[];
 } = {
-  downloadLink: 'assets/pdf/AcademicCV.pdf',
+  downloadLink: '/assets/pdf/AcademicCV.pdf',
   education: [
     { 
       id: 1, 

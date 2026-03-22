@@ -31,7 +31,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ slug }) => {
     if (postMeta) {
       setIsLoading(true);
       setError(null);
-      fetch(`./data/blog/${postMeta.slug}.md`)
+      fetch(`${import.meta.env.BASE_URL}data/blog/${postMeta.slug}.md`)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

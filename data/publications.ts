@@ -6,7 +6,7 @@ export const publications: Publication[] = [
     id: 1,
     title: 'Delayed mini-batch sampling for accelerated training',
     authors: ['A. T. Nguyen', 'Stephen Becker'],
-    venue: 'To be submitted to the International Conference on Machine Learning (ICML 2026)',
+    venue: 'To be submitted',
     year: 2026,
     featured: true,
     links: [],

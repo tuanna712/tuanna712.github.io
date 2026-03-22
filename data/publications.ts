@@ -15,7 +15,7 @@ export const publications: Publication[] = [
     id: 2,
     title: 'Large-scale video content retrieval using a multimodal model optimized for Vietnamese semantics',
     authors: ['A. T. Nguyen', 'N. K. Tran', 'H. P. Bui', 'T. T. Nguyen', 'T. P. Nguyen', 'D. P. Pham'],
-    venue: 'Vietnam National Scientific Conference on Natural Language Processing and Artificial Intelligence (Under review)',
+    venue: 'Vietnam National Scientific Conference on Natural Language Processing and Artificial Intelligence',
     year: 2025,
     featured: true,
     links: [],

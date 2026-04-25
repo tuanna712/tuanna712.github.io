@@ -102,12 +102,12 @@ const HomePage: React.FC = () => {
         <div className="lg:col-span-9 space-y-14">
           
           <div className="space-y-5">
-            <section id="research-area">
+            {/* <section id="research-area">
               <SectionHeading title="Research area" />
               <p className="text-sm text-slate-700 leading-relaxed font-medium">
                 {personalInfo.researchArea}
               </p>
-            </section>
+            </section> */}
 
             <section id="about-me">
               <SectionHeading title="About me" />

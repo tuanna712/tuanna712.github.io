@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLDS - Tuan Nguyen</title>
+    <!-- Favicons -->
+    <link href="../assets/img/ava-rounded.png" rel="icon">
+    <link href="../assets/img/ava-rounded.png" rel="apple-touch-icon">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="stylesheet" href="../assets/css/project.css">
+    <link rel="stylesheet" href="../assets/css/imgCollection.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Link to external JS -->
+    <script src="loadPrjNav.js"></script>
+    <script src="../assets/js/loadCollectionActions.js"></script>
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <div id="nav"></div>
+    <div class="container">
+        <!-- Project Title -->
+        <div class="title">
+            <h1><a href="mlds/introduction.html" target="_blank">Missing Log Prediction and Lithologies classification<br> for Petrophysics Well-Log Data (2025)</a></h1>
+            <p>
+                CSCI 5612 - Machine Learning, CU Boulder.
+            </p>
+        </div>
+        
+        <!-- <div class="topic">
+            <div class="topic-name">
+                <h3>Abstract</h3>
+            </div>
+            <div class="topic-content">
+                <p>
+                    ...updating...
+                </p>
+            </div>
+        </div> -->
+
+        <div class="topic">
+            <div class="topic-name">
+                <h3>Objectives</h3>
+            </div>
+            <div class="topic-content">
+                This project aims to develop machine learning models that can predict missing well-log data and classify lithologies based on the available well-log data. By automating these tasks, the accuracy of well-log interpretation could be improved, enabling faster decision-making in oil and gas exploration and drilling.
+                Lithology classification refers to the process of identifying and categorizing rock types based on well-log data. It is essential for understanding subsurface geology, optimizing drilling strategies, and improving reservoir characterization.
+            </div>
+        </div>
+
+        <!-- <div class="topic">
+            <div class="topic-name">
+                <h3>Key Results</h3>
+            </div>
+            <div class="topic-content">
+                ...updating...
+            </div>
+        </div> -->
+
+        <div class="topic">
+            <div class="topic-name">
+                <h3>Main Tasks</h3>
+            </div>
+            <div class="topic-content">
+                Implementing a machine learning pipeline to predict missing well-log data and 
+                classify lithologies based on the available well-log data. 
+                The pipeline includes data preprocessing, feature engineering (PCA), 
+                unspervised learning (KMeans, Hierachical, DBSCAN), and supervised learning (Random Forest, XGBoost), 
+                evaluation, and visualization.
+            </div>
+        </div>
+
+        <div class="topic">
+            <div class="topic-name">
+                <h3>Platforms/ Frameworks</h3>
+            </div>
+            <div class="topic-content">
+                <ul style="padding-left: 20px;">
+                    <li>Machine learning: Sci-kit learn</li>
+                    <li>Hyper-parameters: GridSearchCV</li>
+                    <li>Visualization: Matplotlib, Plotly, Leaflet</li>
+                    <li>Reporting: Latex</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="topic">
+            <div class="topic-name">
+                <h3>Deliverables</h3>
+            </div>
+            <div class="topic-content">
+                <ul style="padding-left: 20px;">
+                    <li><a href="mlds/introduction.html" target="_blank">Project's website</a></li>
+                    <li><a href="https://github.com/tuanna712/MLDSSpring25" target="_blank">Project's Github</a></li>
+                    <li><a href="#" target="_blank">Project's Report</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="media">
+            <p>Screenshots collection</p>
+        </div>
+        <div class="image-grid">
+            <!-- Importing images... -->
+            <img src="/projects/mlds/assets/img/pca/evec_chart3c.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/pca/pca_3d.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/pca/ev_cum_chart13c.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/silhouette_scores.png" alt="silhouette_scores" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_3.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_4.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/kmean_7.png" alt="01" class="grid-image" data-description="">
+            <img src="/projects/mlds/assets/img/clustering/dbscan_3d.gif" alt="01" class="grid-image" data-description="">
+        </div>
+    
+        <div class="overlay" id="overlay">
+            <div>
+                <button class="close-btn" id="closeBtn"></button>
+            </div>
+             <div class="img-disp" id="imgDisp">
+                 <img id="expandedImage" src="" alt="Expanded Image">
+             </div>
+
+             <div class="img-desc" id="imgDesc">
+                 <p id="imageDescription"></p>
+             </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2025 Tuan Nguyen.</p>
+            </div>
+        </footer>
+
+
+    </div>
+    
+
+</body> 
+</html>

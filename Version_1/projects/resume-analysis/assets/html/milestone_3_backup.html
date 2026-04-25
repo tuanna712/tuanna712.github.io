@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Modeling</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/icon.png" rel="icon">
+  <link href="assets/img/icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Active
+  * Template URL: https://bootstrapmade.com/active-bootstrap-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="portfolio-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Models Implemented</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="Introduction.html">Introduction</a></li>
+          <li><a href="Data-Exploration.html">Data Exploration</a></li>
+          <li><a href="Models-Implemented.html">Models Implemented</a></li>
+          <li><a href="Conclusion-Results.html">Conclusion & Results</a></li>
+          <li><a href="team.html">Team</a></li>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <h1>Model Implementation</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Model</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+    <section id="services-2" class="services-2 section">
+      <div class="container">
+        <div  data-aos="fade-up">
+            <span class="content-subtitle"></span>
+            <h2 style="text-align: center;">
+              <!-- Model Implementation -->
+            </h2>
+          
+          <!-- <div class="container">
+            <div class="row">
+              <div class="content" style="text-align: center;">
+                <div class="textbox">
+                  <img src="Flowchart.png" style="width: 80%; height: auto; display: block; margin: 0 auto;">
+                  <h3>
+                    Data Cleaning
+                  </h3>
+                  <h4 style="color:red;">
+                    Raw Text Before cleaning 
+                  </h4>
+                  <img src="Data_bfr.png" alt="Data before Preprocessing" style="width: 75%;">
+
+                  <h4 style="color:red;">
+                    Resume content after cleaning process
+                  </h4>
+                  <img src="Data_aft.png" alt="Data after Preprocessing" style="width: 75%;margin-bottom: 40px;">
+                  
+                </div>
+                <h5 style="text-align: center;" >Histogram of resume length by words before and after cleaning process</h5>
+                <img src="image016.png" style="margin-bottom: 80px;" >
+                <img src="image017.png" style="margin-bottom: 80px;" >
+
+                
+
+                <div class="textbox" style="text-align: center; margin-bottom: 60px;">
+                  <h3>
+                    Skill Extraction
+                  </h3>
+                  <h5 style="color: red;">
+                    Using a Named Entity Recognition (NER) model, resumes can be processed to extract various entities.
+                    The figure below illustrates the collection of various skills corresponding to the resume content.
+                  </h5>
+                  <img src="image020.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+
+                  <h3>
+                    Tokenization
+                  </h3>
+                  <h5 style="color: red;">
+                    Skills Data after transforming process
+                  </h5>
+
+                  <img src="image024.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+
+                </div>
+
+                <div style="text-align: center; ">
+                  <h4>Label distribution Visualization</h4>
+                  <img src="image034.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+
+                  <h4>Labels Processing</h4>
+                  <img src="image036.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h3 style="text-align: center;">Types of Models Implemented</h3> -->
+
+
+    <!-- <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Types of Models Implemented</title>
+      <style>
+        .branch-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          text-align: center;
+          margin: 20px;
+        }
+        .branch {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          padding: 20px;
+          width: 45%;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .branch:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .branch-title {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+          color: #333;
+        }
+        .branch-text {
+          font-size: 1em;
+          color: #666;
+        }
+        .details {
+          display: none; /* Ensures the content is hidden by default */
+          margin-top: 10px;
+        }
+        .toggle-btn {
+          cursor: pointer;
+          color: blue;
+          text-decoration: underline;
+          display: block;
+          margin: 10px 0;
+    }
+      </style>
+    </head>
+    <body>
+    
+    <div class="branch-container">
+      <div class="branch">
+        <div class="branch-title" style="color:black;">Machine Learning</div>
+        <span class="toggle-btn" onclick="toggleDetails('details1')">Logistic Regression</span>
+        <span class="toggle-btn" onclick="toggleDetails('details2')">Random Forest</span>
+        <span class="toggle-btn" onclick="toggleDetails('details3')">Support Vector Machine</span>
+        <span class="toggle-btn" onclick="toggleDetails('details4')">KNN</span>
+        <span class="toggle-btn" onclick="toggleDetails('details5')">Decision Tree</span>
+        <span class="toggle-btn" onclick="toggleDetails('details6')">Gradient Boosting</span>
+        <span class="toggle-btn" onclick="toggleDetails('details7')">AdaBoost</span>
+        <span class="toggle-btn" onclick="toggleDetails('details8')">XGBoost</span> -->
+        
+        <!-- <div class="details" id="details1">
+          <p> <b>Logistic Regression: </b> a linear statistical model that is used for binary or multi-class classification tasks. It predicts probabilities for each class using the sigmoid function to map values to a range between 0 and 1</p>
+        </div>
+
+        <div class="details" id="details2">
+          <p> <b>Random Forest: </b> a collection of decision trees where each tree is trained on a random subset of the data and features. The final prediction is made by averaging or classification across all trees</p>  
+        </div>
+
+        <div class="details" id="details3">
+          <p> <b>Support Vector Machine (SVM): </b> aims to find the hyperplane that best separates data points of different classes with the maximum margin</p>  
+        </div>
+
+        <div class="details" id="details4">
+          <p> <b>KNN:</b> predicts outcomes based on the majority class (classification) or average value (regression) of the 'k' nearest data points. It uses distance metrics like Euclidean to identify neighbors. </p>  
+        </div>
+
+        <div class="details" id="details5">
+          <p> <b>Decision Tree:</b> splits data hierarchically based on feature thresholds to create rules that classify or predict outcomes. It is easy to interpret but prone to overfitting without pruning</p>  
+        </div>
+
+        <div class="details" id="details6">
+          <p> <b>Gradient Boosting: </b> combines weak learners (typically decision trees) sequentially, correcting errors from prior models. It minimizes a loss function and performs well on complex datasets</p>  
+        </div>
+
+        <div class="details" id="details7">
+          <p> <b>AdaBoost: </b> combines multiple weak classifiers iteratively, focusing on misclassified instances by adjusting their weights. It improves performance but can be sensitive to noise</p>  
+        </div>
+
+        <div class="details" id="details8">
+          <p> <b>XGBoost: </b> an optimized gradient boosting framework that uses regularization, parallel processing, and efficient algorithms. It is widely used for high-performance machine learning tasks</p>  
+        </div> -->
+      <!-- </div> -->
+
+      <!-- <div class="branch">
+        <div class="branch-title" style="color: black;">Deep Learning</div>
+        <span class="toggle-btn" onclick="toggleDetails('details9')">Convolutional Neural Networks</span>
+        <span class="toggle-btn" onclick="toggleDetails('details10')">LSTM</span>
+
+        <div class="details" id="details9">
+          <p><b>CNN : </b>It is a specialized deep learning model that utilize convolutional layers to capture local features like phrases or context windows. The features are then combined through pooling layers to reduce dimensionality and highlight the most significant patterns</p>
+        </div>
+
+        <div class="details" id="details10">
+          <p> <b>LSTM : </b>It is an advanced types of Recurrent Neural Networks (RNNs) designed to handle sequential data by learning long-term dependencies. Unlike traditional RNNs, LSTMs use memory cells and gating mechanisms (input, forget, and output gates) to selectively store, update, and output information across time steps.</p>  
+        </div>
+      </div> -->
+      <!-- </div>
+    </div> -->
+
+
+    <!-- <script>
+      function toggleDetails(id) {
+        const details = document.getElementById(id);
+        const btn = details.previousElementSibling;
+        if (details.style.display === 'none' || details.style.display === '') {
+          details.style.display = 'block';
+          btn.textContent = 'Logistic Regression';
+        } else {
+          details.style.display = 'none';
+          btn.textContent = 'Logistic Regression';
+        }
+      }
+    </script> -->
+
+    <!-- <script>
+      function toggleDetails(id) {
+        const details = document.getElementById(id);
+        if (details.style.display === 'none' || details.style.display === '') {
+          details.style.display = 'block';
+        } else {
+          details.style.display = 'none';
+        }
+      }
+    </script>
+    
+    </body>
+    </html>   
+  </footer> -->
+
+
+  <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Performance Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 16px;
+      text-align: center;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    @media (max-width: 768px) {
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="table-container" style="text-align: center;">
+    <h1>Model Performance Metrics</h1>
+    <table>
+      <thead>
+        <tr>
+        <th>Model</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>F1-Score</th>
+        <th>G-Mean</th>
+        <th>MCC</th>
+        </tr>
+      </thead>
+    <tbody>
+    <tr>
+      <td>Logistic Regression</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.86</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <td>Random Forest</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.85</td>
+      <td>0.72</td>
+    </tr>
+    <tr>
+      <td>SVM</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.86</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <td>KNN</td>
+      <td>0.72</td>
+      <td>0.72</td>
+      <td>0.72</td>
+      <td>0.72</td>
+      <td>0.83</td>
+      <td>0.67</td>
+    </tr>
+    <tr>
+      <td>Decision Tree</td>
+      <td>0.64</td>
+      <td>0.64</td>
+      <td>0.64</td>
+      <td>0.64</td>
+      <td>0.77</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <td>Gradient Boosting</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <td>Ada Boost</td>
+      <td>0.66</td>
+      <td>0.66</td>
+      <td>0.66</td>
+      <td>0.66</td>
+      <td>0.78</td>
+      <td>0.59</td>
+    </tr>
+    <tr>
+      <td>XGB</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.85</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <td>CNN</td>
+      <td>0.79</td>
+      <td>0.79</td>
+      <td>0.79</td>
+      <td>0.79</td>
+      <td>0.87</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <td>LSTM</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.76</td>
+      <td>0.85</td>
+      <td>0.72</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Models Implemented</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #444;
+    }
+
+    /* Button styles */
+    .nav-button {
+      background: linear-gradient(45deg, #23a527, #f5f1a8);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      text-align: left;
+      border-radius: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .nav-button:hover {
+      background: linear-gradient(45deg, #2575fc, #6a11cb);
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hidden section styles */
+    .expandable-content {
+      display: none;
+      padding: 15px 20px;
+      background-color: #ffffff;
+      border-left: 5px solid #6a11cb;
+      border-radius: 5px;
+      margin-top: 5px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .expandable-content img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animation for fade-in effect */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Active button styles */
+    .nav-button.active {
+      background: linear-gradient(45deg, #fc4a1a, #f7b733);
+    }
+
+    /* Full-width container */
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <p style="text-align: left;">In today's data-driven world, efficient data preprocessing is crucial for extracting meaningful insights. 
+    This process involves transforming raw, unstructured data into a clean, structured format suitable for analysis 
+    and modeling. The following sections detail the systematic steps undertaken for data cleaning, showcasing the 
+    evolution of raw resumes into structured information through visualizations and descriptions. Additionally, 
+    we demonstrate how cleaned data powers machine learning models such as <b>Logistic Regression, Random Forest, 
+    and Support Vector Machines (SVM)</b>, enabling them to deliver accurate predictions and actionable insights</p>
+  <img src="Final Flowchart.png" style="width: 80%; height: auto; display: block; margin: 0 auto; margin-bottom: 30px;">
+
+  <!-- Button 1 -->
+  <button class="nav-button" onclick="toggleContent('content1', this)">Data Cleaning</button>
+  <div class="expandable-content" id="content1">
+    <div class="textbox" style="text-align: center;">
+      <h4 style="color:red; text-align: center;">
+        Raw Text Before cleaning 
+      </h4>
+      <img src="Data_bfr.png" alt="Data before Preprocessing" style="width: 75%; margin-bottom:40px;">
+
+      <h4 style="color:red;">
+        Resume content after cleaning process
+      </h4>
+      <img src="Data_aft.png" alt="Data after Preprocessing" style="width: 75%;margin-bottom: 40px;">
+
+      <h5 style="text-align: center;" >Histogram of resume length by words before and after cleaning process</h5>
+    <img src="image016.png" style="margin-bottom: 80px;" >
+    <img src="image017.png" style="margin-bottom: 80px;" >
+    </div>
+    
+    <!-- <img src="https://via.placeholder.com/600x300/6a11cb/ffffff?text=Header+1+Image" alt="Header 1 Image"> -->
+  </div>
+
+  <!-- Button 2 -->
+  <button class="nav-button" onclick="toggleContent('content2', this)">Process 1</button>
+  <div class="expandable-content" id="content2">
+    <div class="textbox" style="text-align: center; margin-bottom: 60px;">
+      <h3>
+        Skill Extraction
+      </h3>
+      <p>After completing the initial text cleaning process, we observed that the resumes were still excessively lengthy, 
+        making them unsuitable for direct input into NLP or machine learning models. To address this, we opted to extract 
+        all the skills listed in the resumes and use these skills as the primary input for the modeling process</p>
+      <h5 style="color: red;">
+        Using a Named Entity Recognition (NER) model, resumes can be processed to extract various entities.
+        The figure below illustrates the collection of various skills corresponding to the resume content.
+      </h5>
+      <img src="image020.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto; margin-bottom: 30px;">
+      <h3>
+        Tokenization
+      </h3>
+      <p>To prepare the data for modeling, the textual data must be converted into numerical form using a method called tokenization. Tokenization involves breaking down the text into smaller units, such as words or subwords, which are then mapped to numerical representations.  
+
+        This mapping can be achieved through techniques like one-hot encoding, where each token is represented as a binary vector, 
+        or more advanced methods such as word embeddings</p>
+      <h5 style="color: red;">
+        Skills Data after transforming process
+      </h5>
+
+      <img src="image024.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+    </div>
+  </div>
+
+  <!-- Button 3 -->
+  <button class="nav-button" onclick="toggleContent('content3', this)">Process 2</button>
+  <div class="expandable-content" id="content3">
+    <div style="text-align: center; ">
+      <h4>Label distribution Visualization</h4>
+
+      <p>After scraping data using specific keywords, we collected over 12,000 resumes. Each resume includes a title, which is set 
+        by the candidates based on their experience and desired job roles. While these titles are not strictly uniform or 
+        standardized labels, they do partially reflect the nature and focus of the resumes. Therefore, we utilized this column 
+        as the label for the resume classification task</p>
+      <img src="image032.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;margin-bottom: 20px;">
+
+      <h4>Labels Processing</h4>
+      <img src="image036.png" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+    </div>
+  </div>
+
+  <!-- Button 4 -->
+  <button class="nav-button" onclick="toggleContent('content4', this)">Models Implemented</button>
+  <div class="expandable-content" id="content4">
+    <div style="text-align: center; ">
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Types of Models Implemented</title>
+      <style>
+        .branch-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          text-align: center;
+          margin: 20px;
+        }
+        .branch {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          padding: 20px;
+          width: 45%;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .branch:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .branch-title {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+          color: #333;
+        }
+        .branch-text {
+          font-size: 1em;
+          color: #666;
+        }
+        .details {
+          display: none; /* Ensures the content is hidden by default */
+          margin-top: 10px;
+        }
+        .toggle-btn {
+          cursor: pointer;
+          color: blue;
+          text-decoration: underline;
+          display: block;
+          margin: 10px 0;
+    }
+      </style>
+      </head>
+      <body>
+        <div class="branch-container">
+          <div class="branch">
+            <div class="branch-title" style="color:black;">Machine Learning</div>
+            <span class="toggle-btn" onclick="toggleDetails('details1')">Logistic Regression</span>
+            <span class="toggle-btn" onclick="toggleDetails('details2')">Random Forest</span>
+            <span class="toggle-btn" onclick="toggleDetails('details3')">Support Vector Machine</span>
+            <span class="toggle-btn" onclick="toggleDetails('details4')">KNN</span>
+            <span class="toggle-btn" onclick="toggleDetails('details5')">Decision Tree</span>
+            <span class="toggle-btn" onclick="toggleDetails('details6')">Gradient Boosting</span>
+            <span class="toggle-btn" onclick="toggleDetails('details7')">AdaBoost</span>
+            <span class="toggle-btn" onclick="toggleDetails('details8')">XGBoost</span>
+
+        <div class="details" id="details1">
+          <p> <b>Logistic Regression: </b> a linear statistical model that is used for binary or multi-class classification tasks. It predicts probabilities for each class using the sigmoid function to map values to a range between 0 and 1</p>
+        </div>
+
+        <div class="details" id="details2">
+          <p> <b>Random Forest: </b> a collection of decision trees where each tree is trained on a random subset of the data and features. The final prediction is made by averaging or classification across all trees</p>  
+        </div>
+
+        <div class="details" id="details3">
+          <p> <b>Support Vector Machine (SVM): </b> aims to find the hyperplane that best separates data points of different classes with the maximum margin</p>  
+        </div>
+
+        <div class="details" id="details4">
+          <p> <b>KNN:</b> predicts outcomes based on the majority class (classification) or average value (regression) of the 'k' nearest data points. It uses distance metrics like Euclidean to identify neighbors. </p>  
+        </div>
+
+        <div class="details" id="details5">
+          <p> <b>Decision Tree:</b> splits data hierarchically based on feature thresholds to create rules that classify or predict outcomes. It is easy to interpret but prone to overfitting without pruning</p>  
+        </div>
+
+        <div class="details" id="details6">
+          <p> <b>Gradient Boosting: </b> combines weak learners (typically decision trees) sequentially, correcting errors from prior models. It minimizes a loss function and performs well on complex datasets</p>  
+        </div>
+
+        <div class="details" id="details7">
+          <p> <b>AdaBoost: </b> combines multiple weak classifiers iteratively, focusing on misclassified instances by adjusting their weights. It improves performance but can be sensitive to noise</p>  
+        </div>
+
+        <div class="details" id="details8">
+          <p> <b>XGBoost: </b> an optimized gradient boosting framework that uses regularization, parallel processing, and efficient algorithms. It is widely used for high-performance machine learning tasks</p>  
+        </div>
+      </div>
+
+      <div class="branch">
+        <div class="branch-title" style="color: black;">Deep Learning</div>
+        <span class="toggle-btn" onclick="toggleDetails('details9')">Convolutional Neural Networks</span>
+        <span class="toggle-btn" onclick="toggleDetails('details10')">LSTM</span>
+        <div class="details" id="details9">
+          <p><b>CNN : </b>It is a specialized deep learning model that utilize convolutional layers to capture local features like phrases or context windows. The features are then combined through pooling layers to reduce dimensionality and highlight the most significant patterns</p>
+        </div>
+
+        <div class="details" id="details10">
+          <p> <b>LSTM : </b>It is an advanced types of Recurrent Neural Networks (RNNs) designed to handle sequential data by learning long-term dependencies. Unlike traditional RNNs, LSTMs use memory cells and gating mechanisms (input, forget, and output gates) to selectively store, update, and output information across time steps.</p>  
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDetails(id) {
+        const details = document.getElementById(id);
+        if (details.style.display === 'none' || details.style.display === '') {
+          details.style.display = 'block';
+        } else {
+          details.style.display = 'none';
+        }
+      }
+    </script>
+    
+    </body>
+    </html>
+  </div>
+</div>
+
+
+<!-- Button 5 -->
+<button class="nav-button" onclick="toggleContent('content5', this)">Model Hyperparameter tuning process</button>
+<div class="expandable-content" id="content5">
+  <div style="text-align: center; ">
+    <p>
+      Hyperparameter tuning is the process of finding the best settings (hyperparameters) for a model to improve its performance. These settings, such as the learning rate or maximum depth, are predefined and cannot be learned directly from the data, but they have a big impact on how well the model works.
+      In our solution, we used RandomizedSearchCV and GridSearchCV methods from the sklearn library. Both methods allow us to test different combinations of hyperparameters for the model. Based on a specific performance metric (like accuracy or F1-score), it identifies the best combination of settings.
+      Once we find the best parameters, we use them to finalize the model, ensuring it achieves the highest possible performance.
+      GridSearchCV and RandomizedSearchCV also include techniques to reduce overfitting, such as cross-validation. By setting the `cv` parameter, the model is trained and validated on multiple random data splits (folds). This ensures the model learns from all the data while avoiding overfitting or focusing too much on any single subset.
+    </p>
+  </div>
+</div>
+
+
+  <!-- Button 6 -->
+  <button class="nav-button" onclick="toggleContent('content6', this)">Model Performance Metrics</button>
+  <div class="expandable-content" id="content6">
+    <div style="text-align: center; ">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Performance Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .table-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      overflow-x: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: 0;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      color: #333;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    tr:hover {
+      background-color: #e9e9e9;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Model Performance Metrics</h1>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>F1-Score</th>
+        <th>G-Mean</th>
+        <th>MCC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Logistic Regression</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.89</td>
+        <td>0.75</td>
+      </tr>
+      <tr>
+        <td>KNeighborsClassifier</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.87</td>
+        <td>0.70</td>
+      </tr>
+      <tr>
+        <td>DecisionTreeClassifier</td>
+        <td>0.72</td>
+        <td>0.72</td>
+        <td>0.72</td>
+        <td>0.72</td>
+        <td>0.83</td>
+        <td>0.61</td>
+      </tr>
+      <tr>
+        <td>RandomForestClassifier</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.78</td>
+        <td>0.86</td>
+        <td>0.70</td>
+      </tr>
+      <tr>
+        <td>SVC</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.88</td>
+        <td>0.73</td>
+      </tr>
+      <tr>
+        <td>GradientBoostingClassifier</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.88</td>
+        <td>0.72</td>
+      </tr>
+      <tr>
+        <td>AdaBoostClassifier</td>
+        <td>0.74</td>
+        <td>0.74</td>
+        <td>0.74</td>
+        <td>0.74</td>
+        <td>0.84</td>
+        <td>0.64</td>
+      </tr>
+      <tr>
+        <td>XGBClassifier</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.82</td>
+        <td>0.89</td>
+        <td>0.76</td>
+      </tr>
+
+      <tr>
+        <td>LSTM</td>
+        <td>0.76</td>
+        <td>0.76</td>
+        <td>0.76</td>
+        <td>0.76</td>
+        <td>0.85</td>
+        <td>0.72</td>
+      </tr>
+
+      <tr>
+        <td>CNN</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.80</td>
+        <td>0.88</td>
+        <td>0.73</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+</div>
+</div>
+
+<script>
+  // JavaScript to toggle visibility of content and active button styles
+  function toggleContent(contentId, button) {
+    const content = document.getElementById(contentId);
+
+    // Hide other open sections
+    document.querySelectorAll('.expandable-content').forEach(section => {
+      if (section.id !== contentId) section.style.display = 'none';
+    });
+
+    // Remove active state from all buttons
+    document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+
+    // Toggle current section and button state
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+    } else {
+      content.style.display = 'block';
+      button.classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>
+
+
+  <!-- Scroll Top -->
+  <!-- <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <!-- Preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

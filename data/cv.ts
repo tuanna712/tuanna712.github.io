@@ -3,6 +3,8 @@ import { CVEntry } from '../types';
 
 export const cv: {
     downloadLink: string;
+    degLink: string;
+    transcriptLink: string;
     education: CVEntry[];
     researchExperience: CVEntry[];
     experience: CVEntry[];
@@ -10,6 +12,8 @@ export const cv: {
     certifications: CVEntry[];
 } = {
   downloadLink: '/assets/pdf/AcademicCV.pdf',
+  degLink: '/assets/pdf/CeD.26PQ-3HCW-ACNI.pdf',
+  transcriptLink: '/assets/pdf/MSDS_CU_OfficialTranscript.pdf',
   education: [
     { 
       id: 1, 

@@ -61,5 +61,7 @@ export interface AcademicData {
     awards: CVEntry[];
     certifications: CVEntry[];
     downloadLink: string;
+    degLink: string;
+    transcriptLink: string;
   };
 }
